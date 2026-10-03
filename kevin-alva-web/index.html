@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kevin Alva | Músico, Productor y Musicólogo Venezolano</title>
+<meta name="description" content="Kevin Alva es músico, productor y musicólogo venezolano con más de veinte años de trayectoria en el ska, reggae y las músicas del Caribe.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kevin Alva | Músico, Productor y Musicólogo Venezolano">
+<meta property="og:description" content="Música del Caribe, desde Venezuela hasta el Ártico.">
+<meta property="og:image" content="img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#050505;
+  --dark:#111111;
+  --white:#F5F5F5;
+  --gray:#A5A5A5;
+  --gold:#D6A62C;
+  --gold-dark:#8F6B18;
+  --linea:rgba(245,245,245,.12);
+  --linea-clara:rgba(5,5,5,.12);
+  --titulo:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --texto:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ancho:1280px;
+  --barra:44px;
+  --nav:76px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 10px)}
+body{margin:0;background:var(--black);color:var(--white);font-family:var(--texto);font-size:1.0625rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.contenedor{width:min(var(--ancho),100% - 3rem);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Secciones claras / oscuras ---------- */
+section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
+.clara{background:var(--white);color:var(--black)}
+.carbon{background:var(--dark)}
+.kicker{display:inline-flex;align-items:center;gap:.8rem;font-size:.78rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.kicker::before{content:"";width:34px;height:2px;background:currentColor}
+.clara .kicker{color:var(--gold-dark)}
+.h-xl{font-family:var(--titulo);font-weight:400;text-transform:uppercase;font-size:clamp(3.2rem,8vw,7.5rem);line-height:.9;margin:0}
+.cabecera{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.5rem,5vw,3.75rem)}
+.cabecera p{max-width:38ch;margin:0;color:var(--gray)}
+.clara .cabecera p{color:rgba(5,5,5,.68)}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.7rem;font-size:.82rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .25s,color .25s,border-color .25s;background:none;border-radius:999px}
+.btn svg{width:18px;height:18px;fill:currentColor;flex:none}
+.btn--oro{background:var(--gold);color:var(--black)}
+.btn--oro:hover{background:#E8BC4A}
+.btn--borde{border-color:var(--white);color:var(--white)}
+.btn--borde:hover{background:var(--white);color:var(--black)}
+.btn--negro{background:var(--black);color:var(--white)}
+.btn--negro:hover{background:var(--gold);color:var(--black)}
+.btn[aria-disabled="true"]{opacity:.45;cursor:default;pointer-events:none}
+.flecha{display:inline-flex;align-items:center;gap:.55rem;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:color .25s,gap .25s}
+.flecha:hover{color:var(--gold);gap:.85rem}
+
+/* ---------- Barra superior: redes + donar ---------- */
+.barra{background:#000;border-bottom:1px solid #000;height:var(--barra);font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.barra .contenedor{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:100%}
+.barra__aviso{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barra__aviso b{color:var(--gold);font-weight:800}
+.barra__aviso:hover{color:var(--white)}
+.barra__der{display:flex;align-items:center;gap:1.25rem;flex:none}
+.redes{display:flex;align-items:center;gap:.5rem}
+.redes a{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;color:var(--white);background:#1A1A1A;transition:background .25s,color .25s}
+.redes a:hover{background:var(--gold);color:var(--black)}
+.redes svg{width:16px;height:16px;fill:currentColor}
+.donar{display:inline-flex;align-items:center;gap:.45rem;background:var(--gold);color:var(--black);text-decoration:none;padding:.4rem .95rem;border-radius:999px;font-weight:800}
+.donar svg{width:14px;height:14px;fill:currentColor}
+.donar:hover{background:#E8BC4A}
+@media (max-width:640px){.barra__aviso{display:none}.barra .contenedor{justify-content:center}.barra__der{gap:.9rem}}
+
+/* ---------- Navbar ---------- */
+.nav{position:sticky;top:0;z-index:60;background:var(--dark);border-bottom:3px solid #000;box-shadow:0 1px 0 rgba(214,166,44,.35)}
+.nav__in{display:flex;align-items:center;gap:2rem;height:var(--nav)}
+.nav__logo img{height:54px;width:auto}
+.nav__menu{display:flex;align-items:center;margin-left:auto}
+.nav__links{display:flex;gap:2.1rem;list-style:none;margin:0;padding:0}
+.nav__links a{font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;position:relative;padding:.4rem 0}
+.nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--gold);transition:right .3s}
+.nav__links a:hover::after{right:0}
+.hamb{display:none;margin-left:auto;width:44px;height:44px;background:none;border:0;cursor:pointer;position:relative}
+.hamb span{position:absolute;left:10px;right:10px;height:2px;background:var(--white);transition:transform .3s,opacity .3s}
+.hamb span:nth-child(1){top:14px}.hamb span:nth-child(2){top:21px}.hamb span:nth-child(3){top:28px}
+.hamb[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamb[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamb[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:1000px){
+  :root{--nav:66px}
+  .nav__logo img{height:46px}
+  .hamb{display:block}
+  .nav__menu{position:absolute;left:0;right:0;top:100%;background:var(--dark);border-bottom:3px solid #000;padding:1rem 1.5rem 2rem;display:none}
+  .nav__menu.abierto{display:block}
+  .nav__links{flex-direction:column;gap:0}
+  .nav__links a{display:block;font-family:var(--titulo);font-weight:400;font-size:2rem;letter-spacing:.01em;line-height:1.5;padding:0}
+  .nav__links a::after{display:none}
+}
+
+/* ---------- Hero: foto de fondo + video en bucle ---------- */
+.hero{position:relative;isolation:isolate;background:var(--black);overflow:hidden;padding:clamp(3rem,6vw,5rem) 0;min-height:calc(100svh - var(--barra) - var(--nav));display:flex;align-items:center}
+.hero__fondo{position:absolute;inset:0 0 0 28%;z-index:-2}
+.hero__fondo img{width:100%;height:100%;object-fit:cover;object-position:38% 12%}
+.hero__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--black) 0%,rgba(5,5,5,.6) 22%,rgba(5,5,5,0) 50%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(50% 60% at 78% 50%,rgba(214,166,44,.16),transparent 70%),
+  linear-gradient(90deg,rgba(5,5,5,.7) 0%,rgba(5,5,5,.3) 45%,rgba(5,5,5,.15) 65%,rgba(5,5,5,.5) 100%)}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.hero__pre{font-size:.82rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 1.25rem}
+.hero h1{font-family:var(--titulo);font-weight:400;text-transform:uppercase;font-size:clamp(4rem,10vw,9rem);line-height:.86;margin:0}
+.hero__eslogan{font-size:clamp(1.25rem,2.2vw,1.75rem);font-weight:600;line-height:1.35;margin:1.5rem 0 1.25rem;max-width:26ch}
+.hero__eslogan span{color:var(--gold)}
+.hero__roles{font-size:.8rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gray);margin:0 0 2.25rem}
+.hero__acciones{display:flex;flex-wrap:wrap;gap:1rem}
+.hero__redes{display:flex;align-items:center;gap:.75rem;margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--linea)}
+.hero__redes span{font-size:.72rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gray);margin-right:.5rem}
+.hero__redes a{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(245,245,245,.35);color:var(--white);transition:all .25s}
+.hero__redes a:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.hero__redes svg{width:20px;height:20px;fill:currentColor}
+.hero__video{position:relative;justify-self:end;width:min(100%,380px);aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgba(214,166,44,.7),0 40px 90px rgba(0,0,0,.7)}
+.hero__video video{width:100%;height:100%;object-fit:cover}
+.hero__video::after{content:"EN DIRECTO";position:absolute;top:14px;left:14px;font-size:.66rem;font-weight:800;letter-spacing:.22em;background:rgba(5,5,5,.7);color:var(--white);padding:.35rem .65rem;border-radius:999px;border:1px solid rgba(214,166,44,.6)}
+@media (max-width:860px){
+  .hero{min-height:0}
+  .hero__grid{grid-template-columns:1fr}
+  .hero__video{justify-self:stretch;width:100%;aspect-ratio:4/5}
+  .hero__fondo{inset:0}.hero__fondo img{object-position:40% 8%}.hero__fondo::after{display:none}
+  .hero::before{background:linear-gradient(180deg,rgba(5,5,5,.65),rgba(5,5,5,.88) 60%,var(--black))}
+}
+
+/* ---------- Shows ---------- */
+.agenda{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.fila{display:grid;grid-template-columns:150px minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:2rem;align-items:center;padding:1.9rem 1.25rem;border-bottom:1px solid var(--linea);transition:background .3s}
+.fila:hover{background:rgba(245,245,245,.04)}
+.fila__fecha{font-family:var(--titulo);font-size:2.6rem;line-height:.95;text-transform:uppercase;color:var(--gold)}
+.fila__fecha small{display:block;font-family:var(--texto);font-size:.72rem;font-weight:700;letter-spacing:.22em;color:var(--gray);margin-top:.4rem}
+.fila__ciudad{font-family:var(--titulo);font-size:2rem;line-height:1;text-transform:uppercase}
+.fila__ciudad small{display:block;font-family:var(--texto);font-size:.72rem;font-weight:700;letter-spacing:.22em;color:var(--gray);margin-top:.45rem}
+.fila__evento{font-weight:700}
+.fila__evento small{display:block;font-weight:500;color:var(--gray);font-size:.92rem}
+.fila__evento a{color:var(--gray);text-underline-offset:3px}
+.fila__evento a:hover{color:var(--gold)}
+@media (max-width:860px){.fila{grid-template-columns:92px 1fr;gap:.8rem 1.25rem;padding:1.6rem .25rem}.fila__evento,.fila .btn{grid-column:2;justify-self:start}.fila__fecha{font-size:2.1rem;grid-row:span 3}}
+
+/* ---------- Música / Spotify ---------- */
+.spotify{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(1.5rem,3vw,2.5rem);align-items:stretch}
+.sp-caja{background:var(--black);color:var(--white);border-radius:20px;padding:clamp(1.25rem,2.5vw,2rem);display:flex;flex-direction:column;gap:1.25rem;box-shadow:0 30px 70px rgba(5,5,5,.18)}
+.sp-caja__cab{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.sp-caja__cab span{font-size:.72rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.sp-caja__cab svg{width:26px;height:26px;fill:#1ED760}
+.sp-caja iframe{width:100%;border:0;border-radius:12px;display:block;background:#181818;flex:1}
+.sp-caja--principal iframe{min-height:352px}
+.sp-caja--lista iframe{min-height:352px}
+.sp-seguir{display:flex;justify-content:center;margin-top:2.5rem}
+.btn--spotify{background:#1ED760;color:#000}
+.btn--spotify:hover{background:#3BE477}
+@media (max-width:900px){.spotify{grid-template-columns:1fr}}
+.disco-tit{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:clamp(4rem,7vw,5.5rem) 0 1.75rem;padding-top:2rem;border-top:1px solid var(--linea-clara)}
+.disco-tit h3{font-family:var(--titulo);font-weight:400;font-size:clamp(2rem,3.5vw,2.8rem);text-transform:uppercase;margin:0;line-height:1}
+.disco-tit span{font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(5,5,5,.6)}
+.disco{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,4vw,3.5rem);max-width:1040px;margin-inline:auto}
+.album{text-decoration:none;display:block}
+.album__portada{position:relative;aspect-ratio:1;overflow:hidden;background:#ddd;margin-bottom:1rem;border-radius:6px}
+.album__portada img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
+.album__overlay{position:absolute;inset:0;background:rgba(5,5,5,.6);display:grid;place-items:center;opacity:0;transition:opacity .35s}
+.album__overlay span{background:var(--gold);color:var(--black);padding:.7rem 1.3rem;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.album:hover img{transform:scale(1.03)}
+.album:hover .album__overlay,.album:focus-visible .album__overlay{opacity:1}
+.album__meta{display:flex;justify-content:space-between;font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(5,5,5,.55)}
+.album h4{font-family:var(--titulo);font-weight:400;font-size:clamp(2rem,3.4vw,2.8rem);text-transform:uppercase;line-height:1;margin:.4rem 0 .6rem}
+.album__portada{box-shadow:0 30px 60px rgba(5,5,5,.22)}
+.album .flecha{color:var(--black)}
+.album:hover .flecha{color:var(--gold-dark);gap:.85rem}
+@media (max-width:600px){.disco{grid-template-columns:1fr}}
+
+/* ---------- Videos ---------- */
+.yt{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:14px;box-shadow:0 0 0 1px var(--linea)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-info{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin:1.25rem 0 0;flex-wrap:wrap}
+.yt-info h3{font-family:var(--titulo);font-weight:400;font-size:1.8rem;text-transform:uppercase;margin:0;line-height:1}
+.yt-info span{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.filtros{display:flex;flex-wrap:wrap;gap:.5rem;margin:3rem 0 1.5rem}
+.filtros button{background:none;border:1px solid var(--linea);border-radius:999px;padding:.55rem 1.1rem;font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.filtros button:hover{border-color:var(--gold)}
+.filtros button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.lista-videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.5rem}
+.vcard{all:unset;display:block;cursor:pointer}
+.vcard[hidden]{display:none}
+.vcard__thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--dark);margin-bottom:.85rem;display:grid;place-items:center;border-radius:10px}
+.vcard__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.vcard:hover .vcard__thumb img{transform:scale(1.04)}
+.vcard__play{position:relative;width:52px;height:52px;border-radius:50%;background:var(--gold);display:grid;place-items:center}
+.vcard__play svg{width:18px;height:18px;fill:var(--black);margin-left:3px}
+.vcard__cat{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.vcard__tit{display:block;font-weight:700;margin-top:.15rem;line-height:1.35}
+.vcard--vacio{cursor:default}
+.vcard--vacio .vcard__thumb{border:1px dashed rgba(245,245,245,.18);background:var(--black)}
+.vcard--vacio .vcard__thumb small{font-size:.68rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gray)}
+.vcard--vacio .vcard__tit{color:var(--gray)}
+.vcard:focus-visible .vcard__thumb{outline:2px solid var(--gold);outline-offset:3px}
+@media (max-width:520px){.lista-videos{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}}
+
+/* ---------- Bio ---------- */
+.bio__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,6rem);align-items:center}
+.bio__foto{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:6px}
+.bio__foto img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.bio__fotowrap{position:relative}
+.bio__fotowrap::after{content:"";position:absolute;inset:auto -16px -16px auto;width:50%;height:45%;border-right:3px solid var(--gold);border-bottom:3px solid var(--gold);pointer-events:none}
+.bio__gran{display:flex;align-items:flex-end;gap:1.25rem;margin-bottom:1.75rem}
+.bio__gran b{font-family:var(--titulo);font-weight:400;font-size:clamp(5.5rem,12vw,10rem);line-height:.8}
+.bio__gran span{font-size:.85rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dark);line-height:1.6;padding-bottom:.4rem}
+.bio__txt{max-width:54ch;color:rgba(5,5,5,.78);margin:0 0 1rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.75rem;padding-top:2rem;border-top:1px solid var(--linea-clara)}
+.stats b{display:block;font-family:var(--titulo);font-weight:400;font-size:clamp(2.3rem,4vw,3.2rem);line-height:1}
+.stats span{display:block;margin-top:.55rem;font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark);line-height:1.5}
+@media (max-width:900px){.bio__grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr);row-gap:2rem}.bio__fotowrap::after{inset:auto -8px -8px auto}}
+
+/* ---------- Caribe → Ártico ---------- */
+.viaje{background:var(--black);overflow:hidden}
+.viaje__palabra{font-family:var(--titulo);font-weight:400;font-size:clamp(4rem,15vw,14rem);line-height:.85;text-transform:uppercase;margin:0}
+.viaje__artico{text-align:right;color:transparent;-webkit-text-stroke:1.5px var(--gold)}
+.viaje__medio{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;margin:clamp(1.5rem,4vw,3rem) 0}
+.viaje__foto{position:relative;overflow:hidden;aspect-ratio:4/5;margin:0;max-width:360px;border-radius:6px}
+.viaje__foto img{width:100%;height:100%;object-fit:cover}
+.viaje__foto figcaption{position:absolute;left:1rem;bottom:1rem;font-size:.68rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;background:rgba(5,5,5,.65);padding:.4rem .75rem;border-radius:999px}
+.viaje__foto--b{justify-self:end}
+.ruta{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:420px;justify-content:space-between}
+.ruta__punto{font-size:.78rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase}
+.ruta__punto small{display:block;color:var(--gray);letter-spacing:.2em;font-weight:600;margin-top:.2rem}
+.ruta__linea{flex:1;width:2px;background:linear-gradient(var(--gold),var(--gold-dark));margin:1rem 0;position:relative;min-height:200px;transform-origin:top}
+.ruta__linea::before,.ruta__linea::after{content:"";position:absolute;left:50%;width:11px;height:11px;border:2px solid var(--gold);border-radius:50%;transform:translateX(-50%);background:var(--black)}
+.ruta__linea::before{top:-6px}.ruta__linea::after{bottom:-6px;background:var(--gold)}
+.viaje__texto{max-width:40ch;margin:clamp(2rem,5vw,3.5rem) auto 0;text-align:center;font-size:clamp(1.1rem,1.6vw,1.3rem);color:#D8D8D8}
+@media (max-width:760px){
+  .viaje__medio{grid-template-columns:1fr 1fr}
+  .ruta{grid-column:1/-1;grid-row:1;min-height:0;flex-direction:row;gap:1rem}
+  .ruta__linea{flex:1;height:2px;width:auto;min-height:0;margin:0;background:linear-gradient(90deg,var(--gold),var(--gold-dark));transform-origin:left}
+  .ruta__linea::before{top:50%;left:-6px;transform:translateY(-50%)}.ruta__linea::after{bottom:auto;top:50%;left:auto;right:-6px;transform:translateY(-50%)}
+  .viaje__foto{max-width:none}
+}
+
+/* ---------- Galería ---------- */
+.mosaico{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(150px,15vw,210px);gap:clamp(8px,1vw,14px)}
+.mosaico button{all:unset;display:block;position:relative;overflow:hidden;cursor:zoom-in;background:var(--black);border-radius:6px}
+.mosaico button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.mosaico img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
+.mosaico button:hover img{transform:scale(1.03)}
+.mosaico .m1{grid-column:1/8;grid-row:span 3}
+.mosaico .m2{grid-column:8/13;grid-row:span 2}
+.mosaico .m3{grid-column:8/13;grid-row:span 1}
+.mosaico .m4{grid-column:1/5;grid-row:span 3}
+.mosaico .m5{grid-column:5/13;grid-row:span 2}
+.mosaico .m6{grid-column:5/9;grid-row:span 1}
+.mosaico .m7{grid-column:9/13;grid-row:span 1}
+@media (max-width:760px){
+  .mosaico{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}
+  .mosaico .m1,.mosaico .m5{grid-column:1/-1;grid-row:span 2}
+  .mosaico .m2{grid-column:span 1;grid-row:span 2}
+  .mosaico .m3,.mosaico .m4{grid-column:span 1;grid-row:span 1}
+  .mosaico .m6,.mosaico .m7{grid-column:span 1;grid-row:span 2}
+}
+.lightbox{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;margin:0}
+.lightbox::backdrop{background:rgba(5,5,5,.96)}
+.lightbox[open]{display:grid;place-items:center}
+.lightbox img{max-width:min(92vw,1400px);max-height:84vh;width:auto;height:auto;object-fit:contain}
+.lightbox__cont{position:fixed;bottom:calc(1.5rem + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);font-size:.75rem;font-weight:800;letter-spacing:.25em;color:var(--gray)}
+.lb-btn{position:fixed;width:52px;height:52px;border-radius:50%;border:1px solid var(--linea);background:rgba(5,5,5,.6);color:var(--white);font-size:1.4rem;cursor:pointer;display:grid;place-items:center}
+.lb-btn:hover{border-color:var(--gold);color:var(--gold)}
+.lb-cerrar{top:calc(1rem + env(safe-area-inset-top,0px));right:1rem}
+.lb-prev{left:1rem;top:50%;transform:translateY(-50%)}
+.lb-next{right:1rem;top:50%;transform:translateY(-50%)}
+
+/* ---------- Paneles de redes ---------- */
+.redes-panel{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));min-height:620px;isolation:isolate;padding:0;background:#000}
+.redes-panel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:-2}
+.redes-panel::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,5,5,.1),rgba(5,5,5,.72))}
+.panel{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:1rem;padding:2rem 1.75rem 2.75rem;text-decoration:none;border-right:1px solid rgba(245,245,245,.35);transition:background .35s}
+.panel:last-of-type{border-right:0}
+.panel svg{width:30px;height:30px;fill:currentColor;opacity:.9}
+.panel b{font-weight:700;font-size:clamp(1.6rem,2.6vw,2.5rem);line-height:1}
+.panel .seguir{align-self:flex-start;border:2px solid var(--white);border-radius:999px;padding:.55rem 1.4rem;font-weight:700;font-size:.95rem;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,background .3s,color .3s}
+.panel:hover,.panel:focus-visible{background:rgba(214,166,44,.22)}
+.panel:hover .seguir,.panel:focus-visible .seguir{opacity:1;transform:none;background:var(--gold);border-color:var(--gold);color:var(--black)}
+@media (hover:none){.panel .seguir{opacity:1;transform:none}}
+@media (max-width:900px){.redes-panel{grid-template-columns:repeat(2,minmax(0,1fr));min-height:0}.panel{min-height:190px;padding:1.25rem 1.1rem 1.5rem;border-bottom:1px solid rgba(245,245,245,.35)}.panel:nth-of-type(2n){border-right:0}.panel:nth-of-type(2n+1){border-right:1px solid rgba(245,245,245,.35)}.panel:last-of-type{grid-column:1/-1;border-right:0}}
+
+/* ---------- Booking ---------- */
+.booking{isolation:isolate;overflow:hidden}
+.booking__fondo{position:absolute;inset:0;z-index:-2}
+.booking__fondo img{width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.booking::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,5,5,.96) 0%,rgba(5,5,5,.86) 55%,rgba(5,5,5,.6) 100%)}
+.booking__lema{font-size:clamp(1.15rem,2vw,1.45rem);max-width:30ch;margin:1.5rem 0 2rem;color:#E2E2E2}
+.servicios{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;padding:0;margin:0 0 2.5rem}
+.servicios li{font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(214,166,44,.55);border-radius:999px;padding:.5rem 1rem}
+.form-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s ease}
+.form-wrap.abierto{grid-template-rows:1fr}
+.form-wrap>div{overflow:hidden}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem 1.75rem;padding:2.75rem clamp(1.25rem,3vw,2.5rem);margin-top:2.5rem;background:rgba(17,17,17,.94);border-top:3px solid var(--gold);border-radius:0 0 14px 14px;max-width:920px}
+.form label{display:grid;gap:.45rem;font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+.form .ancho{grid-column:1/-1}
+.form input,.form select,.form textarea{font:inherit;font-size:1rem;letter-spacing:0;text-transform:none;color:var(--white);background:transparent;border:0;border-bottom:1px solid rgba(245,245,245,.25);padding:.6rem 0;border-radius:0;width:100%;color-scheme:dark}
+.form select option{background:var(--dark)}
+.form textarea{min-height:110px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--gold)}
+.form__pie{grid-column:1/-1;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.form__nota{margin:0;font-size:.9rem;color:var(--gray)}
+@media (max-width:700px){.form{grid-template-columns:1fr}}
+
+/* ---------- Footer ---------- */
+.footer{background:#000;border-top:3px solid var(--gold);padding:clamp(4rem,8vw,6rem) 0 calc(2rem + env(safe-area-inset-bottom,0px))}
+.footer__top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:3rem;align-items:end}
+.footer__logo img{height:110px;width:auto;margin-bottom:1.75rem}
+.footer__frase{font-family:var(--titulo);font-weight:400;font-size:clamp(2rem,4vw,3.2rem);line-height:.95;text-transform:uppercase;margin:0}
+.footer__frase span{color:var(--gold)}
+.footer__cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}
+.footer h4{font-size:.7rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.footer ul a{font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none}
+.footer ul a:hover{color:var(--gold)}
+.footer .redes{margin-top:1.75rem}
+.footer .redes a{width:44px;height:44px}
+.footer .redes svg{width:19px;height:19px}
+.footer__base{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--linea);font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+.footer__base a{text-decoration:none}
+.footer__base a:hover{color:var(--gold)}
+@media (max-width:800px){.footer__top{grid-template-columns:1fr}}
+
+/* ---------- Animaciones discretas ---------- */
+.js [data-rev]{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js [data-rev].visto{opacity:1;transform:none}
+.js .ruta__linea{transform:scaleY(0);transition:transform 1.6s cubic-bezier(.7,0,.2,1) .3s}
+.js .ruta.visto .ruta__linea{transform:scaleY(1)}
+@media (max-width:760px){.js .ruta__linea{transform:scaleX(0)}.js .ruta.visto .ruta__linea{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js [data-rev]{opacity:1;transform:none}
+  .js .ruta__linea{transform:none}
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ig" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.1 1.4C1.3 2.6.9 3.3.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 2.9.3.8.7 1.5 1.4 2.1.7.7 1.3 1.1 2.1 1.4.8.3 1.6.5 2.9.6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.2-.3 2.9-.6.8-.3 1.5-.7 2.1-1.4.7-.7 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-2.9-.3-.8-.7-1.5-1.4-2.1C21.4 1.3 20.7.9 19.9.6 19.1.3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></symbol>
+  <symbol id="i-sp" viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.04 8.5-.6 11.66 1.34.36.22.47.68.25 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.54-1.8c4.36-1.32 9.78-.68 13.49 1.6.44.27.58.85.31 1.29zm.13-3.4C15.23 8.33 8.84 8.12 5.16 9.24a1.13 1.13 0 1 1-.65-2.16c4.23-1.28 11.28-1.04 15.73 1.6a1.13 1.13 0 0 1-1.14 1.95z"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></symbol>
+  <symbol id="i-pp" viewBox="0 0 24 24"><path d="M7.08 21.6H3.3a.6.6 0 0 1-.6-.7L5.6 2.5A1 1 0 0 1 6.6 1.7h6.9c3.3 0 5.6 1.4 5.1 4.9-.6 4-3.3 5.6-6.9 5.6H9.6a1 1 0 0 0-1 .8l-1.5 8.6zm13.2-14.2c-.8 4.4-3.8 6-7.6 6h-1.4a.9.9 0 0 0-.9.8l-1.1 6.8-.3 2a.5.5 0 0 0 .5.6h3.3a.8.8 0 0 0 .8-.7l.7-4.4a.8.8 0 0 1 .8-.7h.5c3.2 0 5.6-1.3 6.3-5 .3-1.6.2-2.9-.6-3.8z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 24 12c0-3.2-1.2-6.2-3.5-8.5z"/></symbol>
+</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></symbol>
+  <symbol id="i-corazon" viewBox="0 0 24 24"><path d="M12 21.6 10.6 20.3C5.4 15.6 2 12.5 2 8.6 2 5.5 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.5 22 8.6c0 3.9-3.4 7-8.6 11.7L12 21.6z"/></symbol>
+</svg>
+
+<!-- Barra superior: redes + donar -->
+<div class="barra">
+  <div class="contenedor">
+    <a class="barra__aviso" href="#shows"><b>Gira por España</b> · Madrid 19 nov · Barcelona 21 nov</a>
+    <div class="barra__der">
+      <div class="redes" data-redes></div>
+      <a class="donar" data-cfg-href="donar" target="_blank" rel="noopener"><svg><use href="#i-corazon"/></svg>Donar</a>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="contenedor nav__in">
+    <a class="nav__logo" href="#inicio" aria-label="Kevin Alva, inicio"><img src="img/logo.svg" alt="Kevin Alva" width="75" height="54"></a>
+    <button class="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="nav__menu" id="menu" aria-label="Principal">
+      <ul class="nav__links">
+        <li><a href="#musica">Música</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#shows">Shows</a></li>
+        <li><a href="#bio">Bio</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#booking">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="inicio" aria-label="Portada">
+  <div class="hero__fondo"><img src="img/hero.jpg" alt="" fetchpriority="high"></div>
+  <div class="contenedor hero__grid">
+    <div>
+      <p class="hero__pre" data-rev>Músico · Productor · Musicólogo</p>
+      <h1 data-rev>Kevin<br>Alva</h1>
+      <p class="hero__eslogan" data-rev>Música del Caribe, <span>desde Venezuela hasta el Ártico.</span></p>
+      <div class="hero__acciones" data-rev>
+        <a class="btn btn--oro" href="#musica"><svg><use href="#i-play"/></svg>Escuchar música</a>
+        <a class="btn btn--borde" href="#videos">Ver videos</a>
+      </div>
+      <div class="hero__redes" data-rev><span>Síguelo</span><span class="redes-hero" style="display:contents" data-redes-hero></span></div>
+    </div>
+    <div class="hero__video" data-rev>
+      <video autoplay muted loop playsinline preload="auto" poster="img/loop-poster.jpg" aria-label="Kevin Alva tocando el saxofón tenor en directo">
+        <source src="video/loop.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWS -->
+<section class="carbon" id="shows">
+  <div class="contenedor">
+    <div class="cabecera">
+      <div><span class="kicker" data-rev>Agenda</span><h2 class="h-xl" data-rev>Próximos shows</h2></div>
+      <p data-rev>Noviembre 2026: Kevin Alva regresa a España.</p>
+    </div>
+    <ul class="agenda" data-agenda></ul>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="contenedor">
+    <div class="cabecera"><div><span class="kicker" data-rev>En escena</span><h2 class="h-xl" data-rev>Galería</h2></div></div>
+    <div class="mosaico">
+      <button class="m1" aria-label="Ampliar foto 1"><img src="img/g-escenario.jpg" alt="Kevin Alva en el escenario con los brazos abiertos" loading="lazy" style="object-position:center 25%"></button>
+      <button class="m2" aria-label="Ampliar foto 2"><img src="img/g-espejo.jpg" alt="Cantando con traje blanco junto a su reflejo" loading="lazy" style="object-position:center 25%"></button>
+      <button class="m3" aria-label="Ampliar foto 3"><img src="img/g-festival.jpg" alt="Animando al público en un festival al aire libre" loading="lazy" style="object-position:center 55%"></button>
+      <button class="m4" aria-label="Ampliar foto 4"><img src="img/g-barco.jpg" alt="Tocando el saxofón en la cubierta de un barco" loading="lazy" style="object-position:center 25%"></button>
+      <button class="m5" aria-label="Ampliar foto 5"><img src="img/g-fiesta.jpg" alt="Tocando entre el público que baila en una fiesta al aire libre" loading="lazy" style="object-position:center 45%"></button>
+      <button class="m6" aria-label="Ampliar foto 6"><img src="img/g-mar.jpg" alt="Sonriendo con su saxofón en el mar" loading="lazy" style="object-position:center 30%"></button>
+      <button class="m7" aria-label="Ampliar foto 7"><img src="img/g-rosa.jpg" alt="Tocando el saxofón bajo luces rosadas" loading="lazy" style="object-position:35% 15%"></button>
+    </div>
+  </div>
+</section>
+
+<!-- MÚSICA -->
+<section class="clara" id="musica">
+  <div class="contenedor">
+    <div class="cabecera">
+      <div><span class="kicker" data-rev>Escucha</span><h2 class="h-xl" data-rev>Música</h2></div>
+      <p data-rev>Dale play aquí mismo. Ska, reggae y ritmos del Caribe.</p>
+    </div>
+    <div class="spotify" data-rev>
+      <div class="sp-caja sp-caja--principal">
+        <div class="sp-caja__cab"><span>Destacado</span><svg><use href="#i-sp"/></svg></div>
+        <div data-sp-principal style="display:contents"></div>
+      </div>
+      <div class="sp-caja sp-caja--lista">
+        <div class="sp-caja__cab"><span>Más de Kevin Alva</span><svg><use href="#i-sp"/></svg></div>
+        <div data-sp-artista style="display:contents"></div>
+      </div>
+    </div>
+    <div class="sp-seguir" data-rev><a class="btn btn--spotify" data-cfg-href="redes.spotify" target="_blank" rel="noopener"><svg><use href="#i-sp"/></svg>Seguir en Spotify</a></div>
+
+    <div class="disco-tit" data-rev><h3>Discografía</h3><span>Toca una portada para escuchar en Spotify</span></div>
+    <div class="disco" data-disco></div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="contenedor">
+    <div class="cabecera">
+      <div><span class="kicker" data-rev>Ver</span><h2 class="h-xl" data-rev>Videos</h2></div>
+      <p data-rev>Los videos se reproducen dentro de la página.</p>
+    </div>
+    <div class="yt" id="reproductor" data-rev></div>
+    <div class="yt-info"><h3 data-vid-titulo></h3><span data-vid-cat></span></div>
+    <div class="filtros" role="group" aria-label="Filtrar videos" data-filtros></div>
+    <div class="lista-videos" data-lista-videos></div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="clara" id="bio">
+  <div class="contenedor bio__grid">
+    <div class="bio__fotowrap" data-rev>
+      <div class="bio__foto"><img src="img/g-mar.jpg" alt="Kevin Alva sonriendo con su saxofón, de pie en el mar" loading="lazy"></div>
+    </div>
+    <div>
+      <span class="kicker" data-rev>Biografía</span>
+      <div class="bio__gran" data-rev><b>20+</b><span>Años<br>de trayectoria</span></div>
+      <p class="bio__txt" data-rev>Kevin Alva es músico, productor y musicólogo venezolano, con más de veinte años de trayectoria artística. Desde 2001 ha desarrollado una carrera vinculada al ska, el reggae y las músicas del Caribe, participando en cuatro álbumes bajo su dirección artística y musical, además de colaborar en más de quince producciones y proyectos musicales.</p>
+      <p class="bio__txt" data-rev>Ha llevado la música venezolana y los ritmos del Caribe a más de quince países, combinando su faceta como intérprete, productor y formador a través de conciertos, grabaciones y talleres dedicados a los ritmos jamaicanos. Actualmente vive en Estonia.</p>
+      <div class="stats" data-rev>
+        <div><b>2001</b><span>Inicio de trayectoria</span></div>
+        <div><b>4</b><span>Álbumes</span></div>
+        <div><b>15+</b><span>Producciones y colaboraciones</span></div>
+        <div><b>15+</b><span>Países</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARIBE → ÁRTICO -->
+<section class="viaje" id="caribe-artico" aria-label="Del Caribe al Ártico">
+  <div class="contenedor">
+    <h2 class="sr">Del Caribe al Ártico</h2>
+    <p class="viaje__palabra" data-rev aria-hidden="true">Caribe</p>
+    <div class="viaje__medio">
+      <figure class="viaje__foto" data-rev><img src="img/g-fiesta.jpg" alt="Kevin Alva tocando entre el público en una noche de verano" loading="lazy" style="object-position:72% center"><figcaption>Raíz</figcaption></figure>
+      <div class="ruta" data-rev>
+        <span class="ruta__punto">Venezuela<small>10° N</small></span>
+        <span class="ruta__linea" aria-hidden="true"></span>
+        <span class="ruta__punto">Estonia<small>59° N</small></span>
+      </div>
+      <figure class="viaje__foto viaje__foto--b" data-rev><img src="img/g-barco.jpg" alt="Kevin Alva tocando el saxofón en un puerto del norte de Europa" loading="lazy" style="object-position:center 25%"><figcaption>Norte</figcaption></figure>
+    </div>
+    <p class="viaje__palabra viaje__artico" data-rev aria-hidden="true">Ártico</p>
+    <p class="viaje__texto" data-rev>Una trayectoria musical que conecta las raíces venezolanas y caribeñas con los paisajes del norte de Europa.</p>
+  </div>
+</section>
+
+<!-- REDES -->
+<section class="redes-panel" aria-label="Redes sociales">
+  <img src="img/g-fiesta.jpg" alt="" loading="lazy">
+  <a class="panel" data-cfg-href="redes.instagram" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><b>Instagram</b><span class="seguir">Seguir</span></a>
+  <a class="panel" data-cfg-href="redes.facebook" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg><b>Facebook</b><span class="seguir">Seguir</span></a>
+  <a class="panel" data-cfg-href="redes.spotify" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-sp"/></svg><b>Spotify</b><span class="seguir">Escuchar</span></a>
+  <a class="panel" data-cfg-href="redes.youtube" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-yt"/></svg><b>YouTube</b><span class="seguir">Suscribirse</span></a>
+  <a class="panel" data-cfg-href="donar" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-corazon"/></svg><b>Donar</b><span class="seguir">Apoyar</span></a>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking__fondo" aria-hidden="true"><img src="img/g-festival.jpg" alt="" loading="lazy"></div>
+  <div class="contenedor">
+    <span class="kicker" data-rev>Booking</span>
+    <h2 class="h-xl" data-rev>Book Kevin Alva</h2>
+    <p class="booking__lema" data-rev>¿Quieres llevar los sonidos del Caribe a tu próximo evento?</p>
+    <ul class="servicios" data-rev><li>Conciertos</li><li>Festivales</li><li>Eventos privados</li><li>Workshops</li><li>Colaboraciones</li></ul>
+    <button class="btn btn--oro" data-abrir-form aria-expanded="false" aria-controls="form-booking" data-rev>Solicitar booking →</button>
+    <div class="form-wrap" id="form-booking">
+      <div>
+        <form class="form" data-form>
+          <label>Nombre<input name="nombre" required autocomplete="name"></label>
+          <label>Email<input type="email" name="email" required autocomplete="email"></label>
+          <label>Teléfono<input type="tel" name="telefono" autocomplete="tel"></label>
+          <label>Tipo de evento<select name="tipo_evento"><option>Concierto</option><option>Festival</option><option>Evento privado</option><option>Workshop</option><option>Colaboración</option><option>Otro</option></select></label>
+          <label>Ciudad / País<input name="ciudad_pais"></label>
+          <label>Fecha<input type="date" name="fecha"></label>
+          <label class="ancho">Mensaje<textarea name="mensaje" required></textarea></label>
+          <input type="hidden" name="_subject" value="Solicitud de booking · Kevin Alva">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form__pie"><button class="btn btn--oro" type="submit">Enviar solicitud</button><p class="form__nota" data-form-nota></p></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer__top">
+      <div>
+        <a class="footer__logo" href="#inicio" aria-label="Volver al inicio"><img src="img/logo.svg" alt="Kevin Alva" loading="lazy"></a>
+        <p class="footer__frase">Música del Caribe,<br>desde Venezuela<br><span>hasta el Ártico.</span></p>
+        <div class="redes" data-redes></div>
+      </div>
+      <div class="footer__cols">
+        <div><h4>Navegar</h4><ul><li><a href="#musica">Música</a></li><li><a href="#videos">Videos</a></li><li><a href="#shows">Shows</a></li><li><a href="#bio">Bio</a></li><li><a href="#booking">Contacto</a></li></ul></div>
+        <div><h4>Apoya</h4><ul><li><a data-cfg-href="donar" target="_blank" rel="noopener">Donar</a></li><li><a data-cfg-href="redes.spotify" target="_blank" rel="noopener">Spotify</a></li><li><a data-cfg-href="redes.youtube" target="_blank" rel="noopener">YouTube</a></li><li><a data-cfg-href="redes.instagram" target="_blank" rel="noopener">Instagram</a></li><li><a data-cfg-href="redes.facebook" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+      </div>
+    </div>
+    <div class="footer__base"><span>© 2026 Kevin Alva</span><a href="#inicio">Volver arriba ↑</a></div>
+  </div>
+</footer>
+
+<dialog class="lightbox" aria-label="Galería ampliada">
+  <img alt="">
+  <button class="lb-btn lb-cerrar" aria-label="Cerrar">✕</button>
+  <button class="lb-btn lb-prev" aria-label="Foto anterior">←</button>
+  <button class="lb-btn lb-next" aria-label="Foto siguiente">→</button>
+  <span class="lightbox__cont"></span>
+</dialog>
+
+<script>
+/* =====================================================================
+   CONFIGURACIÓN · Todo lo editable está aquí.
+   Lo que va entre [corchetes] es un PLACEHOLDER para reemplazar.
+   ===================================================================== */
+const CONFIG = {
+  redes: {
+    instagram: "https://www.instagram.com/kevinalvamusic",
+    facebook:  "https://www.facebook.com/share/1DwaXDbjCf/?mibextid=wwXIfr",
+    youtube:   "https://www.youtube.com/@kevinalvamusic",
+    spotify:   "https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb",
+  },
+  donar: "https://revolut.me/kevinttbo",
+  email: "",  // PENDIENTE: correo donde llegan las solicitudes de booking
+
+  // Spotify: tema destacado (cámbialo por el último lanzamiento) + reproductor del artista
+  spotifyPrincipal: "https://open.spotify.com/embed/track/285xp9G91KmrXrCQTGm4Lp?utm_source=generator&theme=0",
+  spotifyArtista:   "https://open.spotify.com/embed/artist/0C0t2BM8mSLRy6VfZ7Vqpb?utm_source=generator&theme=0",
+
+  // Discografía: pega el enlace del álbum en Spotify en "enlace"
+  // (en Spotify: ··· → Compartir → Copiar enlace del álbum)
+  discografia: [
+    { nombre:"Rebirth",  anio:"2026", tipo:"Álbum", portada:"img/album-rebirth.jpg",  enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb" },
+    { nombre:"Movement", anio:"2021", tipo:"Álbum", portada:"img/album-movement.jpg", enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb" },
+  ],
+
+  shows: [
+    { fecha:"2026-11-19", ciudad:"Madrid",    pais:"España", evento:"Barracuda Rock Bar", detalle:"Concierto", mapa:"", entradas:"" },
+    { fecha:"2026-11-21", ciudad:"Barcelona", pais:"España", evento:"Soda Acústic", detalle:"Carrer de les Guilleries, 6 · Gràcia",
+      mapa:"https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a2bd05cba159:0x428f87f8d3b71ead", entradas:"" },
+  ],
+
+  // Videos de YouTube (se reproducen DENTRO de la web).
+  // id = lo que va después de "watch?v=" en el enlace de YouTube.
+  videos: [
+    { id:"gSkqCVvILes", titulo:"Kevin Alva · [Título del video]", categoria:"Music videos", principal:true },
+    { id:"", titulo:"[Título del video]", categoria:"Live" },
+    { id:"", titulo:"[Título del video]", categoria:"Sessions" },
+    { id:"", titulo:"[Título del video]", categoria:"Workshops" },
+    { id:"", titulo:"[Título del video]", categoria:"Interviews" },
+  ],
+
+};
+
+/* ===================================================================== */
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const get=p=>p.split(".").reduce((o,k)=>o?.[k],CONFIG);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const svg=id=>`<svg aria-hidden="true"><use href="#${id}"/></svg>`;
+
+$$("[data-cfg-href]").forEach(a=>{const u=get(a.dataset.cfgHref);if(u)a.href=u;else{a.removeAttribute("href");a.setAttribute("aria-disabled","true")}});
+
+// Redes
+const RED=[["instagram","i-ig","Instagram"],["facebook","i-fb","Facebook"],["youtube","i-yt","YouTube"],["spotify","i-sp","Spotify"]];
+const iconosRedes=RED.filter(([k])=>CONFIG.redes[k]).map(([k,i,n])=>`<a href="${CONFIG.redes[k]}" target="_blank" rel="noopener" aria-label="${n}" title="${n}">${svg(i)}</a>`).join("");
+$$("[data-redes]").forEach(c=>c.innerHTML=iconosRedes);
+$("[data-redes-hero]").innerHTML=iconosRedes;
+
+// Shows
+const MES=["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"], DIA=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+const hoy=new Date();hoy.setHours(0,0,0,0);
+const shows=CONFIG.shows.map(s=>({...s,d:new Date(s.fecha+"T12:00:00")})).filter(s=>s.d>=hoy).sort((a,b)=>a.d-b.d);
+$("[data-agenda]").innerHTML=shows.length?shows.map(s=>`
+  <li class="fila" data-rev>
+    <div class="fila__fecha">${String(s.d.getDate()).padStart(2,"0")} ${MES[s.d.getMonth()]}<small>${DIA[s.d.getDay()]} · ${s.d.getFullYear()}</small></div>
+    <div class="fila__ciudad">${esc(s.ciudad)}<small>${esc(s.pais)}</small></div>
+    <div class="fila__evento">${esc(s.evento)}<small>${s.mapa?`<a href="${s.mapa}" target="_blank" rel="noopener">${esc(s.detalle)}</a>`:esc(s.detalle)}</small></div>
+    ${s.entradas?`<a class="btn btn--oro" href="${s.entradas}" target="_blank" rel="noopener">Tickets →</a>`:`<span class="btn btn--borde" aria-disabled="true">Tickets pronto</span>`}
+  </li>`).join(""):`<li class="fila"><div class="fila__ciudad">Nuevas fechas muy pronto</div></li>`;
+
+// Spotify
+const spIframe=(src,t)=>`<iframe src="${src}" title="${t}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+if(CONFIG.spotifyPrincipal)$("[data-sp-principal]").innerHTML=spIframe(CONFIG.spotifyPrincipal,"Tema destacado de Kevin Alva en Spotify");
+if(CONFIG.spotifyArtista)$("[data-sp-artista]").innerHTML=spIframe(CONFIG.spotifyArtista,"Kevin Alva en Spotify");
+
+// Discografía
+$("[data-disco]").innerHTML=CONFIG.discografia.map(a=>`
+  <a class="album" ${a.enlace?`href="${a.enlace}" target="_blank" rel="noopener"`:""}>
+    <div class="album__portada"><img src="${a.portada}" alt="Portada de ${esc(a.nombre)}" loading="lazy"><div class="album__overlay"><span>Escuchar</span></div></div>
+    <div class="album__meta"><span>${esc(a.tipo)}</span><span>${esc(a.anio)}</span></div>
+    <h4>${esc(a.nombre)}</h4>
+    <span class="flecha">Escuchar en Spotify →</span>
+  </a>`).join("");
+
+// Videos (YouTube dentro de la página)
+const rep=$("#reproductor"),vt=$("[data-vid-titulo]"),vc=$("[data-vid-cat]");
+function reproducir(v,auto){
+  rep.innerHTML=`<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&playsinline=1${auto?"&autoplay=1":""}" title="${esc(v.titulo)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  vt.textContent=v.titulo;vc.textContent=v.categoria;
+}
+const vids=CONFIG.videos,principal=vids.find(v=>v.principal&&v.id)||vids.find(v=>v.id);
+if(principal)reproducir(principal,false);
+const CATS=["Todos","Live","Music videos","Sessions","Workshops","Interviews"];
+$("[data-filtros]").innerHTML=CATS.map((c,i)=>`<button type="button" aria-pressed="${i===0}" data-cat="${c}">${c}</button>`).join("");
+$("[data-lista-videos]").innerHTML=vids.map((v,i)=>v.id?`
+  <button class="vcard" type="button" data-i="${i}" data-cat="${v.categoria}">
+    <span class="vcard__thumb"><img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy"><span class="vcard__play">${svg("i-play")}</span></span>
+    <span class="vcard__cat">${esc(v.categoria)}</span><span class="vcard__tit">${esc(v.titulo)}</span>
+  </button>`:`
+  <div class="vcard vcard--vacio" data-cat="${v.categoria}">
+    <span class="vcard__thumb"><small>Próximamente</small></span>
+    <span class="vcard__cat">${esc(v.categoria)}</span><span class="vcard__tit">${esc(v.titulo)}</span>
+  </div>`).join("");
+$$(".vcard[data-i]").forEach(b=>b.addEventListener("click",()=>{reproducir(vids[b.dataset.i],true);rep.scrollIntoView({behavior:"smooth",block:"center"})}));
+$$("[data-filtros] button").forEach(b=>b.addEventListener("click",()=>{
+  $$("[data-filtros] button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  $$(".lista-videos .vcard").forEach(c=>c.hidden=!(b.dataset.cat==="Todos"||c.dataset.cat===b.dataset.cat));
+}));
+
+
+// Booking
+const abrir=$("[data-abrir-form]"),wrap=$("#form-booking");
+abrir.addEventListener("click",()=>{const a=wrap.classList.toggle("abierto");abrir.setAttribute("aria-expanded",a);if(a)setTimeout(()=>$("input",wrap).focus({preventScroll:true}),400)});
+const form=$("[data-form]"),nota=$("[data-form-nota]");
+if(CONFIG.email){form.action=`https://formsubmit.co/${CONFIG.email}`;form.method="POST";const n=document.createElement("input");n.type="hidden";n.name="_next";n.value=location.href.split("#")[0]+"#booking";form.appendChild(n)}
+else form.addEventListener("submit",e=>{e.preventDefault();nota.textContent="El formulario estará activo muy pronto. Mientras tanto, escribe a Kevin por Instagram."});
+
+// Menú móvil
+const hamb=$(".hamb"),menu=$("#menu");
+hamb.addEventListener("click",()=>{const a=menu.classList.toggle("abierto");hamb.setAttribute("aria-expanded",a);hamb.setAttribute("aria-label",a?"Cerrar menú":"Abrir menú")});
+$$("#menu a").forEach(a=>a.addEventListener("click",()=>{menu.classList.remove("abierto");hamb.setAttribute("aria-expanded","false")}));
+
+// Animaciones al entrar en pantalla
+const reducir=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visto");io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -5% 0px"});
+$$("[data-rev]").forEach(el=>io.observe(el));
+const hv=$(".hero__video video");if(reducir){hv.removeAttribute("autoplay");hv.pause()}
+
+// Lightbox
+const fotos=$$(".mosaico button"),lb=$(".lightbox"),lbImg=$("img",lb),lbCont=$(".lightbox__cont");let act=0;
+const ver=i=>{act=(i+fotos.length)%fotos.length;const im=$("img",fotos[act]);lbImg.src=im.src;lbImg.alt=im.alt;lbCont.textContent=`${String(act+1).padStart(2,"0")} / ${String(fotos.length).padStart(2,"0")}`};
+fotos.forEach((b,i)=>b.addEventListener("click",()=>{ver(i);lb.showModal()}));
+$(".lb-cerrar").onclick=()=>lb.close();$(".lb-prev").onclick=()=>ver(act-1);$(".lb-next").onclick=()=>ver(act+1);
+lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
+addEventListener("keydown",e=>{if(!lb.open)return;if(e.key==="ArrowRight")ver(act+1);if(e.key==="ArrowLeft")ver(act-1)});
+</script>
+</body>
+</html>
