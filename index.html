@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kevin Alva | Músico, Productor y Musicólogo Venezolano</title>
-<meta name="description" content="Kevin Alva es músico, productor y musicólogo venezolano con más de veinte años de trayectoria en el ska, reggae y las músicas del Caribe.">
+<title>Kevin Alva | Venezuelan Musician, Producer & Musicologist</title>
+<meta name="description" content="Kevin Alva is a Venezuelan musician, producer and musicologist with more than twenty years in ska, reggae and Caribbean music.">
+<link rel="alternate" hreflang="en" href="https://kevin-alva-web.vercel.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kevin Alva | Músico, Productor y Musicólogo Venezolano">
-<meta property="og:description" content="Música del Caribe, desde Venezuela hasta el Ártico.">
-<meta property="og:image" content="img/hero.jpg">
+<meta property="og:title" content="Kevin Alva | Venezuelan Musician, Producer & Musicologist">
+<meta property="og:description" content="Caribbean music, from Venezuela to the Baltic.">
+<meta property="og:image" content="https://kevin-alva-web.vercel.app/img/hero.jpg">
+<meta property="og:url" content="https://kevin-alva-web.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#050505">
 <link rel="icon" href="img/favicon.png">
@@ -109,36 +111,46 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 }
 
 /* ---------- Hero: foto de fondo + video en bucle ---------- */
-.hero{position:relative;isolation:isolate;background:var(--black);overflow:hidden;padding:clamp(3rem,6vw,5rem) 0;min-height:calc(100svh - var(--barra) - var(--nav));display:flex;align-items:center}
-.hero__fondo{position:absolute;inset:0 0 0 28%;z-index:-2}
-.hero__fondo img{width:100%;height:100%;object-fit:cover;object-position:38% 12%}
-.hero__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--black) 0%,rgba(5,5,5,.6) 22%,rgba(5,5,5,0) 50%)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  radial-gradient(50% 60% at 78% 50%,rgba(214,166,44,.16),transparent 70%),
-  linear-gradient(90deg,rgba(5,5,5,.7) 0%,rgba(5,5,5,.3) 45%,rgba(5,5,5,.15) 65%,rgba(5,5,5,.5) 100%)}
-.hero__grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(2rem,5vw,5rem);align-items:center}
-.hero__pre{font-size:.82rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 1.25rem}
-.hero h1{font-family:var(--titulo);font-weight:400;text-transform:uppercase;font-size:clamp(4rem,10vw,9rem);line-height:.86;margin:0}
-.hero__eslogan{font-size:clamp(1.25rem,2.2vw,1.75rem);font-weight:600;line-height:1.35;margin:1.5rem 0 1.25rem;max-width:26ch}
-.hero__eslogan span{color:var(--gold)}
-.hero__roles{font-size:.8rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gray);margin:0 0 2.25rem}
+.hero{position:relative;isolation:isolate;background:#EBEBED;color:var(--black);overflow:hidden;min-height:min(calc(100svh - var(--barra) - var(--nav)),860px);display:flex;align-items:center;padding:clamp(3rem,6vw,5rem) 0}
+/* Imagen Rebirth (fondo blanco): a sangre, anclada a la derecha */
+.hero__fondo{position:absolute;top:0;bottom:0;right:0;left:32%;z-index:-1}
+.hero__fondo img{width:100%;height:100%;object-fit:contain;object-position:right center;}
+.hero__grid{display:block}
+.hero__txt{max-width:min(520px,44%)}
+.hero__nuevo{display:inline-flex;align-items:center;gap:.6rem;background:var(--black);color:var(--white);text-decoration:none;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:.6rem 1.1rem;border-radius:999px;margin-bottom:1.5rem}
+.hero__nuevo b{color:var(--gold)}
+.hero__nuevo:hover{background:var(--gold);color:var(--black)}
+.hero__nuevo:hover b{color:var(--black)}
+.hero__pre{font-size:.82rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dark);margin:0 0 1rem}
+.hero h1{font-family:var(--titulo);font-weight:400;text-transform:uppercase;font-size:clamp(4rem,9vw,8.5rem);line-height:.86;margin:0;color:var(--black)}
+.hero__eslogan{font-size:clamp(1.2rem,2vw,1.65rem);font-weight:700;line-height:1.35;margin:1.4rem 0 2rem;max-width:24ch}
+.hero__eslogan span{color:var(--gold-dark)}
 .hero__acciones{display:flex;flex-wrap:wrap;gap:1rem}
-.hero__redes{display:flex;align-items:center;gap:.75rem;margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--linea)}
-.hero__redes span{font-size:.72rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gray);margin-right:.5rem}
-.hero__redes a{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(245,245,245,.35);color:var(--white);transition:all .25s}
-.hero__redes a:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
-.hero__redes svg{width:20px;height:20px;fill:currentColor}
-.hero__video{position:relative;justify-self:end;width:min(100%,380px);aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgba(214,166,44,.7),0 40px 90px rgba(0,0,0,.7)}
-.hero__video video{width:100%;height:100%;object-fit:cover}
-.hero__video::after{content:"EN DIRECTO";position:absolute;top:14px;left:14px;font-size:.66rem;font-weight:800;letter-spacing:.22em;background:rgba(5,5,5,.7);color:var(--white);padding:.35rem .65rem;border-radius:999px;border:1px solid rgba(214,166,44,.6)}
+.hero .btn--borde{border-color:var(--black);color:var(--black)}
+.hero .btn--borde:hover{background:var(--black);color:var(--white)}
+.hero__redes{display:flex;align-items:center;gap:.65rem;margin-top:2.25rem;padding-top:1.5rem;border-top:1px solid rgba(5,5,5,.15)}
+.hero__redes>span:first-child{font-size:.72rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:rgba(5,5,5,.6);margin-right:.5rem}
+.hero__redes a{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid rgba(5,5,5,.3);color:var(--black);transition:all .25s}
+.hero__redes a:hover{background:var(--gold);border-color:var(--gold)}
+.hero__redes svg{width:19px;height:19px;fill:currentColor}
 @media (max-width:860px){
-  .hero{min-height:0}
-  .hero__grid{grid-template-columns:1fr}
-  .hero__video{justify-self:stretch;width:100%;aspect-ratio:4/5}
-  .hero__fondo{inset:0}.hero__fondo img{object-position:40% 8%}.hero__fondo::after{display:none}
-  .hero::before{background:linear-gradient(180deg,rgba(5,5,5,.65),rgba(5,5,5,.88) 60%,var(--black))}
+  .hero{min-height:0;flex-direction:column;align-items:stretch;padding:0 0 3rem}
+  .hero__fondo{position:relative;inset:auto;aspect-ratio:5/4}
+  .hero__fondo img{object-fit:cover;object-position:right center}
+  .hero__txt{max-width:none;padding-top:2rem}
 }
 
+/* Selector de idioma */
+.idiomas{display:flex;gap:.35rem;margin-left:1.75rem;padding:.3rem;background:#000;border:1px solid #2A2A2A;border-radius:999px}
+.idiomas button{display:inline-flex;align-items:center;gap:.45rem;background:none;border:0;color:var(--white);font:inherit;font-size:.74rem;font-weight:800;letter-spacing:.1em;padding:.4rem .75rem .4rem .5rem;border-radius:999px;cursor:pointer;transition:background .2s,color .2s;opacity:.75}
+.idiomas button:hover{opacity:1;background:#1C1C1C}
+.idiomas button[aria-pressed="true"]{background:var(--gold);color:var(--black);opacity:1}
+.bandera{width:22px;height:15px;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.25);flex:none;display:block}
+@media (max-width:1000px){.idiomas{order:2;margin-left:auto}.hamb{order:3;margin-left:.5rem}.nav__menu{order:4}}
+@media (max-width:420px){.idiomas button span{display:none}.idiomas button{padding:.4rem .5rem}}
+
+
+.fila .btn--info{opacity:1;border-color:rgba(214,166,44,.6);color:var(--gold)}
 /* ---------- Shows ---------- */
 .agenda{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
 .fila{display:grid;grid-template-columns:150px minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:2rem;align-items:center;padding:1.9rem 1.25rem;border-bottom:1px solid var(--linea);transition:background .3s}
@@ -184,17 +196,43 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .album:hover .flecha{color:var(--gold-dark);gap:.85rem}
 @media (max-width:600px){.disco{grid-template-columns:1fr}}
 
+.tracklist{max-width:1040px;margin:clamp(2.5rem,5vw,3.5rem) auto 0;border-top:1px solid var(--linea-clara);border-bottom:1px solid var(--linea-clara)}
+.tracklist summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:1rem;padding:1.4rem 0;font-family:var(--titulo);font-size:clamp(1.5rem,2.6vw,2rem);text-transform:uppercase;line-height:1}
+.tracklist summary::-webkit-details-marker{display:none}
+.tracklist summary span{font-family:var(--texto);font-size:.72rem;font-weight:800;letter-spacing:.2em;color:var(--gold-dark)}
+.tracklist summary::after{content:"+";margin-left:auto;font-family:var(--texto);font-size:1.6rem;color:var(--gold-dark);transition:transform .3s}
+.tracklist[open] summary::after{transform:rotate(45deg)}
+.tracklist__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);padding:0 0 2rem}
+.tracklist ol{margin:0;padding:0;list-style:none;counter-reset:t}
+.tracklist li{counter-increment:t;display:grid;grid-template-columns:2.4rem 1fr;padding:.65rem 0;border-bottom:1px solid var(--linea-clara)}
+.tracklist li::before{content:counter(t,decimal-leading-zero);font-family:var(--titulo);font-size:1.2rem;color:var(--gold-dark);grid-row:span 2}
+.tracklist li b{font-weight:800}
+.tracklist li small{color:rgba(5,5,5,.6);font-size:.85rem}
+.tracklist dl{margin:0}
+.tracklist dt{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);margin-top:1rem}
+.tracklist dt:first-child{margin-top:.6rem}
+.tracklist dd{margin:.2rem 0 0;font-weight:600}
+@media (max-width:760px){.tracklist__grid{grid-template-columns:1fr}}
+
 /* ---------- Videos ---------- */
 .yt{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:14px;box-shadow:0 0 0 1px var(--linea)}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .yt-info{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin:1.25rem 0 0;flex-wrap:wrap}
 .yt-info h3{font-family:var(--titulo);font-weight:400;font-size:1.8rem;text-transform:uppercase;margin:0;line-height:1}
 .yt-info span{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.yt-info span{display:block;margin-bottom:.4rem}
+.yt-desc{margin:.6rem 0 0;color:var(--gray);max-width:70ch;font-size:.98rem}
+.yt-desc:empty{display:none}
+.lista-videos{margin-top:2.5rem}
+.vcard.activo .vcard__thumb{box-shadow:0 0 0 2px var(--gold)}
+.vcard.activo .vcard__play{background:var(--white)}
+.vcard__num{font-family:var(--titulo);font-size:1.4rem;color:var(--gold);margin-right:.4rem}
 .filtros{display:flex;flex-wrap:wrap;gap:.5rem;margin:3rem 0 1.5rem}
 .filtros button{background:none;border:1px solid var(--linea);border-radius:999px;padding:.55rem 1.1rem;font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .25s}
 .filtros button:hover{border-color:var(--gold)}
 .filtros button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--black)}
-.lista-videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.5rem}
+.lista-videos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}
+@media (max-width:900px){.lista-videos{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .vcard{all:unset;display:block;cursor:pointer}
 .vcard[hidden]{display:none}
 .vcard__thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--dark);margin-bottom:.85rem;display:grid;place-items:center;border-radius:10px}
@@ -226,9 +264,9 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .stats span{display:block;margin-top:.55rem;font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark);line-height:1.5}
 @media (max-width:900px){.bio__grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr);row-gap:2rem}.bio__fotowrap::after{inset:auto -8px -8px auto}}
 
-/* ---------- Caribe → Ártico ---------- */
+/* ---------- Caribe → Báltico ---------- */
 .viaje{background:var(--black);overflow:hidden}
-.viaje__palabra{font-family:var(--titulo);font-weight:400;font-size:clamp(4rem,15vw,14rem);line-height:.85;text-transform:uppercase;margin:0}
+.viaje__palabra{font-family:var(--titulo);font-weight:400;font-size:clamp(3.4rem,12.5vw,12rem);line-height:.85;text-transform:uppercase;margin:0}
 .viaje__artico{text-align:right;color:transparent;-webkit-text-stroke:1.5px var(--gold)}
 .viaje__medio{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;margin:clamp(1.5rem,4vw,3rem) 0}
 .viaje__foto{position:relative;overflow:hidden;aspect-ratio:4/5;margin:0;max-width:360px;border-radius:6px}
@@ -257,19 +295,32 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .mosaico img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
 .mosaico button:hover img{transform:scale(1.03)}
 .mosaico .m1{grid-column:1/8;grid-row:span 3}
-.mosaico .m2{grid-column:8/13;grid-row:span 2}
-.mosaico .m3{grid-column:8/13;grid-row:span 1}
-.mosaico .m4{grid-column:1/5;grid-row:span 3}
-.mosaico .m5{grid-column:5/13;grid-row:span 2}
-.mosaico .m6{grid-column:5/9;grid-row:span 1}
-.mosaico .m7{grid-column:9/13;grid-row:span 1}
+.mosaico .m2{grid-column:8/13;grid-row:span 3}
+.mosaico .m3{grid-column:1/5;grid-row:span 3}
+.mosaico .m4{grid-column:5/9;grid-row:span 3}
+.mosaico .m5{grid-column:9/13;grid-row:span 3}
 @media (max-width:760px){
   .mosaico{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}
-  .mosaico .m1,.mosaico .m5{grid-column:1/-1;grid-row:span 2}
-  .mosaico .m2{grid-column:span 1;grid-row:span 2}
-  .mosaico .m3,.mosaico .m4{grid-column:span 1;grid-row:span 1}
-  .mosaico .m6,.mosaico .m7{grid-column:span 1;grid-row:span 2}
+  .mosaico .m1{grid-column:1/-1;grid-row:span 2}
+  .mosaico .m2,.mosaico .m3,.mosaico .m4,.mosaico .m5{grid-column:span 1;grid-row:span 2}
 }
+/* Videos en directo (con sonido al darle play) */
+.directos-tit{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:clamp(3.5rem,6vw,5rem) 0 1.5rem;padding-top:2rem;border-top:1px solid var(--linea)}
+.directos-tit h3{font-family:var(--titulo);font-weight:400;font-size:clamp(2rem,3.5vw,2.8rem);text-transform:uppercase;margin:0;line-height:1}
+.directos-tit span{font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+.directos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.5vw,22px);max-width:960px;margin-inline:auto}
+.directo{position:relative;margin:0;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#000;box-shadow:0 0 0 1px var(--linea)}
+.directo video{width:100%;height:100%;object-fit:cover;display:block}
+.directo.activo{box-shadow:0 0 0 2px var(--gold)}
+.directo__play{all:unset;position:absolute;inset:0;cursor:pointer;display:grid;place-items:center;background:linear-gradient(180deg,rgba(5,5,5,0) 50%,rgba(5,5,5,.6));transition:background .3s}
+.directo__play:hover{background:rgba(5,5,5,.25)}
+.directo__play span{width:58px;height:58px;border-radius:50%;background:var(--gold);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:transform .2s}
+.directo__play:hover span{transform:scale(1.08)}
+.directo__play svg{width:20px;height:20px;fill:var(--black);margin-left:4px}
+.directo__play:focus-visible span{outline:2px solid var(--white);outline-offset:4px}
+.directo__dur{position:absolute;right:10px;bottom:10px;font-size:.7rem;font-weight:800;letter-spacing:.08em;background:rgba(5,5,5,.75);padding:.25rem .55rem;border-radius:999px;pointer-events:none}
+.directo.activo .directo__play,.directo.activo .directo__dur{display:none}
+@media (max-width:560px){.directos{gap:8px}.directo__play span{width:44px;height:44px}.directo__play svg{width:15px;height:15px}}
 .lightbox{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;margin:0}
 .lightbox::backdrop{background:rgba(5,5,5,.96)}
 .lightbox[open]{display:grid;place-items:center}
@@ -369,51 +420,52 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 <!-- Barra superior: redes + donar -->
 <div class="barra">
   <div class="contenedor">
-    <a class="barra__aviso" href="#shows"><b>Gira por España</b> · Madrid 19 nov · Barcelona 21 nov</a>
+    <a class="barra__aviso" href="#shows"></a>
     <div class="barra__der">
       <div class="redes" data-redes></div>
-      <a class="donar" data-cfg-href="donar" target="_blank" rel="noopener"><svg><use href="#i-corazon"/></svg>Donar</a>
+      <a class="donar" data-cfg-href="donar" target="_blank" rel="noopener"><svg><use href="#i-corazon"/></svg><span data-i18n="donate">Donate</span></a>
     </div>
   </div>
 </div>
 
 <header class="nav">
   <div class="contenedor nav__in">
-    <a class="nav__logo" href="#inicio" aria-label="Kevin Alva, inicio"><img src="img/logo.svg" alt="Kevin Alva" width="75" height="54"></a>
-    <button class="hamb" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-    <nav class="nav__menu" id="menu" aria-label="Principal">
+    <a class="nav__logo" href="#inicio" aria-label="Kevin Alva, home" data-i18n-attr="aria-label:a_home"><img src="img/logo.svg" alt="Kevin Alva" width="75" height="54"></a>
+    <button class="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="nav__menu" id="menu" aria-label="Main menu" data-i18n-attr="aria-label:a_main">
       <ul class="nav__links">
-        <li><a href="#musica">Música</a></li>
-        <li><a href="#videos">Videos</a></li>
-        <li><a href="#shows">Shows</a></li>
-        <li><a href="#bio">Bio</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#booking">Contacto</a></li>
+        <li><a href="#musica" data-i18n="nav_music">Music</a></li>
+        <li><a href="#videos" data-i18n="nav_videos">Videos</a></li>
+        <li><a href="#shows" data-i18n="nav_shows">Shows</a></li>
+        <li><a href="#bio" data-i18n="nav_bio">Bio</a></li>
+        <li><a href="#galeria" data-i18n="nav_gallery">Gallery</a></li>
+        <li><a href="#booking" data-i18n="nav_contact">Contact</a></li>
       </ul>
     </nav>
+    <div class="idiomas" role="group" aria-label="Language" data-i18n-attr="aria-label:lang_group">
+      <button type="button" data-lang="en" lang="en" title="English"><svg class="bandera" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-c"><path d="M30,15h30v15zv15h-30zh-30v-15zv-15h30z"/></clipPath><path d="M0,0v30h60v-30z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#uk-c)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg><span>EN</span></button>
+      <button type="button" data-lang="es" lang="es" title="Español"><svg class="bandera" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg><span>ES</span></button>
+      <button type="button" data-lang="et" lang="et" title="Eesti"><svg class="bandera" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height=".67" fill="#0072CE"/><rect y=".66" width="3" height=".68" fill="#000"/><rect y="1.33" width="3" height=".67" fill="#fff"/></svg><span>ET</span></button>
+    </div>
   </div>
 </header>
 
 <main>
 
 <!-- HERO -->
-<section class="hero" id="inicio" aria-label="Portada">
-  <div class="hero__fondo"><img src="img/hero.jpg" alt="" fetchpriority="high"></div>
+<section class="hero" id="inicio" aria-label="Kevin Alva">
+  <div class="hero__fondo"><img src="img/hero.jpg" alt="Kevin Alva lying on a white floor with his long dreadlocks spread out, next to the word Rebirth" data-i18n-attr="alt:alt_hero" fetchpriority="high"></div>
   <div class="contenedor hero__grid">
-    <div>
-      <p class="hero__pre" data-rev>Músico · Productor · Musicólogo</p>
+    <div class="hero__txt">
+      <a class="hero__nuevo" href="#musica" data-rev data-i18n="hero_new"><b>New album</b> Rebirth · 2026 →</a>
+      <p class="hero__pre" data-rev data-i18n="hero_pre">Musician · Producer · Musicologist</p>
       <h1 data-rev>Kevin<br>Alva</h1>
-      <p class="hero__eslogan" data-rev>Música del Caribe, <span>desde Venezuela hasta el Ártico.</span></p>
+      <p class="hero__eslogan" data-rev data-i18n="slogan">Caribbean music, <span>from Venezuela to the Baltic.</span></p>
       <div class="hero__acciones" data-rev>
-        <a class="btn btn--oro" href="#musica"><svg><use href="#i-play"/></svg>Escuchar música</a>
-        <a class="btn btn--borde" href="#videos">Ver videos</a>
+        <a class="btn btn--oro" href="#musica"><svg><use href="#i-play"/></svg><span data-i18n="btn_listen">Listen to music</span></a>
+        <a class="btn btn--borde" href="#videos" data-i18n="btn_watch">Watch videos</a>
       </div>
-      <div class="hero__redes" data-rev><span>Síguelo</span><span class="redes-hero" style="display:contents" data-redes-hero></span></div>
-    </div>
-    <div class="hero__video" data-rev>
-      <video autoplay muted loop playsinline preload="auto" poster="img/loop-poster.jpg" aria-label="Kevin Alva tocando el saxofón tenor en directo">
-        <source src="video/loop.mp4" type="video/mp4">
-      </video>
+      <div class="hero__redes" data-rev><span data-i18n="follow">Follow</span><span class="redes-hero" style="display:contents" data-redes-hero></span></div>
     </div>
   </div>
 </section>
@@ -422,8 +474,8 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 <section class="carbon" id="shows">
   <div class="contenedor">
     <div class="cabecera">
-      <div><span class="kicker" data-rev>Agenda</span><h2 class="h-xl" data-rev>Próximos shows</h2></div>
-      <p data-rev>Noviembre 2026: Kevin Alva regresa a España.</p>
+      <div><span class="kicker" data-rev data-i18n="k_agenda">Tour dates</span><h2 class="h-xl" data-rev data-i18n="t_shows">Upcoming shows</h2></div>
+      <p data-rev data-i18n="shows_intro">October in Estonia, November in Spain.</p>
     </div>
     <ul class="agenda" data-agenda></ul>
   </div>
@@ -432,16 +484,16 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 <!-- GALERÍA -->
 <section id="galeria">
   <div class="contenedor">
-    <div class="cabecera"><div><span class="kicker" data-rev>En escena</span><h2 class="h-xl" data-rev>Galería</h2></div></div>
+    <div class="cabecera"><div><span class="kicker" data-rev data-i18n="k_stage">On stage</span><h2 class="h-xl" data-rev data-i18n="t_gallery">Gallery</h2></div></div>
     <div class="mosaico">
-      <button class="m1" aria-label="Ampliar foto 1"><img src="img/g-escenario.jpg" alt="Kevin Alva en el escenario con los brazos abiertos" loading="lazy" style="object-position:center 25%"></button>
-      <button class="m2" aria-label="Ampliar foto 2"><img src="img/g-espejo.jpg" alt="Cantando con traje blanco junto a su reflejo" loading="lazy" style="object-position:center 25%"></button>
-      <button class="m3" aria-label="Ampliar foto 3"><img src="img/g-festival.jpg" alt="Animando al público en un festival al aire libre" loading="lazy" style="object-position:center 55%"></button>
-      <button class="m4" aria-label="Ampliar foto 4"><img src="img/g-barco.jpg" alt="Tocando el saxofón en la cubierta de un barco" loading="lazy" style="object-position:center 25%"></button>
-      <button class="m5" aria-label="Ampliar foto 5"><img src="img/g-fiesta.jpg" alt="Tocando entre el público que baila en una fiesta al aire libre" loading="lazy" style="object-position:center 45%"></button>
-      <button class="m6" aria-label="Ampliar foto 6"><img src="img/g-mar.jpg" alt="Sonriendo con su saxofón en el mar" loading="lazy" style="object-position:center 30%"></button>
-      <button class="m7" aria-label="Ampliar foto 7"><img src="img/g-rosa.jpg" alt="Tocando el saxofón bajo luces rosadas" loading="lazy" style="object-position:35% 15%"></button>
+      <button class="m1" aria-label="Photo 1" data-i18n-attr="aria-label:a_photo:1"><img src="img/g-banda.jpg" alt="Kevin Alva laughing on stage with his band" data-i18n-attr="alt:alt_g1" loading="lazy" style="object-position:center 30%"></button>
+      <button class="m2" aria-label="Photo 2" data-i18n-attr="aria-label:a_photo:2"><img src="img/g-azul.jpg" alt="Kevin Alva with his saxophone in front of a blue wall" data-i18n-attr="alt:alt_g2" loading="lazy" style="object-position:center 20%"></button>
+      <button class="m3" aria-label="Photo 3" data-i18n-attr="aria-label:a_photo:3"><img src="img/g-escenario.jpg" alt="On stage with his arms wide open" data-i18n-attr="alt:alt_g3" loading="lazy" style="object-position:center 25%"></button>
+      <button class="m4" aria-label="Photo 4" data-i18n-attr="aria-label:a_photo:4"><img src="img/g-rosa.jpg" alt="Playing saxophone under pink lights" data-i18n-attr="alt:alt_g4" loading="lazy" style="object-position:35% 20%"></button>
+      <button class="m5" aria-label="Photo 5" data-i18n-attr="aria-label:a_photo:5"><img src="img/g-espejo.jpg" alt="Singing in a white suit next to his reflection" data-i18n-attr="alt:alt_g5" loading="lazy" style="object-position:76% 25%"></button>
     </div>
+    <div class="directos-tit" data-rev><h3 data-i18n="live_t">Live</h3><span data-i18n="live_s">Press play to watch with sound</span></div>
+    <div class="directos" data-directos></div>
   </div>
 </section>
 
@@ -449,23 +501,47 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 <section class="clara" id="musica">
   <div class="contenedor">
     <div class="cabecera">
-      <div><span class="kicker" data-rev>Escucha</span><h2 class="h-xl" data-rev>Música</h2></div>
-      <p data-rev>Dale play aquí mismo. Ska, reggae y ritmos del Caribe.</p>
+      <div><span class="kicker" data-rev data-i18n="k_listen">Listen</span><h2 class="h-xl" data-rev data-i18n="t_music">Music</h2></div>
+      <p data-rev data-i18n="music_intro">Press play right here. Ska, reggae and Caribbean rhythms.</p>
     </div>
     <div class="spotify" data-rev>
       <div class="sp-caja sp-caja--principal">
-        <div class="sp-caja__cab"><span>Destacado</span><svg><use href="#i-sp"/></svg></div>
+        <div class="sp-caja__cab"><span data-i18n="featured">Featured</span><svg><use href="#i-sp"/></svg></div>
         <div data-sp-principal style="display:contents"></div>
       </div>
       <div class="sp-caja sp-caja--lista">
-        <div class="sp-caja__cab"><span>Más de Kevin Alva</span><svg><use href="#i-sp"/></svg></div>
+        <div class="sp-caja__cab"><span data-i18n="more_from">More from Kevin Alva</span><svg><use href="#i-sp"/></svg></div>
         <div data-sp-artista style="display:contents"></div>
       </div>
     </div>
-    <div class="sp-seguir" data-rev><a class="btn btn--spotify" data-cfg-href="redes.spotify" target="_blank" rel="noopener"><svg><use href="#i-sp"/></svg>Seguir en Spotify</a></div>
+    <div class="sp-seguir" data-rev><a class="btn btn--spotify" data-cfg-href="redes.spotify" target="_blank" rel="noopener"><svg><use href="#i-sp"/></svg><span data-i18n="follow_sp">Follow on Spotify</span></a></div>
 
-    <div class="disco-tit" data-rev><h3>Discografía</h3><span>Toca una portada para escuchar en Spotify</span></div>
+    <div class="disco-tit" data-rev><h3 data-i18n="disco">Discography</h3><span data-i18n="disco_hint">Tap a cover to listen on Spotify</span></div>
     <div class="disco" data-disco></div>
+    <details class="tracklist" data-rev>
+      <summary><span>Rebirth · 2026</span> <span class="tl-t" data-i18n="tracklist">Tracklist &amp; credits</span></summary>
+      <div class="tracklist__grid">
+        <ol>
+          <li><b>Mano Man</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
+          <li><b>Burn It</b><small data-i18n="cr_lm_k">Lyrics &amp; music: Kevin</small></li>
+          <li><b>Classic All</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
+          <li><b>Me Pasa el Tiempo</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
+          <li><b>Steplin</b><small>Kevin</small></li>
+          <li><b>Is Not Your Business</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
+          <li><b>With Rub a Dub</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
+          <li><b>Sunny Mood</b><small>Kevin</small></li>
+        </ol>
+        <dl>
+          <dt data-i18n="c_rec">Recording</dt><dd data-i18n="c_rec_d">Between August 2021 and February 2025</dd>
+          <dt data-i18n="c_prod">Artistic &amp; musical production</dt><dd>Kevin Alva, Iván “Pepito” Rodríguez</dd>
+          <dt data-i18n="c_sax">Saxophones (baritone &amp; tenor) and vocals</dt><dd>Kevin Alva</dd>
+          <dt data-i18n="c_drums">Drums</dt><dd>Eduardo Guerrero</dd>
+          <dt data-i18n="c_mix">Mixing &amp; mastering</dt><dd>Guillermo Silverstein</dd>
+          <dt data-i18n="c_art">Art &amp; design</dt><dd>Adriana Roquero</dd>
+          <dt data-i18n="c_photo">Photography</dt><dd>Natalia Katjuzanskaja</dd>
+        </dl>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -473,12 +549,11 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 <section id="videos">
   <div class="contenedor">
     <div class="cabecera">
-      <div><span class="kicker" data-rev>Ver</span><h2 class="h-xl" data-rev>Videos</h2></div>
-      <p data-rev>Los videos se reproducen dentro de la página.</p>
+      <div><span class="kicker" data-rev data-i18n="k_watch">Watch</span><h2 class="h-xl" data-rev data-i18n="t_videos">Videos</h2></div>
+      <p data-rev data-i18n="videos_intro">Videos play right here on the page.</p>
     </div>
     <div class="yt" id="reproductor" data-rev></div>
-    <div class="yt-info"><h3 data-vid-titulo></h3><span data-vid-cat></span></div>
-    <div class="filtros" role="group" aria-label="Filtrar videos" data-filtros></div>
+    <div class="yt-info"><div><span data-vid-num></span><h3 data-vid-titulo></h3><p class="yt-desc" data-vid-desc></p></div></div>
     <div class="lista-videos" data-lista-videos></div>
   </div>
 </section>
@@ -487,75 +562,75 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 <section class="clara" id="bio">
   <div class="contenedor bio__grid">
     <div class="bio__fotowrap" data-rev>
-      <div class="bio__foto"><img src="img/g-mar.jpg" alt="Kevin Alva sonriendo con su saxofón, de pie en el mar" loading="lazy"></div>
+      <div class="bio__foto"><img src="img/g-mar.jpg" alt="Kevin Alva smiling with his saxophone, standing in the sea" data-i18n-attr="alt:alt_bio" loading="lazy"></div>
     </div>
     <div>
-      <span class="kicker" data-rev>Biografía</span>
-      <div class="bio__gran" data-rev><b>20+</b><span>Años<br>de trayectoria</span></div>
-      <p class="bio__txt" data-rev>Kevin Alva es músico, productor y musicólogo venezolano, con más de veinte años de trayectoria artística. Desde 2001 ha desarrollado una carrera vinculada al ska, el reggae y las músicas del Caribe, participando en cuatro álbumes bajo su dirección artística y musical, además de colaborar en más de quince producciones y proyectos musicales.</p>
-      <p class="bio__txt" data-rev>Ha llevado la música venezolana y los ritmos del Caribe a más de quince países, combinando su faceta como intérprete, productor y formador a través de conciertos, grabaciones y talleres dedicados a los ritmos jamaicanos. Actualmente vive en Estonia.</p>
+      <span class="kicker" data-rev data-i18n="k_bio">Biography</span>
+      <div class="bio__gran" data-rev><b>20+</b><span data-i18n="years">Years<br>of career</span></div>
+      <p class="bio__txt" data-rev data-i18n="bio1"></p>
+      <p class="bio__txt" data-rev data-i18n="bio2"></p>
       <div class="stats" data-rev>
-        <div><b>2001</b><span>Inicio de trayectoria</span></div>
-        <div><b>4</b><span>Álbumes</span></div>
-        <div><b>15+</b><span>Producciones y colaboraciones</span></div>
-        <div><b>15+</b><span>Países</span></div>
+        <div><b>2001</b><span data-i18n="st_start">Career start</span></div>
+        <div><b>4</b><span data-i18n="st_albums">Albums</span></div>
+        <div><b>15+</b><span data-i18n="st_prod">Productions &amp; collaborations</span></div>
+        <div><b>15+</b><span data-i18n="st_countries">Countries</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CARIBE → ÁRTICO -->
-<section class="viaje" id="caribe-artico" aria-label="Del Caribe al Ártico">
+<section class="viaje" id="caribe-artico" aria-label="Caribbean to Baltic" data-i18n-attr="aria-label:trip_sr">
   <div class="contenedor">
-    <h2 class="sr">Del Caribe al Ártico</h2>
-    <p class="viaje__palabra" data-rev aria-hidden="true">Caribe</p>
+    <h2 class="sr" data-i18n="trip_sr">From the Caribbean to the Baltic</h2>
+    <p class="viaje__palabra" data-rev aria-hidden="true" data-i18n="w_carib">Caribbean</p>
     <div class="viaje__medio">
-      <figure class="viaje__foto" data-rev><img src="img/g-fiesta.jpg" alt="Kevin Alva tocando entre el público en una noche de verano" loading="lazy" style="object-position:72% center"><figcaption>Raíz</figcaption></figure>
+      <figure class="viaje__foto" data-rev><img src="img/g-fiesta.jpg" alt="Kevin Alva playing among the crowd on a summer night" data-i18n-attr="alt:alt_roots" loading="lazy" style="object-position:72% center"><figcaption data-i18n="roots">Roots</figcaption></figure>
       <div class="ruta" data-rev>
-        <span class="ruta__punto">Venezuela<small>10° N</small></span>
+        <span class="ruta__punto"><span data-i18n="venezuela">Venezuela</span><small>10° N</small></span>
         <span class="ruta__linea" aria-hidden="true"></span>
-        <span class="ruta__punto">Estonia<small>59° N</small></span>
+        <span class="ruta__punto"><span data-i18n="estonia">Estonia</span><small>59° N</small></span>
       </div>
-      <figure class="viaje__foto viaje__foto--b" data-rev><img src="img/g-barco.jpg" alt="Kevin Alva tocando el saxofón en un puerto del norte de Europa" loading="lazy" style="object-position:center 25%"><figcaption>Norte</figcaption></figure>
+      <figure class="viaje__foto viaje__foto--b" data-rev><img src="img/g-barco.jpg" alt="Kevin Alva playing saxophone in a Northern European harbour" data-i18n-attr="alt:alt_north" loading="lazy" style="object-position:center 25%"><figcaption data-i18n="north">North</figcaption></figure>
     </div>
-    <p class="viaje__palabra viaje__artico" data-rev aria-hidden="true">Ártico</p>
-    <p class="viaje__texto" data-rev>Una trayectoria musical que conecta las raíces venezolanas y caribeñas con los paisajes del norte de Europa.</p>
+    <p class="viaje__palabra viaje__artico" data-rev aria-hidden="true" data-i18n="w_arctic">Baltic</p>
+    <p class="viaje__texto" data-rev data-i18n="trip_txt"></p>
   </div>
 </section>
 
 <!-- REDES -->
-<section class="redes-panel" aria-label="Redes sociales">
+<section class="redes-panel" aria-label="Social media" data-i18n-attr="aria-label:a_social">
   <img src="img/g-fiesta.jpg" alt="" loading="lazy">
-  <a class="panel" data-cfg-href="redes.instagram" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><b>Instagram</b><span class="seguir">Seguir</span></a>
-  <a class="panel" data-cfg-href="redes.facebook" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg><b>Facebook</b><span class="seguir">Seguir</span></a>
-  <a class="panel" data-cfg-href="redes.spotify" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-sp"/></svg><b>Spotify</b><span class="seguir">Escuchar</span></a>
-  <a class="panel" data-cfg-href="redes.youtube" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-yt"/></svg><b>YouTube</b><span class="seguir">Suscribirse</span></a>
-  <a class="panel" data-cfg-href="donar" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-corazon"/></svg><b>Donar</b><span class="seguir">Apoyar</span></a>
+  <a class="panel" data-cfg-href="redes.instagram" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg><b>Instagram</b><span class="seguir" data-i18n="p_follow">Follow</span></a>
+  <a class="panel" data-cfg-href="redes.facebook" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg><b>Facebook</b><span class="seguir" data-i18n="p_follow">Follow</span></a>
+  <a class="panel" data-cfg-href="redes.spotify" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-sp"/></svg><b>Spotify</b><span class="seguir" data-i18n="p_listen">Listen</span></a>
+  <a class="panel" data-cfg-href="redes.youtube" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-yt"/></svg><b>YouTube</b><span class="seguir" data-i18n="p_sub">Subscribe</span></a>
+  <a class="panel" data-cfg-href="donar" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-corazon"/></svg><b data-i18n="donate">Donate</b><span class="seguir" data-i18n="p_support">Support</span></a>
 </section>
 
 <!-- BOOKING -->
 <section class="booking" id="booking">
   <div class="booking__fondo" aria-hidden="true"><img src="img/g-festival.jpg" alt="" loading="lazy"></div>
   <div class="contenedor">
-    <span class="kicker" data-rev>Booking</span>
-    <h2 class="h-xl" data-rev>Book Kevin Alva</h2>
-    <p class="booking__lema" data-rev>¿Quieres llevar los sonidos del Caribe a tu próximo evento?</p>
-    <ul class="servicios" data-rev><li>Conciertos</li><li>Festivales</li><li>Eventos privados</li><li>Workshops</li><li>Colaboraciones</li></ul>
-    <button class="btn btn--oro" data-abrir-form aria-expanded="false" aria-controls="form-booking" data-rev>Solicitar booking →</button>
+    <span class="kicker" data-rev data-i18n="k_booking">Booking</span>
+    <h2 class="h-xl" data-rev data-i18n="t_book">Book Kevin Alva</h2>
+    <p class="booking__lema" data-rev data-i18n="book_lema"></p>
+    <ul class="servicios" data-rev><li data-i18n="sv_concerts">Concerts</li><li data-i18n="sv_fest">Festivals</li><li data-i18n="sv_private">Private events</li><li data-i18n="sv_work">Workshops</li><li data-i18n="sv_collab">Collaborations</li></ul>
+    <button class="btn btn--oro" data-abrir-form aria-expanded="false" aria-controls="form-booking" data-rev data-i18n="book_btn">Request booking →</button>
     <div class="form-wrap" id="form-booking">
       <div>
         <form class="form" data-form>
-          <label>Nombre<input name="nombre" required autocomplete="name"></label>
-          <label>Email<input type="email" name="email" required autocomplete="email"></label>
-          <label>Teléfono<input type="tel" name="telefono" autocomplete="tel"></label>
-          <label>Tipo de evento<select name="tipo_evento"><option>Concierto</option><option>Festival</option><option>Evento privado</option><option>Workshop</option><option>Colaboración</option><option>Otro</option></select></label>
-          <label>Ciudad / País<input name="ciudad_pais"></label>
-          <label>Fecha<input type="date" name="fecha"></label>
-          <label class="ancho">Mensaje<textarea name="mensaje" required></textarea></label>
-          <input type="hidden" name="_subject" value="Solicitud de booking · Kevin Alva">
+          <label><span data-i18n="f_name">Name</span><input name="nombre" required autocomplete="name"></label>
+          <label><span data-i18n="f_email">Email</span><input type="email" name="email" required autocomplete="email"></label>
+          <label><span data-i18n="f_phone">Phone</span><input type="tel" name="telefono" autocomplete="tel"></label>
+          <label><span data-i18n="f_type">Event type</span><select name="tipo_evento"><option data-i18n="o_concert">Concert</option><option data-i18n="o_fest">Festival</option><option data-i18n="o_private">Private event</option><option data-i18n="o_work">Workshop</option><option data-i18n="o_collab">Collaboration</option><option data-i18n="o_other">Other</option></select></label>
+          <label><span data-i18n="f_city">City / Country</span><input name="ciudad_pais"></label>
+          <label><span data-i18n="f_date">Date</span><input type="date" name="fecha"></label>
+          <label class="ancho"><span data-i18n="f_msg">Message</span><textarea name="mensaje" required></textarea></label>
+          <input type="hidden" name="_subject" value="Booking request · Kevin Alva">
           <input type="hidden" name="_captcha" value="false">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="form__pie"><button class="btn btn--oro" type="submit">Enviar solicitud</button><p class="form__nota" data-form-nota></p></div>
+          <div class="form__pie"><button class="btn btn--oro" type="submit" data-i18n="f_send">Send request</button><p class="form__nota" data-form-nota></p></div>
         </form>
       </div>
     </div>
@@ -567,28 +642,181 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
   <div class="contenedor">
     <div class="footer__top">
       <div>
-        <a class="footer__logo" href="#inicio" aria-label="Volver al inicio"><img src="img/logo.svg" alt="Kevin Alva" loading="lazy"></a>
-        <p class="footer__frase">Música del Caribe,<br>desde Venezuela<br><span>hasta el Ártico.</span></p>
+        <a class="footer__logo" href="#inicio" aria-label="Back to top" data-i18n-attr="aria-label:a_top"><img src="img/logo.svg" alt="Kevin Alva" loading="lazy"></a>
+        <p class="footer__frase" data-i18n="foot_slogan"></p>
         <div class="redes" data-redes></div>
       </div>
       <div class="footer__cols">
-        <div><h4>Navegar</h4><ul><li><a href="#musica">Música</a></li><li><a href="#videos">Videos</a></li><li><a href="#shows">Shows</a></li><li><a href="#bio">Bio</a></li><li><a href="#booking">Contacto</a></li></ul></div>
-        <div><h4>Apoya</h4><ul><li><a data-cfg-href="donar" target="_blank" rel="noopener">Donar</a></li><li><a data-cfg-href="redes.spotify" target="_blank" rel="noopener">Spotify</a></li><li><a data-cfg-href="redes.youtube" target="_blank" rel="noopener">YouTube</a></li><li><a data-cfg-href="redes.instagram" target="_blank" rel="noopener">Instagram</a></li><li><a data-cfg-href="redes.facebook" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+        <div><h4 data-i18n="foot_nav">Explore</h4><ul><li><a href="#musica" data-i18n="nav_music">Music</a></li><li><a href="#videos" data-i18n="nav_videos">Videos</a></li><li><a href="#shows" data-i18n="nav_shows">Shows</a></li><li><a href="#bio" data-i18n="nav_bio">Bio</a></li><li><a href="#booking" data-i18n="nav_contact">Contact</a></li></ul></div>
+        <div><h4 data-i18n="foot_support">Support</h4><ul><li><a data-cfg-href="donar" target="_blank" rel="noopener" data-i18n="donate">Donate</a></li><li><a data-cfg-href="redes.spotify" target="_blank" rel="noopener">Spotify</a></li><li><a data-cfg-href="redes.youtube" target="_blank" rel="noopener">YouTube</a></li><li><a data-cfg-href="redes.instagram" target="_blank" rel="noopener">Instagram</a></li><li><a data-cfg-href="redes.facebook" target="_blank" rel="noopener">Facebook</a></li></ul></div>
       </div>
     </div>
-    <div class="footer__base"><span>© 2026 Kevin Alva</span><a href="#inicio">Volver arriba ↑</a></div>
+    <div class="footer__base"><span>© 2026 Kevin Alva</span><a href="#inicio" data-i18n="back_top">Back to top ↑</a></div>
   </div>
 </footer>
 
-<dialog class="lightbox" aria-label="Galería ampliada">
+<dialog class="lightbox" aria-label="Gallery" data-i18n-attr="aria-label:t_gallery">
   <img alt="">
-  <button class="lb-btn lb-cerrar" aria-label="Cerrar">✕</button>
-  <button class="lb-btn lb-prev" aria-label="Foto anterior">←</button>
-  <button class="lb-btn lb-next" aria-label="Foto siguiente">→</button>
+  <button class="lb-btn lb-cerrar" aria-label="Close" data-i18n-attr="aria-label:a_close">✕</button>
+  <button class="lb-btn lb-prev" aria-label="Previous photo" data-i18n-attr="aria-label:a_prev">←</button>
+  <button class="lb-btn lb-next" aria-label="Next photo" data-i18n-attr="aria-label:a_next">→</button>
   <span class="lightbox__cont"></span>
 </dialog>
 
 <script>
+// =====================================================================
+// TEXTOS EN 3 IDIOMAS (en = inglés por defecto, es = español, et = estonio)
+// Para cambiar un texto, edítalo aquí en los tres idiomas.
+// =====================================================================
+const I18N = {
+en:{
+ k_booking:"Booking", lang_group:"Language", a_home:"Kevin Alva, home", a_main:"Main menu", a_social:"Social media", a_top:"Back to top",
+ a_close:"Close", a_prev:"Previous photo", a_next:"Next photo", a_photo:"Photo {n}", a_play_live:"Play live video {n}", a_live_video:"Kevin Alva live ({n})",
+ sp_feat_title:"Featured Kevin Alva track on Spotify", sp_artist_title:"Kevin Alva on Spotify", alt_album:"{a} – album cover",
+ alt_hero:"Kevin Alva lying on a white floor with his long dreadlocks spread out, next to the word Rebirth",
+ alt_g1:"Kevin Alva laughing on stage with his band", alt_g2:"Kevin Alva with his saxophone in front of a blue wall", alt_g3:"On stage with his arms wide open",
+ alt_g4:"Playing saxophone under pink lights", alt_g5:"Singing in a white suit next to his reflection",
+ alt_bio:"Kevin Alva smiling with his saxophone, standing in the sea", alt_roots:"Kevin Alva playing among the crowd on a summer night",
+ alt_north:"Kevin Alva playing saxophone in a Northern European harbour",
+ next_show:"Next show", acc_door:"Tickets at the door", acc_free:"Free entry", acc_private:"Private event", private_city:"Private", estonia_c:"Estonia",
+ meta_title:"Kevin Alva | Venezuelan Musician, Producer & Musicologist",
+ tour_bar:"<b>Spain Tour</b> · Madrid Nov 19 · Barcelona Nov 21",
+ donate:"Donate", menu_open:"Open menu", menu_close:"Close menu",
+ nav_music:"Music", nav_videos:"Videos", nav_shows:"Shows", nav_bio:"Bio", nav_gallery:"Gallery", nav_contact:"Contact",
+ hero_new:"<b>New album</b> Rebirth · 2026 →",
+ hero_pre:"Musician · Producer · Musicologist",
+ slogan:"Caribbean music, <span>from Venezuela to the Baltic.</span>",
+ btn_listen:"Listen to music", btn_watch:"Watch videos", follow:"Follow",
+ k_agenda:"Tour dates", t_shows:"Upcoming shows", shows_intro:"October in Estonia, November in Spain.",
+ k_stage:"On stage", t_gallery:"Gallery", live_t:"Live", live_s:"Press play to watch with sound",
+ k_listen:"Listen", t_music:"Music", music_intro:"Press play right here. Ska, reggae and Caribbean rhythms.",
+ featured:"Featured", more_from:"More from Kevin Alva", follow_sp:"Follow on Spotify",
+ disco:"Discography", disco_hint:"Tap a cover to listen on Spotify", album:"Album", listen_sp:"Listen on Spotify →", listen:"Listen",
+ tracklist:"Tracklist & credits",
+ cr_lm_kp:"Lyrics: Kevin, Pepito · Music: Kevin", cr_lm_k:"Lyrics & music: Kevin",
+ c_rec:"Recording", c_rec_d:"Between August 2021 and February 2025", c_prod:"Artistic & musical production",
+ c_sax:"Saxophones (baritone & tenor) and vocals", c_drums:"Drums", c_mix:"Mixing & mastering", c_art:"Art & design", c_photo:"Photography",
+ k_watch:"Watch", t_videos:"Videos", videos_intro:"Videos play right here on the page.",
+ vid_n:"Video {n} of {t}", vid_by:"Published by {c} on YouTube",
+ k_bio:"Biography", years:"Years<br>of career",
+ bio1:"Kevin Alva is a Venezuelan musician, producer and musicologist with more than twenty years of artistic career. Since 2001 he has built a career rooted in ska, reggae and Caribbean music, leading four albums as artistic and musical director and collaborating on more than fifteen productions and musical projects.",
+ bio2:"He has taken Venezuelan music and Caribbean rhythms to more than fifteen countries, combining his work as performer, producer and educator through concerts, recordings and workshops on Jamaican rhythms. He currently lives in Estonia.",
+ st_start:"Career start", st_albums:"Albums", st_prod:"Productions & collaborations", st_countries:"Countries",
+ trip_sr:"From the Caribbean to the Baltic", w_carib:"Caribbean", w_arctic:"Baltic", roots:"Roots", north:"North",
+ venezuela:"Venezuela", estonia:"Estonia",
+ trip_txt:"A musical journey connecting Venezuelan and Caribbean roots with the landscapes of Northern Europe.",
+ p_follow:"Follow", p_listen:"Listen", p_sub:"Subscribe", p_support:"Support",
+ t_book:"Book Kevin Alva", book_lema:"Want to bring the sounds of the Caribbean to your next event?",
+ sv_concerts:"Concerts", sv_fest:"Festivals", sv_private:"Private events", sv_work:"Workshops", sv_collab:"Collaborations",
+ book_btn:"Request booking →",
+ f_name:"Name", f_email:"Email", f_phone:"Phone", f_type:"Event type", f_city:"City / Country", f_date:"Date", f_msg:"Message", f_send:"Send request",
+ o_concert:"Concert", o_fest:"Festival", o_private:"Private event", o_work:"Workshop", o_collab:"Collaboration", o_other:"Other",
+ f_note:"The form will be active very soon. Meanwhile, message Kevin on Instagram.",
+ foot_slogan:"Caribbean music,<br>from Venezuela<br><span>to the Baltic.</span>",
+ foot_nav:"Explore", foot_support:"Support", back_top:"Back to top ↑",
+ tickets:"Tickets →", tickets_soon:"Tickets soon", no_dates:"New dates coming soon",
+ months:["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"], days:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+ spain:"Spain", estonia:"Estonia", concert:"Concert"
+},
+es:{
+ k_booking:"Contrataciones", lang_group:"Idioma", a_home:"Kevin Alva, inicio", a_main:"Menú principal", a_social:"Redes sociales", a_top:"Volver al inicio",
+ a_close:"Cerrar", a_prev:"Foto anterior", a_next:"Foto siguiente", a_photo:"Foto {n}", a_play_live:"Reproducir video en directo {n}", a_live_video:"Kevin Alva en directo ({n})",
+ sp_feat_title:"Tema destacado de Kevin Alva en Spotify", sp_artist_title:"Kevin Alva en Spotify", alt_album:"Portada del álbum {a}",
+ alt_hero:"Kevin Alva tendido en un suelo blanco con sus largas rastas extendidas, junto a la palabra Rebirth",
+ alt_g1:"Kevin Alva riendo en el escenario con su banda", alt_g2:"Kevin Alva con su saxofón frente a un muro azul", alt_g3:"En el escenario con los brazos abiertos",
+ alt_g4:"Tocando el saxofón bajo luces rosadas", alt_g5:"Cantando con traje blanco junto a su reflejo",
+ alt_bio:"Kevin Alva sonriendo con su saxofón, de pie en el mar", alt_roots:"Kevin Alva tocando entre el público en una noche de verano",
+ alt_north:"Kevin Alva tocando el saxofón en un puerto del norte de Europa",
+ next_show:"Próximo show", acc_door:"Entrada en puerta", acc_free:"Entrada libre", acc_private:"Evento privado", private_city:"Privado", estonia_c:"Estonia",
+ meta_title:"Kevin Alva | Músico, Productor y Musicólogo Venezolano",
+ tour_bar:"<b>Gira por España</b> · Madrid 19 nov · Barcelona 21 nov",
+ donate:"Donar", menu_open:"Abrir menú", menu_close:"Cerrar menú",
+ nav_music:"Música", nav_videos:"Videos", nav_shows:"Shows", nav_bio:"Bio", nav_gallery:"Galería", nav_contact:"Contacto",
+ hero_new:"<b>Nuevo álbum</b> Rebirth · 2026 →",
+ hero_pre:"Músico · Productor · Musicólogo",
+ slogan:"Música del Caribe, <span>desde Venezuela hasta el Báltico.</span>",
+ btn_listen:"Escuchar música", btn_watch:"Ver videos", follow:"Síguelo",
+ k_agenda:"Agenda", t_shows:"Próximos shows", shows_intro:"Octubre en Estonia, noviembre en España.",
+ k_stage:"En escena", t_gallery:"Galería", live_t:"En directo", live_s:"Dale play para verlo con sonido",
+ k_listen:"Escucha", t_music:"Música", music_intro:"Dale play aquí mismo. Ska, reggae y ritmos del Caribe.",
+ featured:"Destacado", more_from:"Más de Kevin Alva", follow_sp:"Seguir en Spotify",
+ disco:"Discografía", disco_hint:"Toca una portada para escuchar en Spotify", album:"Álbum", listen_sp:"Escuchar en Spotify →", listen:"Escuchar",
+ tracklist:"Tracklist y créditos",
+ cr_lm_kp:"Letra: Kevin, Pepito · Música: Kevin", cr_lm_k:"Letra y música: Kevin",
+ c_rec:"Grabación", c_rec_d:"Entre agosto de 2021 y febrero de 2025", c_prod:"Producción artística y musical",
+ c_sax:"Saxos (barítono y tenor) y voces", c_drums:"Baterías", c_mix:"Mezcla y máster", c_art:"Arte y diseño", c_photo:"Fotografía",
+ k_watch:"Ver", t_videos:"Videos", videos_intro:"Los videos se reproducen dentro de la página.",
+ vid_n:"Video {n} de {t}", vid_by:"Publicado por {c} en YouTube",
+ k_bio:"Biografía", years:"Años<br>de trayectoria",
+ bio1:"Kevin Alva es músico, productor y musicólogo venezolano, con más de veinte años de trayectoria artística. Desde 2001 ha desarrollado una carrera vinculada al ska, el reggae y las músicas del Caribe, participando en cuatro álbumes bajo su dirección artística y musical, además de colaborar en más de quince producciones y proyectos musicales.",
+ bio2:"Ha llevado la música venezolana y los ritmos del Caribe a más de quince países, combinando su faceta como intérprete, productor y formador a través de conciertos, grabaciones y talleres dedicados a los ritmos jamaicanos. Actualmente vive en Estonia.",
+ st_start:"Inicio de trayectoria", st_albums:"Álbumes", st_prod:"Producciones y colaboraciones", st_countries:"Países",
+ trip_sr:"Del Caribe al Báltico", w_carib:"Caribe", w_arctic:"Báltico", roots:"Raíz", north:"Norte",
+ venezuela:"Venezuela", estonia:"Estonia",
+ trip_txt:"Una trayectoria musical que conecta las raíces venezolanas y caribeñas con los paisajes del norte de Europa.",
+ p_follow:"Seguir", p_listen:"Escuchar", p_sub:"Suscribirse", p_support:"Apoyar",
+ t_book:"Contrata a Kevin Alva", book_lema:"¿Quieres llevar los sonidos del Caribe a tu próximo evento?",
+ sv_concerts:"Conciertos", sv_fest:"Festivales", sv_private:"Eventos privados", sv_work:"Talleres", sv_collab:"Colaboraciones",
+ book_btn:"Solicitar booking →",
+ f_name:"Nombre", f_email:"Email", f_phone:"Teléfono", f_type:"Tipo de evento", f_city:"Ciudad / País", f_date:"Fecha", f_msg:"Mensaje", f_send:"Enviar solicitud",
+ o_concert:"Concierto", o_fest:"Festival", o_private:"Evento privado", o_work:"Taller", o_collab:"Colaboración", o_other:"Otro",
+ f_note:"El formulario estará activo muy pronto. Mientras tanto, escribe a Kevin por Instagram.",
+ foot_slogan:"Música del Caribe,<br>desde Venezuela<br><span>hasta el Báltico.</span>",
+ foot_nav:"Navegar", foot_support:"Apoya", back_top:"Volver arriba ↑",
+ tickets:"Entradas →", tickets_soon:"Entradas pronto", no_dates:"Nuevas fechas muy pronto",
+ months:["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"], days:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],
+ spain:"España", estonia:"Estonia", concert:"Concierto"
+},
+et:{
+ k_booking:"Broneerimine", lang_group:"Keel", a_home:"Kevin Alva, avaleht", a_main:"Peamenüü", a_social:"Sotsiaalmeedia", a_top:"Tagasi algusesse",
+ a_close:"Sulge", a_prev:"Eelmine foto", a_next:"Järgmine foto", a_photo:"Foto {n}", a_play_live:"Esita kontsertvideo {n}", a_live_video:"Kevin Alva kontserdil ({n})",
+ sp_feat_title:"Kevin Alva esiletõstetud lugu Spotifys", sp_artist_title:"Kevin Alva Spotifys", alt_album:"Albumi {a} kaanepilt",
+ alt_hero:"Kevin Alva lamamas valgel põrandal, pikad patsid laiali, sõna Rebirth kõrval",
+ alt_g1:"Kevin Alva naermas laval koos oma bändiga", alt_g2:"Kevin Alva saksofoniga sinise seina ees", alt_g3:"Laval, käed laiali",
+ alt_g4:"Saksofonimäng roosades tuledes", alt_g5:"Laulmas valges ülikonnas oma peegelpildi kõrval",
+ alt_bio:"Naeratav Kevin Alva saksofoniga meres", alt_roots:"Kevin Alva mängimas publiku keskel suveõhtul",
+ alt_north:"Kevin Alva mängimas saksofoni Põhja-Euroopa sadamas",
+ next_show:"Järgmine kontsert", acc_door:"Piletid uksel", acc_free:"Tasuta sissepääs", acc_private:"Eraüritus", private_city:"Privaatne", estonia_c:"Eesti",
+ meta_title:"Kevin Alva | Venezueela muusik, produtsent ja muusikateadlane",
+ tour_bar:"<b>Hispaania tuur</b> · Madrid 19. nov · Barcelona 21. nov",
+ donate:"Toeta", menu_open:"Ava menüü", menu_close:"Sulge menüü",
+ nav_music:"Muusika", nav_videos:"Videod", nav_shows:"Kontserdid", nav_bio:"Elulugu", nav_gallery:"Galerii", nav_contact:"Kontakt",
+ hero_new:"<b>Uus album</b> Rebirth · 2026 →",
+ hero_pre:"Muusik · Produtsent · Muusikateadlane",
+ slogan:"Kariibi muusika <span>Venezueelast Läänemereni.</span>",
+ btn_listen:"Kuula muusikat", btn_watch:"Vaata videoid", follow:"Jälgi",
+ k_agenda:"Kontserdikava", t_shows:"Tulevased kontserdid", shows_intro:"Oktoobris Eestis, novembris Hispaanias.",
+ k_stage:"Laval", t_gallery:"Galerii", live_t:"Kontsertidelt", live_s:"Vajuta „play“, et vaadata koos heliga",
+ k_listen:"Kuula", t_music:"Muusika", music_intro:"Vajuta „play“ otse siin. Ska, reggae ja Kariibi rütmid.",
+ featured:"Esiletõstetud", more_from:"Veel Kevin Alvalt", follow_sp:"Jälgi Spotifys",
+ disco:"Diskograafia", disco_hint:"Puuduta kaant, et kuulata Spotifys", album:"Album", listen_sp:"Kuula Spotifys →", listen:"Kuula",
+ tracklist:"Lood ja tegijad",
+ cr_lm_kp:"Sõnad: Kevin, Pepito · Muusika: Kevin", cr_lm_k:"Sõnad ja muusika: Kevin",
+ c_rec:"Salvestus", c_rec_d:"August 2021 – veebruar 2025", c_prod:"Kunstiline ja muusikaline produktsioon",
+ c_sax:"Saksofonid (bariton ja tenor) ning vokaal", c_drums:"Trummid", c_mix:"Miksimine ja masterdamine", c_art:"Kujundus", c_photo:"Fotod",
+ k_watch:"Vaata", t_videos:"Videod", videos_intro:"Videod mängivad otse sellel lehel.",
+ vid_n:"Video {n}/{t}", vid_by:"Avaldaja YouTube'is: {c}",
+ k_bio:"Elulugu", years:"Aastat<br>muusikas",
+ bio1:"Kevin Alva on Venezueela muusik, produtsent ja muusikateadlane, kellel on üle kahekümne aasta loomingulist kogemust. Alates 2001. aastast on ta tegutsenud ska, reggae ja Kariibi muusika vallas: ta on olnud neljal albumil kunstiline ja muusikaline juht ning teinud kaastööd enam kui viieteistkümnes produktsioonis ja muusikaprojektis.",
+ bio2:"Ta on viinud Venezueela muusikat ja Kariibi rütme enam kui viieteistkümnesse riiki, tegutsedes esineja, produtsendi ja õpetajana – kontsertidel, salvestustel ning Jamaica rütmidele pühendatud töötubades. Praegu elab ta Eestis.",
+ st_start:"Muusikatee algus", st_albums:"Albumit", st_prod:"Produktsiooni ja koostööd", st_countries:"Riiki",
+ trip_sr:"Kariibidelt Läänemereni", w_carib:"Kariibi", w_arctic:"Läänemeri", roots:"Juured", north:"Põhi",
+ venezuela:"Venezueela", estonia:"Eesti",
+ trip_txt:"Muusikaline teekond, mis ühendab Venezueela ja Kariibi juured Põhja-Euroopa maastikega.",
+ p_follow:"Jälgi", p_listen:"Kuula", p_sub:"Telli", p_support:"Toeta",
+ t_book:"Broneeri Kevin Alva", book_lema:"Soovid tuua Kariibi helid oma järgmisele üritusele?",
+ sv_concerts:"Kontserdid", sv_fest:"Festivalid", sv_private:"Eraüritused", sv_work:"Töötoad", sv_collab:"Koostööd",
+ book_btn:"Saada päring →",
+ f_name:"Nimi", f_email:"E-post", f_phone:"Telefon", f_type:"Ürituse tüüp", f_city:"Linn / riik", f_date:"Kuupäev", f_msg:"Sõnum", f_send:"Saada päring",
+ o_concert:"Kontsert", o_fest:"Festival", o_private:"Eraüritus", o_work:"Töötuba", o_collab:"Koostöö", o_other:"Muu",
+ f_note:"Vorm hakkab peagi tööle. Seniks kirjuta Kevinile Instagramis.",
+ foot_slogan:"Kariibi muusika<br>Venezueelast<br><span>Läänemereni.</span>",
+ foot_nav:"Menüü", foot_support:"Toeta", back_top:"Tagasi üles ↑",
+ tickets:"Piletid →", tickets_soon:"Piletid peagi", no_dates:"Uued kuupäevad peagi",
+ months:["JAAN","VEEBR","MÄRTS","APR","MAI","JUUNI","JUULI","AUG","SEPT","OKT","NOV","DETS"], days:["P","E","T","K","N","R","L"],
+ spain:"Hispaania", estonia:"Eesti", concert:"Kontsert"
+}};
+
 /* =====================================================================
    CONFIGURACIÓN · Todo lo editable está aquí.
    Lo que va entre [corchetes] es un PLACEHOLDER para reemplazar.
@@ -614,25 +842,44 @@ const CONFIG = {
     { nombre:"Movement", anio:"2021", tipo:"Álbum", portada:"img/album-movement.jpg", enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb" },
   ],
 
+  // Shows. pais: "spain" | "estonia" (se traduce solo). acceso: "" (entradas pronto) | "puerta" | "gratis" | "privado"
+  // entradas: enlace de venta (si lo hay, aparece el botón). detalle/evento pueden ser texto o {en,es,et}.
   shows: [
-    { fecha:"2026-11-19", ciudad:"Madrid",    pais:"España", evento:"Barracuda Rock Bar", detalle:"Concierto", mapa:"", entradas:"" },
-    { fecha:"2026-11-21", ciudad:"Barcelona", pais:"España", evento:"Soda Acústic", detalle:"Carrer de les Guilleries, 6 · Gràcia",
-      mapa:"https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a2bd05cba159:0x428f87f8d3b71ead", entradas:"" },
+    { fecha:"2026-10-17", hora:"19:00", ciudad:"Jägala", pais:"estonia", evento:"Jägala Joa Kohvik",
+      detalle:{ en:"Solo concert & talk “Muusika ühendab”", es:"Concierto solista y charla «Muusika ühendab»", et:"Soolokontsert ja vestlus „Muusika ühendab“" }, mapa:"", acceso:"", entradas:"" },
+    { fecha:"2026-10-23", hora:"", ciudad:"Tallinn", pais:"estonia", evento:"Uus Laine",
+      detalle:{ en:"Salsa & Bogaloo Night Vol. 1 · with Rhythm Doctor", es:"Salsa & Bogaloo Night Vol. 1 · con Rhythm Doctor", et:"Salsa & Bogaloo Night Vol. 1 · koos Rhythm Doctoriga" }, mapa:"", acceso:"gratis", entradas:"" },
+    { fecha:"2026-10-25", hora:"", ciudad:"", pais:"", evento:{ en:"Private concert", es:"Concierto privado", et:"Erakontsert" },
+      detalle:"", mapa:"", acceso:"privado", entradas:"" },
+    { fecha:"2026-11-19", hora:"", ciudad:"Madrid", pais:"spain", evento:"Barracuda Rock Bar", detalle:"Calle de Brescia, 19 · Barrio de Salamanca",
+      mapa:"https://www.google.com/maps/search/?api=1&query=Barracuda+Rock+Bar,+Calle+de+Brescia+19,+28028+Madrid", acceso:"", entradas:"" },
+    { fecha:"2026-11-21", hora:"", ciudad:"Barcelona", pais:"spain", evento:"Soda Acústic", detalle:"Carrer de les Guilleries, 6 · Gràcia",
+      mapa:"https://www.google.com/maps/place//data=!4m2!3m1!1s0x12a4a2bd05cba159:0x428f87f8d3b71ead", acceso:"", entradas:"" },
   ],
 
-  // Videos de YouTube (se reproducen DENTRO de la web).
-  // id = lo que va después de "watch?v=" en el enlace de YouTube.
+  // Videos de YouTube (se reproducen DENTRO de la web, en este orden).
+  // id = lo que va después de "watch?v=". El título se carga solo desde YouTube;
+  // si quieres otro, escríbelo en "titulo". "descripcion" es opcional.
   videos: [
-    { id:"gSkqCVvILes", titulo:"Kevin Alva · [Título del video]", categoria:"Music videos", principal:true },
-    { id:"", titulo:"[Título del video]", categoria:"Live" },
-    { id:"", titulo:"[Título del video]", categoria:"Sessions" },
-    { id:"", titulo:"[Título del video]", categoria:"Workshops" },
-    { id:"", titulo:"[Título del video]", categoria:"Interviews" },
+    { id:"yncK7BKnxv8", titulo:"", descripcion:"" },
+    { id:"gSkqCVvILes", titulo:"", descripcion:"" },
+    { id:"0k4y5KOlvYs", titulo:"", descripcion:"" },
+    { id:"jwf1HNnNfLY", titulo:"", descripcion:"" },
   ],
+
+  // Videos en directo de la galería (archivos propios, con sonido al darle play)
+  directos: [
+    { archivo:"video/directo-1.mp4", poster:"img/directo-1.jpg", titulo:"Kevin Alva live" },
+    { archivo:"video/directo-5.mp4", poster:"img/directo-5.jpg", titulo:"Kevin Alva live" },
+    { archivo:"video/directo-6.mp4", poster:"img/directo-6.jpg", titulo:"Kevin Alva live" },
+  ],
+
 
 };
 
 /* ===================================================================== */
+let LANG="en";
+const t=(k,v={})=>{let x=(I18N[LANG]&&I18N[LANG][k])??I18N.en[k]??k;if(typeof x==="string")for(const n in v)x=x.replace("{"+n+"}",v[n]);return x};
 const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
 const get=p=>p.split(".").reduce((o,k)=>o?.[k],CONFIG);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -647,74 +894,111 @@ $$("[data-redes]").forEach(c=>c.innerHTML=iconosRedes);
 $("[data-redes-hero]").innerHTML=iconosRedes;
 
 // Shows
-const MES=["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"], DIA=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
 const hoy=new Date();hoy.setHours(0,0,0,0);
 const shows=CONFIG.shows.map(s=>({...s,d:new Date(s.fecha+"T12:00:00")})).filter(s=>s.d>=hoy).sort((a,b)=>a.d-b.d);
-$("[data-agenda]").innerHTML=shows.length?shows.map(s=>`
-  <li class="fila" data-rev>
-    <div class="fila__fecha">${String(s.d.getDate()).padStart(2,"0")} ${MES[s.d.getMonth()]}<small>${DIA[s.d.getDay()]} · ${s.d.getFullYear()}</small></div>
-    <div class="fila__ciudad">${esc(s.ciudad)}<small>${esc(s.pais)}</small></div>
-    <div class="fila__evento">${esc(s.evento)}<small>${s.mapa?`<a href="${s.mapa}" target="_blank" rel="noopener">${esc(s.detalle)}</a>`:esc(s.detalle)}</small></div>
-    ${s.entradas?`<a class="btn btn--oro" href="${s.entradas}" target="_blank" rel="noopener">Tickets →</a>`:`<span class="btn btn--borde" aria-disabled="true">Tickets pronto</span>`}
-  </li>`).join(""):`<li class="fila"><div class="fila__ciudad">Nuevas fechas muy pronto</div></li>`;
+const tx=x=>x&&typeof x==="object"?(x[LANG]||x.en||""):(x||"");
+const ACC={puerta:"acc_door",gratis:"acc_free",privado:"acc_private"};
+const fechaCorta=d=>new Intl.DateTimeFormat(LANG,{weekday:"short",day:"numeric",month:"short"}).format(d);
+function pintarShows(){
+  const MES=t("months"),DIA=t("days");
+  $("[data-agenda]").innerHTML=shows.length?shows.map(s=>{
+    const lugar=tx(s.detalle);
+    const accion=s.entradas?`<a class="btn btn--oro" href="${s.entradas}" target="_blank" rel="noopener">${t("tickets")}</a>`
+      :`<span class="btn btn--borde${s.acceso?" btn--info":""}" aria-disabled="true">${t(ACC[s.acceso]||"tickets_soon")}</span>`;
+    return `<li class="fila visto" data-rev>
+    <div class="fila__fecha">${String(s.d.getDate()).padStart(2,"0")} ${MES[s.d.getMonth()]}<small>${DIA[s.d.getDay()]} · ${s.d.getFullYear()}${s.hora?" · "+s.hora:""}</small></div>
+    <div class="fila__ciudad">${esc(s.ciudad||t("private_city"))}<small>${s.pais?esc(t(s.pais)):"&nbsp;"}</small></div>
+    <div class="fila__evento">${esc(tx(s.evento))}${lugar?`<small>${s.mapa?`<a href="${s.mapa}" target="_blank" rel="noopener">${esc(lugar)}</a>`:esc(lugar)}</small>`:""}</div>
+    ${accion}
+  </li>`}).join(""):`<li class="fila"><div class="fila__ciudad">${t("no_dates")}</div></li>`;
+  // Barra superior: próximo show
+  const p=shows[0], bar=$(".barra__aviso");
+  if(bar)bar.innerHTML=p?`<b>${t("next_show")}</b> · ${esc(fechaCorta(p.d))} · ${esc(tx(p.evento))}${p.ciudad?" · "+esc(p.ciudad):""}`:"";
+}
+
 
 // Spotify
 const spIframe=(src,t)=>`<iframe src="${src}" title="${t}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
-if(CONFIG.spotifyPrincipal)$("[data-sp-principal]").innerHTML=spIframe(CONFIG.spotifyPrincipal,"Tema destacado de Kevin Alva en Spotify");
-if(CONFIG.spotifyArtista)$("[data-sp-artista]").innerHTML=spIframe(CONFIG.spotifyArtista,"Kevin Alva en Spotify");
+if(CONFIG.spotifyPrincipal)$("[data-sp-principal]").innerHTML=spIframe(CONFIG.spotifyPrincipal,t("sp_feat_title"));
+if(CONFIG.spotifyArtista)$("[data-sp-artista]").innerHTML=spIframe(CONFIG.spotifyArtista,t("sp_artist_title"));
 
 // Discografía
-$("[data-disco]").innerHTML=CONFIG.discografia.map(a=>`
+function pintarDisco(){
+  $("[data-disco]").innerHTML=CONFIG.discografia.map(a=>`
   <a class="album" ${a.enlace?`href="${a.enlace}" target="_blank" rel="noopener"`:""}>
-    <div class="album__portada"><img src="${a.portada}" alt="Portada de ${esc(a.nombre)}" loading="lazy"><div class="album__overlay"><span>Escuchar</span></div></div>
-    <div class="album__meta"><span>${esc(a.tipo)}</span><span>${esc(a.anio)}</span></div>
+    <div class="album__portada"><img src="${a.portada}" alt="${esc(t("alt_album",{a:a.nombre}))}" loading="lazy"><div class="album__overlay"><span>${t("listen")}</span></div></div>
+    <div class="album__meta"><span>${t("album")}</span><span>${esc(a.anio)}</span></div>
     <h4>${esc(a.nombre)}</h4>
-    <span class="flecha">Escuchar en Spotify →</span>
+    <span class="flecha">${t("listen_sp")}</span>
   </a>`).join("");
+}
 
 // Videos (YouTube dentro de la página)
-const rep=$("#reproductor"),vt=$("[data-vid-titulo]"),vc=$("[data-vid-cat]");
-function reproducir(v,auto){
-  rep.innerHTML=`<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&playsinline=1${auto?"&autoplay=1":""}" title="${esc(v.titulo)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
-  vt.textContent=v.titulo;vc.textContent=v.categoria;
+const rep=$("#reproductor"),vt=$("[data-vid-titulo]"),vd=$("[data-vid-desc]"),vn=$("[data-vid-num]");
+const vids=CONFIG.videos.filter(v=>v.id);
+const tituloDe=v=>tx(v.titulo)||v._titulo||"Kevin Alva";
+let actual=0;
+function reproducir(i,auto){
+  actual=i;const v=vids[i];
+  rep.innerHTML=`<iframe src="https://www.youtube.com/embed/${v.id}?rel=0&playsinline=1&hl=${LANG}&cc_lang_pref=${LANG}${auto?"&autoplay=1":""}" title="${esc(tituloDe(v))}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  pintarInfo();
+  $$(".vcard[data-i]").forEach(c=>c.classList.toggle("activo",+c.dataset.i===i));
+  pausarDirectos();
 }
-const vids=CONFIG.videos,principal=vids.find(v=>v.principal&&v.id)||vids.find(v=>v.id);
-if(principal)reproducir(principal,false);
-const CATS=["Todos","Live","Music videos","Sessions","Workshops","Interviews"];
-$("[data-filtros]").innerHTML=CATS.map((c,i)=>`<button type="button" aria-pressed="${i===0}" data-cat="${c}">${c}</button>`).join("");
-$("[data-lista-videos]").innerHTML=vids.map((v,i)=>v.id?`
-  <button class="vcard" type="button" data-i="${i}" data-cat="${v.categoria}">
+function pintarInfo(){
+  const v=vids[actual];if(!v)return;
+  vn.innerHTML=`<span class="vcard__cat">${t("vid_n",{n:actual+1,t:vids.length})}</span>`;
+  vt.textContent=tituloDe(v);
+  vd.textContent=tx(v.descripcion)||v._canal&&t("vid_by",{c:v._canal})||"";
+}
+$("[data-lista-videos]").innerHTML=vids.map((v,i)=>`
+  <button class="vcard" type="button" data-i="${i}">
     <span class="vcard__thumb"><img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy"><span class="vcard__play">${svg("i-play")}</span></span>
-    <span class="vcard__cat">${esc(v.categoria)}</span><span class="vcard__tit">${esc(v.titulo)}</span>
-  </button>`:`
-  <div class="vcard vcard--vacio" data-cat="${v.categoria}">
-    <span class="vcard__thumb"><small>Próximamente</small></span>
-    <span class="vcard__cat">${esc(v.categoria)}</span><span class="vcard__tit">${esc(v.titulo)}</span>
-  </div>`).join("");
-$$(".vcard[data-i]").forEach(b=>b.addEventListener("click",()=>{reproducir(vids[b.dataset.i],true);rep.scrollIntoView({behavior:"smooth",block:"center"})}));
-$$("[data-filtros] button").forEach(b=>b.addEventListener("click",()=>{
-  $$("[data-filtros] button").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  $$(".lista-videos .vcard").forEach(c=>c.hidden=!(b.dataset.cat==="Todos"||c.dataset.cat===b.dataset.cat));
-}));
+    <span class="vcard__tit"><span class="vcard__num">${String(i+1).padStart(2,"0")}</span><span data-tit="${i}">${esc(tituloDe(v))}</span></span>
+  </button>`).join("");
+$$(".vcard[data-i]").forEach(b=>b.addEventListener("click",()=>{reproducir(+b.dataset.i,true);rep.scrollIntoView({behavior:"smooth",block:"center"})}));
+if(vids.length)reproducir(0,false);
+// Títulos reales desde YouTube (sin salir de la web)
+vids.forEach((v,i)=>{
+  if(v.titulo)return;
+  fetch("https://noembed.com/embed?url="+encodeURIComponent("https://www.youtube.com/watch?v="+v.id))
+    .then(r=>r.json()).then(d=>{if(!d||!d.title)return;v._titulo=d.title;v._canal=d.author_name;
+      const t=$(`[data-tit="${i}"]`);if(t)t.textContent=d.title;if(i===actual)pintarInfo()}).catch(()=>{});
+});
 
+// Videos en directo (galería): con sonido al darle play, uno a la vez
+const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
+$("[data-directos]").innerHTML=(CONFIG.directos||[]).map((d,i)=>`
+  <figure class="directo" data-rev>
+    <video preload="metadata" playsinline poster="${d.poster}" aria-label="${esc(t("a_live_video",{n:i+1}))}"><source src="${d.archivo}" type="video/mp4"></video>
+    <button class="directo__play" type="button" aria-label="${esc(t("a_play_live",{n:i+1}))}"><span>${svg("i-play")}</span></button>
+    <span class="directo__dur"></span>
+  </figure>`).join("");
+function detenerYoutube(){const f=$("iframe",rep);if(f&&f.src.includes("autoplay=1"))f.src=f.src.replace("&autoplay=1","")}
+function pausarDirectos(excepto){$$(".directo video").forEach(v=>{if(v!==excepto&&!v.paused)v.pause()})}
+$$(".directo").forEach(f=>{
+  const v=$("video",f),b=$(".directo__play",f),dur=$(".directo__dur",f);
+  v.addEventListener("loadedmetadata",()=>{dur.textContent=fmt(v.duration)});
+  b.addEventListener("click",()=>{pausarDirectos(v);f.classList.add("activo");v.controls=true;v.muted=false;v.play().catch(()=>{})});
+  v.addEventListener("play",()=>{pausarDirectos(v);detenerYoutube()});
+});
 
 // Booking
 const abrir=$("[data-abrir-form]"),wrap=$("#form-booking");
 abrir.addEventListener("click",()=>{const a=wrap.classList.toggle("abierto");abrir.setAttribute("aria-expanded",a);if(a)setTimeout(()=>$("input",wrap).focus({preventScroll:true}),400)});
 const form=$("[data-form]"),nota=$("[data-form-nota]");
 if(CONFIG.email){form.action=`https://formsubmit.co/${CONFIG.email}`;form.method="POST";const n=document.createElement("input");n.type="hidden";n.name="_next";n.value=location.href.split("#")[0]+"#booking";form.appendChild(n)}
-else form.addEventListener("submit",e=>{e.preventDefault();nota.textContent="El formulario estará activo muy pronto. Mientras tanto, escribe a Kevin por Instagram."});
+else form.addEventListener("submit",e=>{e.preventDefault();nota.textContent=t("f_note")});
 
 // Menú móvil
 const hamb=$(".hamb"),menu=$("#menu");
-hamb.addEventListener("click",()=>{const a=menu.classList.toggle("abierto");hamb.setAttribute("aria-expanded",a);hamb.setAttribute("aria-label",a?"Cerrar menú":"Abrir menú")});
+hamb.addEventListener("click",()=>{const a=menu.classList.toggle("abierto");hamb.setAttribute("aria-expanded",a);hamb.setAttribute("aria-label",a?t("menu_close"):t("menu_open"))});
 $$("#menu a").forEach(a=>a.addEventListener("click",()=>{menu.classList.remove("abierto");hamb.setAttribute("aria-expanded","false")}));
 
 // Animaciones al entrar en pantalla
 const reducir=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visto");io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -5% 0px"});
 $$("[data-rev]").forEach(el=>io.observe(el));
-const hv=$(".hero__video video");if(reducir){hv.removeAttribute("autoplay");hv.pause()}
 
 // Lightbox
 const fotos=$$(".mosaico button"),lb=$(".lightbox"),lbImg=$("img",lb),lbCont=$(".lightbox__cont");let act=0;
@@ -723,6 +1007,27 @@ fotos.forEach((b,i)=>b.addEventListener("click",()=>{ver(i);lb.showModal()}));
 $(".lb-cerrar").onclick=()=>lb.close();$(".lb-prev").onclick=()=>ver(act-1);$(".lb-next").onclick=()=>ver(act+1);
 lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
 addEventListener("keydown",e=>{if(!lb.open)return;if(e.key==="ArrowRight")ver(act+1);if(e.key==="ArrowLeft")ver(act-1)});
+
+// ---------- Idioma (EN por defecto · ES · ET) ----------
+function aplicarIdioma(l){
+  LANG=I18N[l]?l:"en";
+  document.documentElement.lang=LANG;
+  document.title=t("meta_title");
+  $$("[data-i18n]").forEach(e=>{e.innerHTML=t(e.dataset.i18n)});
+  $$("[data-i18n-attr]").forEach(e=>e.dataset.i18nAttr.split(";").forEach(p=>{const [a,k,n]=p.split(":");e.setAttribute(a,t(k,{n}))}));
+  const spP=$("[data-sp-principal] iframe"),spA=$("[data-sp-artista] iframe");if(spP)spP.title=t("sp_feat_title");if(spA)spA.title=t("sp_artist_title");
+  $$(".directo").forEach((f,i)=>{$("video",f).setAttribute("aria-label",t("a_live_video",{n:i+1}));$(".directo__play",f).setAttribute("aria-label",t("a_play_live",{n:i+1}))});
+  $$("[data-tit]").forEach(e=>{const v=vids[+e.dataset.tit];if(v)e.textContent=tituloDe(v)});
+  const yf=$("iframe",rep);if(yf&&!yf.src.includes("hl="+LANG))reproducir(actual,false);
+  $$("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
+  hamb.setAttribute("aria-label",menu.classList.contains("abierto")?t("menu_close"):t("menu_open"));
+  if(nota.textContent)nota.textContent=t("f_note");
+  pintarShows();pintarDisco();pintarInfo();
+  try{localStorage.setItem("ka_lang",LANG)}catch(e){}
+}
+$$("[data-lang]").forEach(b=>b.addEventListener("click",()=>aplicarIdioma(b.dataset.lang)));
+let guardado="en";try{guardado=localStorage.getItem("ka_lang")||"en"}catch(e){}
+aplicarIdioma(guardado);
 </script>
 </body>
 </html>
