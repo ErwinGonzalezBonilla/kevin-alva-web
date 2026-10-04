@@ -301,10 +301,14 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .mosaico .m3{grid-column:1/5;grid-row:span 3}
 .mosaico .m4{grid-column:5/9;grid-row:span 3}
 .mosaico .m5{grid-column:9/13;grid-row:span 3}
+.mosaico .m6{grid-column:1/5;grid-row:span 3}
+.mosaico .m7{grid-column:5/9;grid-row:span 3}
+.mosaico .m8{grid-column:9/13;grid-row:span 3}
 @media (max-width:760px){
   .mosaico{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}
   .mosaico .m1{grid-column:1/-1;grid-row:span 2}
-  .mosaico .m2,.mosaico .m3,.mosaico .m4,.mosaico .m5{grid-column:span 1;grid-row:span 2}
+  .mosaico .m2,.mosaico .m3,.mosaico .m4,.mosaico .m5,.mosaico .m6,.mosaico .m7{grid-column:span 1;grid-row:span 2}
+  .mosaico .m8{grid-column:1/-1;grid-row:span 2}
 }
 /* Videos en directo (con sonido al darle play) */
 .directos-tit{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:clamp(3.5rem,6vw,5rem) 0 1.5rem;padding-top:2rem;border-top:1px solid var(--linea)}
@@ -493,6 +497,9 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
       <button class="m3" aria-label="Photo 3" data-i18n-attr="aria-label:a_photo:3"><img src="img/g-escenario.jpg" alt="On stage with his arms wide open" data-i18n-attr="alt:alt_g3" loading="lazy" style="object-position:center 25%"></button>
       <button class="m4" aria-label="Photo 4" data-i18n-attr="aria-label:a_photo:4"><img src="img/g-rosa.jpg" alt="Playing saxophone under pink lights" data-i18n-attr="alt:alt_g4" loading="lazy" style="object-position:35% 20%"></button>
       <button class="m5" aria-label="Photo 5" data-i18n-attr="aria-label:a_photo:5"><img src="img/g-espejo.jpg" alt="Singing in a white suit next to his reflection" data-i18n-attr="alt:alt_g5" loading="lazy" style="object-position:76% 25%"></button>
+      <button class="m6" aria-label="Photo 6" data-i18n-attr="aria-label:a_photo:6"><img src="img/g-coco.jpg" alt="Kevin Alva drinking from a fresh coconut in front of a graffiti wall in Caracas" data-i18n-attr="alt:alt_g6" loading="lazy" style="object-position:62% 35%"></button>
+      <button class="m7" aria-label="Photo 7" data-i18n-attr="aria-label:a_photo:7"><img src="img/g-baritono.jpg" alt="Kevin Alva with a baritone saxophone in front of an orange sculpture" data-i18n-attr="alt:alt_g7" loading="lazy" style="object-position:center 40%"></button>
+      <button class="m8" aria-label="Photo 8" data-i18n-attr="aria-label:a_photo:8"><img src="img/g-saxos.jpg" alt="Kevin Alva smiling with a baritone and a tenor saxophone, one in each hand" data-i18n-attr="alt:alt_g8" loading="lazy" style="object-position:center 45%"></button>
     </div>
     <div class="directos-tit" data-rev><h3 data-i18n="live_t">Live</h3><span data-i18n="live_s">Press play to watch with sound</span></div>
     <div class="directos" data-directos></div>
@@ -678,6 +685,7 @@ en:{
  alt_hero:"Kevin Alva lying on a white floor with his long dreadlocks spread out, next to the word Rebirth",
  alt_g1:"Kevin Alva laughing on stage with his band", alt_g2:"Kevin Alva with his saxophone in front of a blue wall", alt_g3:"On stage with his arms wide open",
  alt_g4:"Playing saxophone under pink lights", alt_g5:"Singing in a white suit next to his reflection",
+ alt_g6:"Kevin Alva drinking from a fresh coconut in front of a graffiti wall in Caracas", alt_g7:"Kevin Alva with a baritone saxophone in front of an orange sculpture", alt_g8:"Kevin Alva smiling with a baritone and a tenor saxophone, one in each hand",
  alt_bio:"Kevin Alva smiling with his saxophone, standing in the sea", alt_roots:"Kevin Alva playing saxophone among a dancing crowd in an open-air square",
  alt_north:"Kevin Alva smiling with his tenor saxophone in a snowy forest",
  next_show:"Next show", acc_door:"Tickets at the door", acc_free:"Free entry", acc_private:"Private event", private_city:"Private", estonia_c:"Estonia",
@@ -727,6 +735,7 @@ es:{
  alt_hero:"Kevin Alva tendido en un suelo blanco con sus largas rastas extendidas, junto a la palabra Rebirth",
  alt_g1:"Kevin Alva riendo en el escenario con su banda", alt_g2:"Kevin Alva con su saxofón frente a un muro azul", alt_g3:"En el escenario con los brazos abiertos",
  alt_g4:"Tocando el saxofón bajo luces rosadas", alt_g5:"Cantando con traje blanco junto a su reflejo",
+ alt_g6:"Kevin Alva bebiendo de un coco frente a un muro con grafitis en Caracas", alt_g7:"Kevin Alva con un saxofón barítono frente a una escultura naranja", alt_g8:"Kevin Alva sonriendo con un saxofón barítono y uno tenor, uno en cada mano",
  alt_bio:"Kevin Alva sonriendo con su saxofón, de pie en el mar", alt_roots:"Kevin Alva tocando el saxofón entre el público que baila en una plaza al aire libre",
  alt_north:"Kevin Alva sonriendo con su saxo tenor en un bosque nevado",
  next_show:"Próximo show", acc_door:"Entrada en puerta", acc_free:"Entrada libre", acc_private:"Evento privado", private_city:"Privado", estonia_c:"Estonia",
@@ -776,6 +785,7 @@ et:{
  alt_hero:"Kevin Alva lamamas valgel põrandal, pikad patsid laiali, sõna Rebirth kõrval",
  alt_g1:"Kevin Alva naermas laval koos oma bändiga", alt_g2:"Kevin Alva saksofoniga sinise seina ees", alt_g3:"Laval, käed laiali",
  alt_g4:"Saksofonimäng roosades tuledes", alt_g5:"Laulmas valges ülikonnas oma peegelpildi kõrval",
+ alt_g6:"Kevin Alva joomas värsket kookospähklit grafitiseina ees Caracases", alt_g7:"Kevin Alva baritonsaksofoniga oranži skulptuuri ees", alt_g8:"Naeratav Kevin Alva, ühes käes baritonsaksofon ja teises tenorsaksofon",
  alt_bio:"Naeratav Kevin Alva saksofoniga meres", alt_roots:"Kevin Alva mängimas saksofoni tantsiva publiku keskel vabaõhuväljakul",
  alt_north:"Naeratav Kevin Alva tenorsaksofoniga lumises metsas",
  next_show:"Järgmine kontsert", acc_door:"Piletid uksel", acc_free:"Tasuta sissepääs", acc_private:"Eraüritus", private_city:"Privaatne", estonia_c:"Eesti",
