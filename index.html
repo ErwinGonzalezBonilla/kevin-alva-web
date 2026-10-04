@@ -115,7 +115,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 /* Imagen Rebirth: grande y centrada de fondo; el texto va encima a la izquierda.
    Al bajar, la imagen se desvanece (JS: "Portada: desvanecer al bajar") */
 .hero__fondo{position:absolute;inset:0;z-index:-1;will-change:opacity,transform}
-.hero__fondo img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+.hero__fondo img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transform:scale(1.32);transform-origin:50% 20%}
 .hero__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(222,223,226,.94) 0%,rgba(222,223,226,.8) 26%,rgba(222,223,226,.35) 44%,rgba(222,223,226,0) 58%);pointer-events:none}
 .hero__grid{display:block}
 .hero__txt{max-width:min(520px,44%)}
@@ -137,7 +137,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .hero__redes svg{width:19px;height:19px;fill:currentColor}
 @media (max-width:860px){
   .hero{min-height:0;flex-direction:column;align-items:stretch;padding:0 0 3rem}
-  .hero__fondo img{object-position:center top}
+  .hero__fondo img{object-position:center top;transform:none}
   .hero__fondo{inset:0 0 auto 0}
   .hero__fondo img{height:auto;aspect-ratio:1/1}
   .hero__fondo::after{background:linear-gradient(180deg,rgba(220,221,224,0) 50%,#DCDDE0 96%)}
