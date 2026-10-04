@@ -111,11 +111,12 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 }
 
 /* ---------- Hero: foto de fondo + video en bucle ---------- */
-.hero{position:relative;isolation:isolate;background:#DCDDE0;color:var(--black);overflow:hidden;min-height:min(calc(100svh - var(--barra) - var(--nav)),860px);display:flex;align-items:center;padding:clamp(3rem,6vw,5rem) 0}
-/* Imagen Rebirth: fondo completo de la portada (Kevin a la derecha, texto encima a la izquierda) */
-.hero__fondo{position:absolute;inset:0;z-index:-1}
-.hero__fondo img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block}
-.hero__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(226,227,230,.7) 0%,rgba(226,227,230,.35) 38%,rgba(226,227,230,0) 60%);pointer-events:none}
+.hero{position:relative;isolation:isolate;background:#DCDDE0;color:var(--black);overflow:hidden;min-height:max(620px,calc(100svh - var(--barra) - var(--nav)));display:flex;align-items:center;padding:clamp(3rem,6vw,5rem) 0}
+/* Imagen Rebirth: grande y centrada de fondo; el texto va encima a la izquierda.
+   Al bajar, la imagen se desvanece (JS: "Portada: desvanecer al bajar") */
+.hero__fondo{position:absolute;inset:0;z-index:-1;will-change:opacity,transform}
+.hero__fondo img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+.hero__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(222,223,226,.94) 0%,rgba(222,223,226,.8) 26%,rgba(222,223,226,.35) 44%,rgba(222,223,226,0) 58%);pointer-events:none}
 .hero__grid{display:block}
 .hero__txt{max-width:min(520px,44%)}
 .hero__nuevo{display:inline-flex;align-items:center;gap:.6rem;background:var(--black);color:var(--white);text-decoration:none;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:.6rem 1.1rem;border-radius:999px;margin-bottom:1.5rem}
@@ -136,6 +137,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .hero__redes svg{width:19px;height:19px;fill:currentColor}
 @media (max-width:860px){
   .hero{min-height:0;flex-direction:column;align-items:stretch;padding:0 0 3rem}
+  .hero__fondo img{object-position:center top}
   .hero__fondo{inset:0 0 auto 0}
   .hero__fondo img{height:auto;aspect-ratio:1/1}
   .hero__fondo::after{background:linear-gradient(180deg,rgba(220,221,224,0) 50%,#DCDDE0 96%)}
@@ -183,8 +185,18 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .disco-tit{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:clamp(4rem,7vw,5.5rem) 0 1.75rem;padding-top:2rem;border-top:1px solid var(--linea-clara)}
 .disco-tit h3{font-family:var(--titulo);font-weight:400;font-size:clamp(2rem,3.5vw,2.8rem);text-transform:uppercase;margin:0;line-height:1}
 .disco-tit span{font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(5,5,5,.6)}
-.disco{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,4vw,3.5rem);max-width:1040px;margin-inline:auto}
-.album{text-decoration:none;display:block}
+/* Carrusel: se ven 2 discos; la flecha muestra los más antiguos */
+.disco-wrap{position:relative;max-width:1040px;margin-inline:auto}
+.disco{--dg:clamp(1.5rem,4vw,3.5rem);display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - var(--dg))/2);gap:var(--dg);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:0 0 3rem;margin-bottom:-3rem}
+.disco::-webkit-scrollbar{display:none}
+.album{text-decoration:none;display:block;scroll-snap-align:start}
+.disco-btn{position:absolute;top:var(--mid,38%);transform:translateY(-50%);z-index:2;width:58px;height:58px;border-radius:50%;border:0;background:var(--black);color:var(--white);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(5,5,5,.3);transition:background .25s,color .25s,transform .25s}
+.disco-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.disco-btn:hover{background:var(--gold);color:var(--black)}
+.disco-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.disco-btn[hidden]{display:none}
+.disco-prev{left:-29px}.disco-next{right:-29px}
+@media (max-width:1140px){.disco-prev{left:-10px}.disco-next{right:-10px}}
 .album__portada{position:relative;aspect-ratio:1;overflow:hidden;background:#ddd;margin-bottom:1rem;border-radius:6px}
 .album__portada img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
 .album__overlay{position:absolute;inset:0;background:rgba(5,5,5,.6);display:grid;place-items:center;opacity:0;transition:opacity .35s}
@@ -196,7 +208,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .album__portada{box-shadow:0 30px 60px rgba(5,5,5,.22)}
 .album .flecha{color:var(--black)}
 .album:hover .flecha{color:var(--gold-dark);gap:.85rem}
-@media (max-width:600px){.disco{grid-template-columns:1fr}}
+@media (max-width:600px){.disco{grid-auto-columns:100%}.disco-btn{width:48px;height:48px}.disco-prev{left:6px}.disco-next{right:6px}}
 
 .tracklist{max-width:1040px;margin:clamp(2.5rem,5vw,3.5rem) auto 0;border-top:1px solid var(--linea-clara);border-bottom:1px solid var(--linea-clara)}
 .tracklist summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:1rem;padding:1.4rem 0;font-family:var(--titulo);font-size:clamp(1.5rem,2.6vw,2rem);text-transform:uppercase;line-height:1}
@@ -270,8 +282,8 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .viaje{background:var(--black);overflow:hidden}
 .viaje__palabra{font-family:var(--titulo);font-weight:400;font-size:clamp(3.4rem,12.5vw,12rem);line-height:.85;text-transform:uppercase;margin:0}
 .viaje__artico{text-align:right;color:transparent;-webkit-text-stroke:1.5px var(--gold)}
-.viaje__medio{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;margin:clamp(1.5rem,4vw,3rem) 0}
-.viaje__foto{position:relative;overflow:hidden;aspect-ratio:4/5;margin:0;max-width:360px;border-radius:6px}
+.viaje__medio{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(1rem,3vw,3rem);align-items:center;margin:clamp(1.5rem,4vw,3rem) 0}
+.viaje__foto{position:relative;overflow:hidden;aspect-ratio:3/4;margin:0;width:100%;max-width:540px;border-radius:6px}
 .viaje__foto img{width:100%;height:100%;object-fit:cover}
 .viaje__foto figcaption{position:absolute;left:1rem;bottom:1rem;font-size:.68rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;background:rgba(5,5,5,.65);padding:.4rem .75rem;border-radius:999px}
 .viaje__foto--b{justify-self:end}
@@ -283,7 +295,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .ruta__linea::before{top:-6px}.ruta__linea::after{bottom:-6px;background:var(--gold)}
 .viaje__texto{max-width:40ch;margin:clamp(2rem,5vw,3.5rem) auto 0;text-align:center;font-size:clamp(1.1rem,1.6vw,1.3rem);color:#D8D8D8}
 @media (max-width:760px){
-  .viaje__medio{grid-template-columns:1fr 1fr}
+  .viaje__medio{grid-template-columns:1fr;gap:1.25rem}
   .ruta{grid-column:1/-1;grid-row:1;min-height:0;flex-direction:row;gap:1rem}
   .ruta__linea{flex:1;height:2px;width:auto;min-height:0;margin:0;background:linear-gradient(90deg,var(--gold),var(--gold-dark));transform-origin:left}
   .ruta__linea::before{top:50%;left:-6px;transform:translateY(-50%)}.ruta__linea::after{bottom:auto;top:50%;left:auto;right:-6px;transform:translateY(-50%)}
@@ -301,14 +313,12 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .mosaico .m3{grid-column:1/5;grid-row:span 3}
 .mosaico .m4{grid-column:5/9;grid-row:span 3}
 .mosaico .m5{grid-column:9/13;grid-row:span 3}
-.mosaico .m6{grid-column:1/5;grid-row:span 3}
-.mosaico .m7{grid-column:5/9;grid-row:span 3}
-.mosaico .m8{grid-column:9/13;grid-row:span 3}
+.mosaico .m6{grid-column:1/7;grid-row:span 4}
+.mosaico .m7{grid-column:7/13;grid-row:span 4}
 @media (max-width:760px){
   .mosaico{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}
   .mosaico .m1{grid-column:1/-1;grid-row:span 2}
   .mosaico .m2,.mosaico .m3,.mosaico .m4,.mosaico .m5,.mosaico .m6,.mosaico .m7{grid-column:span 1;grid-row:span 2}
-  .mosaico .m8{grid-column:1/-1;grid-row:span 2}
 }
 /* Videos en directo (con sonido al darle play) */
 .directos-tit{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:clamp(3.5rem,6vw,5rem) 0 1.5rem;padding-top:2rem;border-top:1px solid var(--linea)}
@@ -497,9 +507,8 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
       <button class="m3" aria-label="Photo 3" data-i18n-attr="aria-label:a_photo:3"><img src="img/g-escenario.jpg" alt="On stage with his arms wide open" data-i18n-attr="alt:alt_g3" loading="lazy" style="object-position:center 25%"></button>
       <button class="m4" aria-label="Photo 4" data-i18n-attr="aria-label:a_photo:4"><img src="img/g-rosa.jpg" alt="Playing saxophone under pink lights" data-i18n-attr="alt:alt_g4" loading="lazy" style="object-position:35% 20%"></button>
       <button class="m5" aria-label="Photo 5" data-i18n-attr="aria-label:a_photo:5"><img src="img/g-espejo.jpg" alt="Singing in a white suit next to his reflection" data-i18n-attr="alt:alt_g5" loading="lazy" style="object-position:76% 25%"></button>
-      <button class="m6" aria-label="Photo 6" data-i18n-attr="aria-label:a_photo:6"><img src="img/g-coco.jpg" alt="Kevin Alva drinking from a fresh coconut in front of a graffiti wall in Caracas" data-i18n-attr="alt:alt_g6" loading="lazy" style="object-position:62% 35%"></button>
-      <button class="m7" aria-label="Photo 7" data-i18n-attr="aria-label:a_photo:7"><img src="img/g-baritono.jpg" alt="Kevin Alva with a baritone saxophone in front of an orange sculpture" data-i18n-attr="alt:alt_g7" loading="lazy" style="object-position:center 40%"></button>
-      <button class="m8" aria-label="Photo 8" data-i18n-attr="aria-label:a_photo:8"><img src="img/g-saxos.jpg" alt="Kevin Alva smiling with a baritone and a tenor saxophone, one in each hand" data-i18n-attr="alt:alt_g8" loading="lazy" style="object-position:center 45%"></button>
+      <button class="m6" aria-label="Photo 6" data-i18n-attr="aria-label:a_photo:6"><img src="img/g-coco.jpg" alt="Kevin Alva drinking from a fresh coconut in front of a graffiti wall in Caracas" data-i18n-attr="alt:alt_g6" loading="lazy" style="object-position:60% 32%"></button>
+      <button class="m7" aria-label="Photo 7" data-i18n-attr="aria-label:a_photo:7"><img src="img/g-saxos.jpg" alt="Kevin Alva smiling with a baritone and a tenor saxophone, one in each hand" data-i18n-attr="alt:alt_g7" loading="lazy" style="object-position:center 42%"></button>
     </div>
     <div class="directos-tit" data-rev><h3 data-i18n="live_t">Live</h3><span data-i18n="live_s">Press play to watch with sound</span></div>
     <div class="directos" data-directos></div>
@@ -526,7 +535,11 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
     <div class="sp-seguir" data-rev><a class="btn btn--spotify" data-cfg-href="redes.spotify" target="_blank" rel="noopener"><svg><use href="#i-sp"/></svg><span data-i18n="follow_sp">Follow on Spotify</span></a></div>
 
     <div class="disco-tit" data-rev><h3 data-i18n="disco">Discography</h3><span data-i18n="disco_hint">Tap a cover to listen on Spotify</span></div>
-    <div class="disco" data-disco></div>
+    <div class="disco-wrap">
+      <button class="disco-btn disco-prev" type="button" aria-label="Previous album" data-i18n-attr="aria-label:a_prev_album" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="disco" data-disco></div>
+      <button class="disco-btn disco-next" type="button" aria-label="Next album" data-i18n-attr="aria-label:a_next_album" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
     <details class="tracklist" data-rev>
       <summary><span>Rebirth · 2026</span> <span class="tl-t" data-i18n="tracklist">Tracklist &amp; credits</span></summary>
       <div class="tracklist__grid">
@@ -680,12 +693,12 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 const I18N = {
 en:{
  k_booking:"Booking", lang_group:"Language", a_home:"Kevin Alva, home", a_main:"Main menu", a_social:"Social media", a_top:"Back to top",
- a_close:"Close", a_prev:"Previous photo", a_next:"Next photo", a_photo:"Photo {n}", a_play_live:"Play live video {n}", a_live_video:"Kevin Alva live ({n})",
+ a_close:"Close", a_prev:"Previous photo", a_next:"Next photo", a_prev_album:"Previous album", a_next_album:"Next album", a_photo:"Photo {n}", a_play_live:"Play live video {n}", a_live_video:"Kevin Alva live ({n})",
  sp_feat_title:"Featured Kevin Alva track on Spotify", sp_artist_title:"Kevin Alva on Spotify", alt_album:"{a} – album cover",
  alt_hero:"Kevin Alva lying on a white floor with his long dreadlocks spread out, next to the word Rebirth",
  alt_g1:"Kevin Alva laughing on stage with his band", alt_g2:"Kevin Alva with his saxophone in front of a blue wall", alt_g3:"On stage with his arms wide open",
  alt_g4:"Playing saxophone under pink lights", alt_g5:"Singing in a white suit next to his reflection",
- alt_g6:"Kevin Alva drinking from a fresh coconut in front of a graffiti wall in Caracas", alt_g7:"Kevin Alva with a baritone saxophone in front of an orange sculpture", alt_g8:"Kevin Alva smiling with a baritone and a tenor saxophone, one in each hand",
+ alt_g6:"Kevin Alva drinking from a fresh coconut in front of a graffiti wall in Caracas", alt_g7:"Kevin Alva smiling with a baritone and a tenor saxophone, one in each hand",
  alt_bio:"Kevin Alva smiling with his saxophone, standing in the sea", alt_roots:"Kevin Alva playing saxophone among a dancing crowd in an open-air square",
  alt_north:"Kevin Alva smiling with his tenor saxophone in a snowy forest",
  next_show:"Next show", acc_door:"Tickets at the door", acc_free:"Free entry", acc_private:"Private event", private_city:"Private", estonia_c:"Estonia",
@@ -730,12 +743,12 @@ en:{
 },
 es:{
  k_booking:"Contrataciones", lang_group:"Idioma", a_home:"Kevin Alva, inicio", a_main:"Menú principal", a_social:"Redes sociales", a_top:"Volver al inicio",
- a_close:"Cerrar", a_prev:"Foto anterior", a_next:"Foto siguiente", a_photo:"Foto {n}", a_play_live:"Reproducir video en directo {n}", a_live_video:"Kevin Alva en directo ({n})",
+ a_close:"Cerrar", a_prev:"Foto anterior", a_next:"Foto siguiente", a_prev_album:"Álbum anterior", a_next_album:"Álbum siguiente", a_photo:"Foto {n}", a_play_live:"Reproducir video en directo {n}", a_live_video:"Kevin Alva en directo ({n})",
  sp_feat_title:"Tema destacado de Kevin Alva en Spotify", sp_artist_title:"Kevin Alva en Spotify", alt_album:"Portada del álbum {a}",
  alt_hero:"Kevin Alva tendido en un suelo blanco con sus largas rastas extendidas, junto a la palabra Rebirth",
  alt_g1:"Kevin Alva riendo en el escenario con su banda", alt_g2:"Kevin Alva con su saxofón frente a un muro azul", alt_g3:"En el escenario con los brazos abiertos",
  alt_g4:"Tocando el saxofón bajo luces rosadas", alt_g5:"Cantando con traje blanco junto a su reflejo",
- alt_g6:"Kevin Alva bebiendo de un coco frente a un muro con grafitis en Caracas", alt_g7:"Kevin Alva con un saxofón barítono frente a una escultura naranja", alt_g8:"Kevin Alva sonriendo con un saxofón barítono y uno tenor, uno en cada mano",
+ alt_g6:"Kevin Alva bebiendo de un coco frente a un muro con grafitis en Caracas", alt_g7:"Kevin Alva sonriendo con un saxofón barítono y uno tenor, uno en cada mano",
  alt_bio:"Kevin Alva sonriendo con su saxofón, de pie en el mar", alt_roots:"Kevin Alva tocando el saxofón entre el público que baila en una plaza al aire libre",
  alt_north:"Kevin Alva sonriendo con su saxo tenor en un bosque nevado",
  next_show:"Próximo show", acc_door:"Entrada en puerta", acc_free:"Entrada libre", acc_private:"Evento privado", private_city:"Privado", estonia_c:"Estonia",
@@ -780,12 +793,12 @@ es:{
 },
 et:{
  k_booking:"Broneerimine", lang_group:"Keel", a_home:"Kevin Alva, avaleht", a_main:"Peamenüü", a_social:"Sotsiaalmeedia", a_top:"Tagasi algusesse",
- a_close:"Sulge", a_prev:"Eelmine foto", a_next:"Järgmine foto", a_photo:"Foto {n}", a_play_live:"Esita kontsertvideo {n}", a_live_video:"Kevin Alva kontserdil ({n})",
+ a_close:"Sulge", a_prev:"Eelmine foto", a_next:"Järgmine foto", a_prev_album:"Eelmine album", a_next_album:"Järgmine album", a_photo:"Foto {n}", a_play_live:"Esita kontsertvideo {n}", a_live_video:"Kevin Alva kontserdil ({n})",
  sp_feat_title:"Kevin Alva esiletõstetud lugu Spotifys", sp_artist_title:"Kevin Alva Spotifys", alt_album:"Albumi {a} kaanepilt",
  alt_hero:"Kevin Alva lamamas valgel põrandal, pikad patsid laiali, sõna Rebirth kõrval",
  alt_g1:"Kevin Alva naermas laval koos oma bändiga", alt_g2:"Kevin Alva saksofoniga sinise seina ees", alt_g3:"Laval, käed laiali",
  alt_g4:"Saksofonimäng roosades tuledes", alt_g5:"Laulmas valges ülikonnas oma peegelpildi kõrval",
- alt_g6:"Kevin Alva joomas värsket kookospähklit grafitiseina ees Caracases", alt_g7:"Kevin Alva baritonsaksofoniga oranži skulptuuri ees", alt_g8:"Naeratav Kevin Alva, ühes käes baritonsaksofon ja teises tenorsaksofon",
+ alt_g6:"Kevin Alva joomas värsket kookospähklit grafitiseina ees Caracases", alt_g7:"Naeratav Kevin Alva, ühes käes baritonsaksofon ja teises tenorsaksofon",
  alt_bio:"Naeratav Kevin Alva saksofoniga meres", alt_roots:"Kevin Alva mängimas saksofoni tantsiva publiku keskel vabaõhuväljakul",
  alt_north:"Naeratav Kevin Alva tenorsaksofoniga lumises metsas",
  next_show:"Järgmine kontsert", acc_door:"Piletid uksel", acc_free:"Tasuta sissepääs", acc_private:"Eraüritus", private_city:"Privaatne", estonia_c:"Eesti",
@@ -847,11 +860,13 @@ const CONFIG = {
   spotifyPrincipal: "https://open.spotify.com/embed/track/285xp9G91KmrXrCQTGm4Lp?utm_source=generator&theme=0",
   spotifyArtista:   "https://open.spotify.com/embed/artist/0C0t2BM8mSLRy6VfZ7Vqpb?utm_source=generator&theme=0",
 
-  // Discografía: pega el enlace del álbum en Spotify en "enlace"
+  // Discografía (de más nuevo a más antiguo): se ven los 2 primeros; la flecha → muestra el resto.
+  // Pega el enlace del álbum en Spotify en "enlace"
   // (en Spotify: ··· → Compartir → Copiar enlace del álbum)
   discografia: [
     { nombre:"Rebirth",  anio:"2026", tipo:"Álbum", portada:"img/album-rebirth.jpg",  enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb" },
     { nombre:"Movement", anio:"2021", tipo:"Álbum", portada:"img/album-movement.jpg", enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb" },
+    { nombre:"Agradecer y Volar", anio:"2022", tipo:"Álbum", portada:"https://i.scdn.co/image/ab67616d0000b273afa9727f15d701751a94b19f", enlace:"https://open.spotify.com/album/1nMEhkmVysflQuRtUIG62P" },
   ],
 
   // Shows. pais: "spain" | "estonia" (se traduce solo). acceso: "" (entradas pronto) | "puerta" | "gratis" | "privado"
@@ -945,7 +960,22 @@ function pintarDisco(){
     <h4>${esc(a.nombre)}</h4>
     <span class="flecha">${t("listen_sp")}</span>
   </a>`).join("");
+  requestAnimationFrame(discoFlechas);
 }
+// Flechas del carrusel de discos
+const discoEl=$("[data-disco]"),dPrev=$(".disco-prev"),dNext=$(".disco-next");
+function discoFlechas(){
+  const port=$(".album__portada",discoEl);
+  if(port)discoEl.parentElement.style.setProperty("--mid",port.offsetHeight/2+"px");
+  const max=discoEl.scrollWidth-discoEl.clientWidth;
+  dPrev.hidden=discoEl.scrollLeft<=4;
+  dNext.hidden=discoEl.scrollLeft>=max-4;
+}
+const discoPaso=dir=>{const a=$(".album",discoEl);if(!a)return;const g=parseFloat(getComputedStyle(discoEl).columnGap)||0;discoEl.scrollBy({left:dir*(a.offsetWidth+g)})};
+dPrev.addEventListener("click",()=>discoPaso(-1));
+dNext.addEventListener("click",()=>discoPaso(1));
+discoEl.addEventListener("scroll",()=>requestAnimationFrame(discoFlechas),{passive:true});
+addEventListener("resize",discoFlechas);
 
 // Videos (YouTube dentro de la página)
 const rep=$("#reproductor"),vt=$("[data-vid-titulo]"),vd=$("[data-vid-desc]"),vn=$("[data-vid-num]");
@@ -1013,6 +1043,17 @@ $$("#menu a").forEach(a=>a.addEventListener("click",()=>{menu.classList.remove("
 const reducir=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visto");io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -5% 0px"});
 $$("[data-rev]").forEach(el=>io.observe(el));
+
+// Portada: desvanecer la imagen de fondo al bajar
+const heroSec=$(".hero"),heroFondo=$(".hero__fondo");let heroTick=false;
+function heroFade(){
+  heroTick=false;
+  const h=heroSec.offsetHeight||1,y=Math.max(0,scrollY),p=Math.min(1,y/(h*.85));
+  heroFondo.style.opacity=(1-p).toFixed(3);
+  heroFondo.style.transform=reducir?"":`translateY(${(y*.3).toFixed(1)}px) scale(${(1+p*.06).toFixed(3)})`;
+}
+addEventListener("scroll",()=>{if(!heroTick){heroTick=true;requestAnimationFrame(heroFade)}},{passive:true});
+heroFade();
 
 // Lightbox
 const fotos=$$(".mosaico button"),lb=$(".lightbox"),lbImg=$("img",lb),lbCont=$(".lightbox__cont");let act=0;
