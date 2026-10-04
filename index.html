@@ -111,10 +111,11 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 }
 
 /* ---------- Hero: foto de fondo + video en bucle ---------- */
-.hero{position:relative;isolation:isolate;background:#EBEBED;color:var(--black);overflow:hidden;min-height:min(calc(100svh - var(--barra) - var(--nav)),860px);display:flex;align-items:center;padding:clamp(3rem,6vw,5rem) 0}
-/* Imagen Rebirth (fondo blanco): a sangre, anclada a la derecha */
-.hero__fondo{position:absolute;top:0;bottom:0;right:0;left:32%;z-index:-1}
-.hero__fondo img{width:100%;height:100%;object-fit:contain;object-position:right center;}
+.hero{position:relative;isolation:isolate;background:#DCDDE0;color:var(--black);overflow:hidden;min-height:min(calc(100svh - var(--barra) - var(--nav)),860px);display:flex;align-items:center;padding:clamp(3rem,6vw,5rem) 0}
+/* Imagen Rebirth: fondo completo de la portada (Kevin a la derecha, texto encima a la izquierda) */
+.hero__fondo{position:absolute;inset:0;z-index:-1}
+.hero__fondo img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block}
+.hero__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(226,227,230,.7) 0%,rgba(226,227,230,.35) 38%,rgba(226,227,230,0) 60%);pointer-events:none}
 .hero__grid{display:block}
 .hero__txt{max-width:min(520px,44%)}
 .hero__nuevo{display:inline-flex;align-items:center;gap:.6rem;background:var(--black);color:var(--white);text-decoration:none;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:.6rem 1.1rem;border-radius:999px;margin-bottom:1.5rem}
@@ -135,9 +136,10 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .hero__redes svg{width:19px;height:19px;fill:currentColor}
 @media (max-width:860px){
   .hero{min-height:0;flex-direction:column;align-items:stretch;padding:0 0 3rem}
-  .hero__fondo{position:relative;inset:auto;aspect-ratio:5/4}
-  .hero__fondo img{object-fit:cover;object-position:right center}
-  .hero__txt{max-width:none;padding-top:2rem}
+  .hero__fondo{inset:0 0 auto 0}
+  .hero__fondo img{height:auto;aspect-ratio:1/1}
+  .hero__fondo::after{background:linear-gradient(180deg,rgba(220,221,224,0) 50%,#DCDDE0 96%)}
+  .hero__txt{max-width:none;padding-top:min(74vw,620px)}
 }
 
 /* Selector de idioma */
@@ -454,7 +456,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 
 <!-- HERO -->
 <section class="hero" id="inicio" aria-label="Kevin Alva">
-  <div class="hero__fondo"><img src="img/hero.jpg" alt="Kevin Alva lying on a white floor with his long dreadlocks spread out, next to the word Rebirth" data-i18n-attr="alt:alt_hero" fetchpriority="high"></div>
+  <div class="hero__fondo"><picture><source media="(max-width:860px)" srcset="img/hero-movil.jpg"><img src="img/hero.jpg" alt="Kevin Alva lying on a white floor with his long dreadlocks spread out, next to the word Rebirth" data-i18n-attr="alt:alt_hero" fetchpriority="high"></picture></div>
   <div class="contenedor hero__grid">
     <div class="hero__txt">
       <a class="hero__nuevo" href="#musica" data-rev data-i18n="hero_new"><b>New album</b> Rebirth · 2026 →</a>
@@ -475,7 +477,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
   <div class="contenedor">
     <div class="cabecera">
       <div><span class="kicker" data-rev data-i18n="k_agenda">Tour dates</span><h2 class="h-xl" data-rev data-i18n="t_shows">Upcoming shows</h2></div>
-      <p data-rev data-i18n="shows_intro">October in Estonia, November in Spain.</p>
+      <p data-rev data-i18n="shows_intro">October and early November in Estonia, then Spain.</p>
     </div>
     <ul class="agenda" data-agenda></ul>
   </div>
@@ -585,13 +587,13 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
     <h2 class="sr" data-i18n="trip_sr">From the Caribbean to the Baltic</h2>
     <p class="viaje__palabra" data-rev aria-hidden="true" data-i18n="w_carib">Caribbean</p>
     <div class="viaje__medio">
-      <figure class="viaje__foto" data-rev><img src="img/g-fiesta.jpg" alt="Kevin Alva playing among the crowd on a summer night" data-i18n-attr="alt:alt_roots" loading="lazy" style="object-position:72% center"><figcaption data-i18n="roots">Roots</figcaption></figure>
+      <figure class="viaje__foto" data-rev><img src="img/caribe.jpg" alt="Kevin Alva playing saxophone among a dancing crowd in an open-air square" data-i18n-attr="alt:alt_roots" loading="lazy" style="object-position:center 42%"><figcaption data-i18n="roots">Roots</figcaption></figure>
       <div class="ruta" data-rev>
         <span class="ruta__punto"><span data-i18n="venezuela">Venezuela</span><small>10° N</small></span>
         <span class="ruta__linea" aria-hidden="true"></span>
         <span class="ruta__punto"><span data-i18n="estonia">Estonia</span><small>59° N</small></span>
       </div>
-      <figure class="viaje__foto viaje__foto--b" data-rev><img src="img/g-barco.jpg" alt="Kevin Alva playing saxophone in a Northern European harbour" data-i18n-attr="alt:alt_north" loading="lazy" style="object-position:center 25%"><figcaption data-i18n="north">North</figcaption></figure>
+      <figure class="viaje__foto viaje__foto--b" data-rev><img src="img/baltico.jpg" alt="Kevin Alva smiling with his tenor saxophone in a snowy forest" data-i18n-attr="alt:alt_north" loading="lazy" style="object-position:center 30%"><figcaption data-i18n="north">North</figcaption></figure>
     </div>
     <p class="viaje__palabra viaje__artico" data-rev aria-hidden="true" data-i18n="w_arctic">Baltic</p>
     <p class="viaje__texto" data-rev data-i18n="trip_txt"></p>
@@ -676,8 +678,8 @@ en:{
  alt_hero:"Kevin Alva lying on a white floor with his long dreadlocks spread out, next to the word Rebirth",
  alt_g1:"Kevin Alva laughing on stage with his band", alt_g2:"Kevin Alva with his saxophone in front of a blue wall", alt_g3:"On stage with his arms wide open",
  alt_g4:"Playing saxophone under pink lights", alt_g5:"Singing in a white suit next to his reflection",
- alt_bio:"Kevin Alva smiling with his saxophone, standing in the sea", alt_roots:"Kevin Alva playing among the crowd on a summer night",
- alt_north:"Kevin Alva playing saxophone in a Northern European harbour",
+ alt_bio:"Kevin Alva smiling with his saxophone, standing in the sea", alt_roots:"Kevin Alva playing saxophone among a dancing crowd in an open-air square",
+ alt_north:"Kevin Alva smiling with his tenor saxophone in a snowy forest",
  next_show:"Next show", acc_door:"Tickets at the door", acc_free:"Free entry", acc_private:"Private event", private_city:"Private", estonia_c:"Estonia",
  meta_title:"Kevin Alva | Venezuelan Musician, Producer & Musicologist",
  tour_bar:"<b>Spain Tour</b> · Madrid Nov 19 · Barcelona Nov 21",
@@ -687,7 +689,7 @@ en:{
  hero_pre:"Musician · Producer · Musicologist",
  slogan:"Caribbean music, <span>from Venezuela to the Baltic.</span>",
  btn_listen:"Listen to music", btn_watch:"Watch videos", follow:"Follow",
- k_agenda:"Tour dates", t_shows:"Upcoming shows", shows_intro:"October in Estonia, November in Spain.",
+ k_agenda:"Tour dates", t_shows:"Upcoming shows", shows_intro:"October and early November in Estonia, then Spain.",
  k_stage:"On stage", t_gallery:"Gallery", live_t:"Live", live_s:"Press play to watch with sound",
  k_listen:"Listen", t_music:"Music", music_intro:"Press play right here. Ska, reggae and Caribbean rhythms.",
  featured:"Featured", more_from:"More from Kevin Alva", follow_sp:"Follow on Spotify",
@@ -725,8 +727,8 @@ es:{
  alt_hero:"Kevin Alva tendido en un suelo blanco con sus largas rastas extendidas, junto a la palabra Rebirth",
  alt_g1:"Kevin Alva riendo en el escenario con su banda", alt_g2:"Kevin Alva con su saxofón frente a un muro azul", alt_g3:"En el escenario con los brazos abiertos",
  alt_g4:"Tocando el saxofón bajo luces rosadas", alt_g5:"Cantando con traje blanco junto a su reflejo",
- alt_bio:"Kevin Alva sonriendo con su saxofón, de pie en el mar", alt_roots:"Kevin Alva tocando entre el público en una noche de verano",
- alt_north:"Kevin Alva tocando el saxofón en un puerto del norte de Europa",
+ alt_bio:"Kevin Alva sonriendo con su saxofón, de pie en el mar", alt_roots:"Kevin Alva tocando el saxofón entre el público que baila en una plaza al aire libre",
+ alt_north:"Kevin Alva sonriendo con su saxo tenor en un bosque nevado",
  next_show:"Próximo show", acc_door:"Entrada en puerta", acc_free:"Entrada libre", acc_private:"Evento privado", private_city:"Privado", estonia_c:"Estonia",
  meta_title:"Kevin Alva | Músico, Productor y Musicólogo Venezolano",
  tour_bar:"<b>Gira por España</b> · Madrid 19 nov · Barcelona 21 nov",
@@ -736,7 +738,7 @@ es:{
  hero_pre:"Músico · Productor · Musicólogo",
  slogan:"Música del Caribe, <span>desde Venezuela hasta el Báltico.</span>",
  btn_listen:"Escuchar música", btn_watch:"Ver videos", follow:"Síguelo",
- k_agenda:"Agenda", t_shows:"Próximos shows", shows_intro:"Octubre en Estonia, noviembre en España.",
+ k_agenda:"Agenda", t_shows:"Próximos shows", shows_intro:"Octubre y principios de noviembre en Estonia; después, España.",
  k_stage:"En escena", t_gallery:"Galería", live_t:"En directo", live_s:"Dale play para verlo con sonido",
  k_listen:"Escucha", t_music:"Música", music_intro:"Dale play aquí mismo. Ska, reggae y ritmos del Caribe.",
  featured:"Destacado", more_from:"Más de Kevin Alva", follow_sp:"Seguir en Spotify",
@@ -774,8 +776,8 @@ et:{
  alt_hero:"Kevin Alva lamamas valgel põrandal, pikad patsid laiali, sõna Rebirth kõrval",
  alt_g1:"Kevin Alva naermas laval koos oma bändiga", alt_g2:"Kevin Alva saksofoniga sinise seina ees", alt_g3:"Laval, käed laiali",
  alt_g4:"Saksofonimäng roosades tuledes", alt_g5:"Laulmas valges ülikonnas oma peegelpildi kõrval",
- alt_bio:"Naeratav Kevin Alva saksofoniga meres", alt_roots:"Kevin Alva mängimas publiku keskel suveõhtul",
- alt_north:"Kevin Alva mängimas saksofoni Põhja-Euroopa sadamas",
+ alt_bio:"Naeratav Kevin Alva saksofoniga meres", alt_roots:"Kevin Alva mängimas saksofoni tantsiva publiku keskel vabaõhuväljakul",
+ alt_north:"Naeratav Kevin Alva tenorsaksofoniga lumises metsas",
  next_show:"Järgmine kontsert", acc_door:"Piletid uksel", acc_free:"Tasuta sissepääs", acc_private:"Eraüritus", private_city:"Privaatne", estonia_c:"Eesti",
  meta_title:"Kevin Alva | Venezueela muusik, produtsent ja muusikateadlane",
  tour_bar:"<b>Hispaania tuur</b> · Madrid 19. nov · Barcelona 21. nov",
@@ -785,7 +787,7 @@ et:{
  hero_pre:"Muusik · Produtsent · Muusikateadlane",
  slogan:"Kariibi muusika <span>Venezueelast Läänemereni.</span>",
  btn_listen:"Kuula muusikat", btn_watch:"Vaata videoid", follow:"Jälgi",
- k_agenda:"Kontserdikava", t_shows:"Tulevased kontserdid", shows_intro:"Oktoobris Eestis, novembris Hispaanias.",
+ k_agenda:"Kontserdikava", t_shows:"Tulevased kontserdid", shows_intro:"Oktoobris ja novembri alguses Eestis, seejärel Hispaanias.",
  k_stage:"Laval", t_gallery:"Galerii", live_t:"Kontsertidelt", live_s:"Vajuta „play“, et vaadata koos heliga",
  k_listen:"Kuula", t_music:"Muusika", music_intro:"Vajuta „play“ otse siin. Ska, reggae ja Kariibi rütmid.",
  featured:"Esiletõstetud", more_from:"Veel Kevin Alvalt", follow_sp:"Jälgi Spotifys",
@@ -851,6 +853,8 @@ const CONFIG = {
       detalle:{ en:"Salsa & Bogaloo Night Vol. 1 · with Rhythm Doctor", es:"Salsa & Bogaloo Night Vol. 1 · con Rhythm Doctor", et:"Salsa & Bogaloo Night Vol. 1 · koos Rhythm Doctoriga" }, mapa:"", acceso:"gratis", entradas:"" },
     { fecha:"2026-10-25", hora:"", ciudad:"", pais:"", evento:{ en:"Private concert", es:"Concierto privado", et:"Erakontsert" },
       detalle:"", mapa:"", acceso:"privado", entradas:"" },
+    { fecha:"2026-11-07", hora:"", ciudad:"Tallinn", pais:"estonia", evento:"Terminal Records & Bar", detalle:"Telliskivi 60/2 · Kalamaja",
+      mapa:"https://www.google.com/maps/search/?api=1&query=Terminal+Records+%26+Bar,+Telliskivi+60%2F2,+Tallinn", acceso:"", entradas:"" },
     { fecha:"2026-11-19", hora:"", ciudad:"Madrid", pais:"spain", evento:"Barracuda Rock Bar", detalle:"Calle de Brescia, 19 · Barrio de Salamanca",
       mapa:"https://www.google.com/maps/search/?api=1&query=Barracuda+Rock+Bar,+Calle+de+Brescia+19,+28028+Madrid", acceso:"", entradas:"" },
     { fecha:"2026-11-21", hora:"", ciudad:"Barcelona", pais:"spain", evento:"Soda Acústic", detalle:"Carrer de les Guilleries, 6 · Gràcia",
