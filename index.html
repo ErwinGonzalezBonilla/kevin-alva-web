@@ -328,8 +328,13 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .directos-tit{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:clamp(3.5rem,6vw,5rem) 0 1.5rem;padding-top:2rem;border-top:1px solid var(--linea)}
 .directos-tit h3{font-family:var(--titulo);font-weight:400;font-size:clamp(2rem,3.5vw,2.8rem);text-transform:uppercase;margin:0;line-height:1}
 .directos-tit span{font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
-.directos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.5vw,22px);max-width:960px;margin-inline:auto}
-.directo{position:relative;margin:0;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#000;box-shadow:0 0 0 1px var(--linea)}
+/* Distribución: el primer video (grande) a la izquierda ocupando dos filas; los otros dos, pequeños y apilados a la derecha */
+.directos{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(10px,1.5vw,22px);max-width:780px;margin-inline:auto}
+.directo{position:relative;margin:0;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:#000;box-shadow:0 0 0 1px var(--linea)}
+.directo:first-child{grid-column:1;grid-row:1 / span 2;aspect-ratio:auto}
+.directo:first-child video{position:absolute;inset:0}
+.directo:first-child .directo__play span{width:72px;height:72px}
+.directo:first-child .directo__play svg{width:26px;height:26px}
 .directo video{width:100%;height:100%;object-fit:cover;display:block}
 .directo.activo{box-shadow:0 0 0 2px var(--gold)}
 .directo__play{all:unset;position:absolute;inset:0;cursor:pointer;display:grid;place-items:center;background:linear-gradient(180deg,rgba(5,5,5,0) 50%,rgba(5,5,5,.6));transition:background .3s}
@@ -901,10 +906,11 @@ const CONFIG = {
   ],
 
   // Videos en directo de la galería (archivos propios, con sonido al darle play)
+  // El PRIMERO de la lista es el que se ve grande; los otros dos van pequeños a la derecha.
   directos: [
+    { archivo:"video/directo-6.mp4", poster:"img/directo-6.jpg", titulo:"Kevin Alva live" },
     { archivo:"video/directo-1.mp4", poster:"img/directo-1.jpg", titulo:"Kevin Alva live" },
     { archivo:"video/directo-5.mp4", poster:"img/directo-5.jpg", titulo:"Kevin Alva live" },
-    { archivo:"video/directo-6.mp4", poster:"img/directo-6.jpg", titulo:"Kevin Alva live" },
   ],
 
 
