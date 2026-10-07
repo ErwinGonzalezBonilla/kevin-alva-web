@@ -1,0 +1,9 @@
+{
+  "name": "kevin-alva-web",
+  "private": true,
+  "description": "Web oficial de Kevin Alva con venta de entradas (Stripe) y validación por QR",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "stripe": "^17.7.0"
+  }
+}

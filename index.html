@@ -158,6 +158,28 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 @media (max-width:420px){.idiomas button span{display:none}.idiomas button{padding:.4rem .5rem}}
 
 
+.btn--comprar{flex-direction:column;gap:.15rem;line-height:1.2;font-family:inherit;cursor:pointer}
+.btn--comprar small{font-size:.62rem;letter-spacing:.12em;opacity:.75}
+.compra{border:0;padding:0;background:transparent;width:min(440px,100% - 2rem);max-height:calc(100svh - 2rem);color:var(--white)}
+.compra::backdrop{background:rgba(5,5,5,.85);backdrop-filter:blur(4px)}
+.compra__caja{background:var(--dark);border:1px solid rgba(214,166,44,.35);border-radius:18px;padding:1.6rem;display:grid;gap:1.1rem;position:relative}
+.compra__x{all:unset;position:absolute;top:.8rem;right:.8rem;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--gray);font-size:1.4rem}
+.compra__x:hover{color:var(--white);background:rgba(255,255,255,.08)}
+.compra__eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.compra h3{font-family:var(--titulo);font-weight:400;font-size:2rem;text-transform:uppercase;line-height:1;margin:.3rem 0 .4rem}
+.compra__info{color:var(--gray);font-size:.9rem;line-height:1.5;margin:0}
+.compra__fila{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-top:1px solid rgba(255,255,255,.1)}
+.compra__fila>span{font-weight:700}
+.cant{display:flex;align-items:center;gap:.4rem}
+.cant button{all:unset;width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;cursor:pointer;font-size:1.2rem;font-weight:800}
+.cant button:hover:not(:disabled){border-color:var(--gold);color:var(--gold)}
+.cant button:disabled{opacity:.3;cursor:default}
+.cant output{min-width:2.2ch;text-align:center;font-family:var(--titulo);font-size:1.6rem}
+.compra__total b{font-family:var(--titulo);font-weight:400;font-size:1.8rem;color:var(--gold)}
+.compra .btn{width:100%;justify-content:center}
+.compra__nota{font-size:.78rem;color:var(--gray);line-height:1.5;margin:0}
+.compra__msg{font-size:.85rem;font-weight:700;color:#ff8a80;margin:0}
+.compra__msg:empty{display:none}
 .fila .btn--info{opacity:1;border-color:rgba(214,166,44,.6);color:var(--gold)}
 /* ---------- Shows ---------- */
 .agenda{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
@@ -694,6 +716,23 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
   <span class="lightbox__cont"></span>
 </dialog>
 
+<dialog class="compra" data-compra aria-labelledby="compra-tit">
+  <div class="compra__caja">
+    <button class="compra__x" type="button" data-compra-cerrar aria-label="Close" data-i18n-attr="aria-label:b_close">×</button>
+    <div>
+      <div class="compra__eyebrow" data-i18n="b_title">Tickets</div>
+      <h3 id="compra-tit" data-compra-tit></h3>
+      <p class="compra__info" data-compra-info></p>
+    </div>
+    <div class="compra__fila"><span data-i18n="b_qty">Number of tickets</span>
+      <div class="cant"><button type="button" data-menos aria-label="One less" data-i18n-attr="aria-label:b_less">−</button><output data-cant>1</output><button type="button" data-mas aria-label="One more" data-i18n-attr="aria-label:b_more">+</button></div></div>
+    <div class="compra__fila compra__total"><span data-i18n="b_total">Total</span><b data-total></b></div>
+    <p class="compra__msg" data-compra-msg role="status"></p>
+    <button class="btn btn--oro" type="button" data-pagar data-i18n="b_pay">Go to payment</button>
+    <p class="compra__nota"><span data-i18n="b_note"></span> <span data-compra-prueba></span></p>
+  </div>
+</dialog>
+
 <script>
 // =====================================================================
 // TEXTOS EN 3 IDIOMAS (en = inglés por defecto, es = español, et = estonio)
@@ -746,7 +785,7 @@ en:{
  f_note:"The form will be active very soon. Meanwhile, message Kevin on Instagram.",
  foot_slogan:"Caribbean music,<br>from Venezuela<br><span>to the Baltic.</span>",
  foot_nav:"Explore", foot_support:"Support", back_top:"Back to top ↑",
- tickets:"Tickets →", tickets_soon:"Tickets soon", no_dates:"New dates coming soon",
+ tickets:"Tickets →", tickets_soon:"Tickets soon", buy:"Buy tickets", sold_out:"Sold out", last_n:"Only {n} left", b_title:"Tickets", b_qty:"Number of tickets", b_less:"One less", b_more:"One more", b_total:"Total", b_pay:"Go to payment", b_wait:"Opening secure payment…", b_note:"Secure payment by card, Apple Pay or Google Pay (Stripe). You will get your QR tickets right after paying.", b_err:"Payment couldn't be opened. Please try again in a moment.", b_soldout:"Sorry, this show is sold out.", b_few:"Only {n} tickets left. Choose fewer.", b_test:"Test mode: no real charges.", b_close:"Close", no_dates:"New dates coming soon",
  months:["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"], days:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
  spain:"Spain", estonia:"Estonia", concert:"Concert"
 },
@@ -796,7 +835,7 @@ es:{
  f_note:"El formulario estará activo muy pronto. Mientras tanto, escribe a Kevin por Instagram.",
  foot_slogan:"Música del Caribe,<br>desde Venezuela<br><span>hasta el Báltico.</span>",
  foot_nav:"Navegar", foot_support:"Apoya", back_top:"Volver arriba ↑",
- tickets:"Entradas →", tickets_soon:"Entradas pronto", no_dates:"Nuevas fechas muy pronto",
+ tickets:"Entradas →", tickets_soon:"Entradas pronto", buy:"Comprar entradas", sold_out:"Agotado", last_n:"Últimas {n}", b_title:"Entradas", b_qty:"Número de entradas", b_less:"Una menos", b_more:"Una más", b_total:"Total", b_pay:"Ir al pago", b_wait:"Abriendo el pago seguro…", b_note:"Pago seguro con tarjeta, Apple Pay o Google Pay (Stripe). Recibirás tus entradas con QR justo después de pagar.", b_err:"No se pudo abrir el pago. Inténtalo de nuevo en un momento.", b_soldout:"Lo sentimos, este concierto está agotado.", b_few:"Solo quedan {n} entradas. Elige menos.", b_test:"Modo de prueba: no se cobra dinero real.", b_close:"Cerrar", no_dates:"Nuevas fechas muy pronto",
  months:["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"], days:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],
  spain:"España", estonia:"Estonia", concert:"Concierto"
 },
@@ -846,7 +885,7 @@ et:{
  f_note:"Vorm hakkab peagi tööle. Seniks kirjuta Kevinile Instagramis.",
  foot_slogan:"Kariibi muusika<br>Venezueelast<br><span>Läänemereni.</span>",
  foot_nav:"Menüü", foot_support:"Toeta", back_top:"Tagasi üles ↑",
- tickets:"Piletid →", tickets_soon:"Piletid peagi", no_dates:"Uued kuupäevad peagi",
+ tickets:"Piletid →", tickets_soon:"Piletid peagi", buy:"Osta piletid", sold_out:"Välja müüdud", last_n:"Alles {n}", b_title:"Piletid", b_qty:"Piletite arv", b_less:"Üks vähem", b_more:"Üks rohkem", b_total:"Kokku", b_pay:"Mine maksma", b_wait:"Avame turvalise makse…", b_note:"Turvaline makse kaardi, Apple Pay või Google Payga (Stripe). QR-piletid saad kohe pärast maksmist.", b_err:"Makset ei õnnestunud avada. Proovi hetke pärast uuesti.", b_soldout:"Vabandust, see kontsert on välja müüdud.", b_few:"Alles on ainult {n} piletit. Vali vähem.", b_test:"Testrežiim: päris raha ei võeta.", b_close:"Sulge", no_dates:"Uued kuupäevad peagi",
  months:["JAAN","VEEBR","MÄRTS","APR","MAI","JUUNI","JUULI","AUG","SEPT","OKT","NOV","DETS"], days:["P","E","T","K","N","R","L"],
  spain:"Hispaania", estonia:"Eesti", concert:"Kontsert"
 }};
@@ -880,6 +919,7 @@ const CONFIG = {
 
   // Shows. pais: "spain" | "estonia" (se traduce solo). acceso: "" (entradas pronto) | "puerta" | "gratis" | "privado"
   // entradas: enlace de venta (si lo hay, aparece el botón). detalle/evento pueden ser texto o {en,es,et}.
+  // venta: id del concierto en api/_eventos.js → si la venta está abierta, aparece el botón "Comprar entradas" de la web.
   shows: [
     { fecha:"2026-10-17", hora:"19:00", ciudad:"Jägala", pais:"estonia", evento:"Jägala Joa Kohvik",
       detalle:{ en:"Solo concert & talk “Muusika ühendab”", es:"Concierto solista y charla «Muusika ühendab»", et:"Soolokontsert ja vestlus „Muusika ühendab“" }, mapa:"", acceso:"", entradas:"" },
@@ -888,7 +928,7 @@ const CONFIG = {
     { fecha:"2026-10-25", hora:"", ciudad:"", pais:"", evento:{ en:"Private concert", es:"Concierto privado", et:"Erakontsert" },
       detalle:"", mapa:"", acceso:"privado", entradas:"" },
     { fecha:"2026-11-07", hora:"", ciudad:"Tallinn", pais:"estonia", evento:"Terminal Records & Bar", detalle:"Telliskivi 60/2 · Kalamaja",
-      mapa:"https://www.google.com/maps/search/?api=1&query=Terminal+Records+%26+Bar,+Telliskivi+60%2F2,+Tallinn", acceso:"", entradas:"" },
+      mapa:"https://www.google.com/maps/search/?api=1&query=Terminal+Records+%26+Bar,+Telliskivi+60%2F2,+Tallinn", acceso:"", entradas:"", venta:"terminal-2026-11-07" },
     { fecha:"2026-11-19", hora:"", ciudad:"Madrid", pais:"spain", evento:"Barracuda Rock Bar", detalle:"Calle de Brescia, 19 · Barrio de Salamanca",
       mapa:"https://www.google.com/maps/search/?api=1&query=Barracuda+Rock+Bar,+Calle+de+Brescia+19,+28028+Madrid", acceso:"", entradas:"" },
     { fecha:"2026-11-21", hora:"", ciudad:"Barcelona", pais:"spain", evento:"Soda Acústic", detalle:"Carrer de les Guilleries, 6 · Gràcia",
@@ -934,6 +974,9 @@ $("[data-redes-hero]").innerHTML=iconosRedes;
 
 // Shows
 const hoy=new Date();hoy.setHours(0,0,0,0);
+// Venta de entradas (Stripe): /api/eventos dice qué conciertos tienen la venta abierta
+const VENTA={eventos:{},prueba:false};
+const dinero=(c,m)=>new Intl.NumberFormat({en:"en-IE",es:"es-ES",et:"et-EE"}[LANG]||"en-IE",{style:"currency",currency:(m||"eur").toUpperCase(),minimumFractionDigits:c%100?2:0}).format(c/100);
 const shows=CONFIG.shows.map(s=>({...s,d:new Date(s.fecha+"T12:00:00")})).filter(s=>s.d>=hoy).sort((a,b)=>a.d-b.d);
 const tx=x=>x&&typeof x==="object"?(x[LANG]||x.en||""):(x||"");
 const ACC={puerta:"acc_door",gratis:"acc_free",privado:"acc_private"};
@@ -942,7 +985,10 @@ function pintarShows(){
   const MES=t("months"),DIA=t("days");
   $("[data-agenda]").innerHTML=shows.length?shows.map(s=>{
     const lugar=tx(s.detalle);
-    const accion=s.entradas?`<a class="btn btn--oro" href="${s.entradas}" target="_blank" rel="noopener">${t("tickets")}</a>`
+    const v=s.venta&&VENTA.eventos[s.venta];
+    const accion=v?(v.agotado?`<span class="btn btn--borde btn--info" aria-disabled="true">${t("sold_out")}</span>`
+        :`<button class="btn btn--oro btn--comprar" type="button" data-comprar="${esc(s.venta)}">${t("buy")} · ${dinero(v.precio,v.moneda)}${v.ultimas?`<small>${t("last_n",{n:v.ultimas})}</small>`:""}</button>`)
+      :s.entradas?`<a class="btn btn--oro" href="${s.entradas}" target="_blank" rel="noopener">${t("tickets")}</a>`
       :`<span class="btn btn--borde${s.acceso?" btn--info":""}" aria-disabled="true">${t(ACC[s.acceso]||"tickets_soon")}</span>`;
     return `<li class="fila visto" data-rev>
     <div class="fila__fecha">${String(s.d.getDate()).padStart(2,"0")} ${MES[s.d.getMonth()]}<small>${DIA[s.d.getDay()]} · ${s.d.getFullYear()}${s.hora?" · "+s.hora:""}</small></div>
@@ -1093,6 +1139,46 @@ function aplicarIdioma(l){
 $$("[data-lang]").forEach(b=>b.addEventListener("click",()=>aplicarIdioma(b.dataset.lang)));
 let guardado="en";try{guardado=localStorage.getItem("ka_lang")||"en"}catch(e){}
 aplicarIdioma(guardado);
+
+// ── Venta de entradas ──
+const dlgCompra=$("[data-compra]");let compraId=null,compraCant=1;
+function pintarCompra(){
+  const v=VENTA.eventos[compraId],s=shows.find(x=>x.venta===compraId);if(!v||!s)return;
+  $("[data-compra-tit]").textContent=tx(s.evento);
+  $("[data-compra-info]").textContent=[fechaCorta(s.d)+(s.hora?" · "+s.hora:""),tx(s.detalle),s.ciudad].filter(Boolean).join(" · ");
+  $("[data-cant]").textContent=compraCant;
+  $("[data-menos]").disabled=compraCant<=1;$("[data-mas]").disabled=compraCant>=v.max;
+  $("[data-total]").textContent=dinero(v.precio*compraCant,v.moneda);
+  $("[data-compra-prueba]").textContent=VENTA.prueba?t("b_test"):"";
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-comprar]");if(!b)return;
+  compraId=b.dataset.comprar;compraCant=1;$("[data-compra-msg]").textContent="";
+  const p=$("[data-pagar]");p.disabled=false;p.textContent=t("b_pay");
+  pintarCompra();dlgCompra.showModal();
+});
+$("[data-menos]").addEventListener("click",()=>{compraCant=Math.max(1,compraCant-1);pintarCompra()});
+$("[data-mas]").addEventListener("click",()=>{compraCant=Math.min(VENTA.eventos[compraId].max,compraCant+1);pintarCompra()});
+$("[data-compra-cerrar]").addEventListener("click",()=>dlgCompra.close());
+dlgCompra.addEventListener("click",e=>{if(e.target===dlgCompra)dlgCompra.close()});
+$("[data-pagar]").addEventListener("click",async()=>{
+  const p=$("[data-pagar]"),msg=$("[data-compra-msg]");
+  p.disabled=true;p.textContent=t("b_wait");msg.textContent="";
+  try{
+    const r=await fetch("/api/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({evento:compraId,cantidad:compraCant,lang:LANG})});
+    const d=await r.json();
+    if(d.url){location.href=d.url;return}
+    msg.textContent=d.error==="agotado"?t("b_soldout"):d.error==="pocas"?t("b_few",{n:d.libres}):t("b_err");
+  }catch(err){msg.textContent=t("b_err")}
+  p.disabled=false;p.textContent=t("b_pay");
+});
+// Al volver a la página (botón "atrás" desde Stripe) se reactiva el botón
+addEventListener("pageshow",()=>{const p=$("[data-pagar]");p.disabled=false;p.textContent=t("b_pay")});
+fetch("/api/eventos",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
+  if(!d||!d.activo)return;
+  VENTA.prueba=!!d.prueba;d.eventos.forEach(e=>VENTA.eventos[e.id]=e);
+  pintarShows();
+}).catch(()=>{});
 </script>
 </body>
 </html>

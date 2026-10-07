@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<title>Tickets · Kevin Alva</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#050505;--dark:#111;--white:#F5F5F5;--gray:#A5A5A5;--gold:#D6A62C;--gold-dark:#8F6B18;--titulo:"Anton",Impact,"Arial Narrow",sans-serif;--texto:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--black);color:var(--white);font-family:var(--texto);-webkit-font-smoothing:antialiased}
+body{min-height:100svh;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.top img{height:42px}
+.langs{display:flex;gap:.35rem}
+.langs button{all:unset;cursor:pointer;font-size:.72rem;font-weight:800;letter-spacing:.14em;padding:.4rem .6rem;border-radius:999px;color:var(--gray)}
+.langs button[aria-pressed="true"]{background:var(--gold);color:var(--black)}
+main{width:min(560px,100% - 2rem);margin:0 auto;padding:2rem 0 3rem}
+.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--titulo);font-weight:400;text-transform:uppercase;font-size:clamp(2.4rem,9vw,3.6rem);line-height:.95;margin:.4rem 0 1rem}
+.estado{border-radius:12px;padding:1rem 1.1rem;font-weight:600;line-height:1.5;margin-bottom:1.5rem}
+.estado.ok{background:rgba(214,166,44,.12);border:1px solid rgba(214,166,44,.45)}
+.estado.mal{background:rgba(220,60,60,.12);border:1px solid rgba(220,60,60,.5)}
+.estado.info{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
+.prueba{background:#3b2a00;color:#ffd36b;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:.5rem}
+.evento{display:grid;gap:.25rem;margin-bottom:1.5rem;color:var(--gray);font-weight:600}
+.evento b{color:var(--white);font-size:1.15rem}
+.tickets{display:grid;gap:1.25rem}
+.ticket{background:var(--white);color:var(--black);border-radius:16px;overflow:hidden;position:relative}
+.ticket__cab{background:var(--black);color:var(--white);display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.1rem;border-bottom:3px solid var(--gold)}
+.ticket__cab span{font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.ticket__cab b{font-family:var(--titulo);font-weight:400;font-size:1.3rem;letter-spacing:.04em;color:var(--gold)}
+.ticket__qr{padding:1.25rem 1.25rem .5rem;display:grid;place-items:center}
+.ticket__qr svg{width:min(78vw,300px);height:auto;display:block}
+.ticket__pie{padding:.25rem 1.25rem 1.2rem;text-align:center;font-size:.85rem;font-weight:600;color:#555}
+.ticket__pie b{display:block;color:var(--black);font-size:1rem}
+.ticket.usada .ticket__qr{opacity:.25}
+.sello{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-12deg);border:4px solid #c62828;color:#c62828;font-family:var(--titulo);font-size:2.4rem;padding:.2rem 1rem;border-radius:8px;text-transform:uppercase;background:rgba(255,255,255,.85)}
+.nota{color:var(--gray);font-size:.92rem;line-height:1.6;margin:1.5rem 0}
+.botones{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.95rem 1.4rem;border-radius:999px;font-weight:800;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn--oro{background:var(--gold);color:var(--black)}
+.btn--borde{border-color:var(--white);color:var(--white);background:none}
+.carga{display:flex;align-items:center;gap:.8rem;color:var(--gray);font-weight:600}
+.carga::before{content:"";width:22px;height:22px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:var(--gold);animation:g 1s linear infinite}
+@keyframes g{to{transform:rotate(360deg)}}
+@media print{
+  .top,.botones,.langs,.prueba{display:none}
+  html,body{background:#fff;color:#000}
+  .evento,.nota{color:#333}.evento b{color:#000}
+  .ticket{break-inside:avoid;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+<div class="prueba" hidden data-prueba></div>
+<header class="top">
+  <a href="/"><img src="img/logo.svg" alt="Kevin Alva"></a>
+  <div class="langs" data-langs><button data-l="en">EN</button><button data-l="es">ES</button><button data-l="et">ET</button></div>
+</header>
+<main>
+  <div class="eyebrow" data-t="eyebrow"></div>
+  <h1 data-t="title"></h1>
+  <div data-cont><p class="carga" data-t="loading"></p></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+const T={
+ en:{eyebrow:"Kevin Alva · Live",title:"Your tickets",loading:"Loading your tickets…",pending:"We're confirming your payment… This page will update by itself in a few seconds.",paid:"Payment confirmed. See you at the show!",ticket:"Ticket",of:"of",holder:"Name",total:"Total",used:"Used",
+  howto:"Show the QR code at the door (on your phone or printed). Each code is valid once. Save this page: bookmark it or take a screenshot of each QR. You'll also find this link in your payment receipt email.",
+  print:"Print / save PDF",back:"Back to the website",refunded:"This purchase was refunded, so these tickets are no longer valid.",notfound:"We couldn't find this purchase. Please check the link or contact us through the website.",test:"Test mode · these tickets are not real",slow:"Your payment is taking longer than usual to confirm. Reload this page in a minute."},
+ es:{eyebrow:"Kevin Alva · En directo",title:"Tus entradas",loading:"Cargando tus entradas…",pending:"Estamos confirmando tu pago… Esta página se actualizará sola en unos segundos.",paid:"Pago confirmado. ¡Nos vemos en el concierto!",ticket:"Entrada",of:"de",holder:"Nombre",total:"Total",used:"Usada",
+  howto:"Enseña el código QR en la puerta (en el móvil o impreso). Cada código vale una sola vez. Guarda esta página: añádela a favoritos o haz una captura de cada QR. También encontrarás este enlace en el correo del recibo de pago.",
+  print:"Imprimir / guardar PDF",back:"Volver a la web",refunded:"Esta compra fue reembolsada, así que estas entradas ya no son válidas.",notfound:"No encontramos esta compra. Revisa el enlace o escríbenos desde la web.",test:"Modo de prueba · estas entradas no son reales",slow:"Tu pago está tardando más de lo normal en confirmarse. Recarga esta página en un minuto."},
+ et:{eyebrow:"Kevin Alva · Live",title:"Sinu piletid",loading:"Laadime sinu pileteid…",pending:"Kinnitame sinu makset… See leht uueneb mõne sekundi pärast ise.",paid:"Makse on kinnitatud. Kohtume kontserdil!",ticket:"Pilet",of:"/",holder:"Nimi",total:"Kokku",used:"Kasutatud",
+  howto:"Näita QR-koodi uksel (telefonis või väljaprinditult). Iga kood kehtib ühe korra. Salvesta see leht: lisa see järjehoidjatesse või tee igast QR-koodist ekraanipilt. Selle lingi leiad ka makse kviitungi e-kirjast.",
+  print:"Prindi / salvesta PDF",back:"Tagasi kodulehele",refunded:"See ost on tagastatud, seega need piletid enam ei kehti.",notfound:"Me ei leidnud seda ostu. Kontrolli linki või võta meiega kodulehe kaudu ühendust.",test:"Testrežiim · need piletid ei ole päris",slow:"Makse kinnitamine võtab tavalisest kauem. Laadi leht minuti pärast uuesti."}
+};
+const q=new URLSearchParams(location.search);
+let L=["en","es","et"].includes(q.get("lang"))?q.get("lang"):(()=>{try{const s=localStorage.getItem("ka_lang");if(T[s])return s}catch(e){}return "en"})();
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const t=k=>T[L][k]??T.en[k];
+let datos=null,estadoMsg="loading";
+
+function fecha(f,h){if(!f)return"";const d=new Date(f+"T12:00:00");const loc={en:"en-GB",es:"es-ES",et:"et-EE"}[L];
+  return d.toLocaleDateString(loc,{weekday:"long",day:"numeric",month:"long",year:"numeric"})+(h?" · "+h:"")}
+function dinero(c,m){return new Intl.NumberFormat({en:"en-IE",es:"es-ES",et:"et-EE"}[L],{style:"currency",currency:(m||"eur").toUpperCase()}).format(c/100)}
+function qrSvg(txt){const qr=qrcode(0,"M");qr.addData(txt);qr.make();return qr.createSvgTag({cellSize:6,margin:2,scalable:true})}
+
+function pintar(){
+  document.documentElement.lang=L;
+  $$("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
+  $$("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
+  const c=$("[data-cont]");
+  if(!datos){
+    c.innerHTML=estadoMsg==="loading"?`<p class="carga">${t("loading")}</p>`
+      :estadoMsg==="pending"?`<p class="carga">${t("pending")}</p>`
+      :`<div class="estado ${estadoMsg==="slow"?"info":"mal"}">${t(estadoMsg)}</div><div class="botones"><a class="btn btn--borde" href="/">${t("back")}</a></div>`;
+    return;
+  }
+  if(datos.prueba){const b=$("[data-prueba]");b.hidden=false;b.textContent=t("test")}
+  const e=datos.evento;
+  const cab=`<div class="evento"><b>${esc(e.nombre)}</b><span>${esc(fecha(e.fecha,e.hora))}</span><span>${esc([e.lugar,e.direccion].filter(Boolean).join(" · "))}</span>${datos.nombre?`<span>${t("holder")}: ${esc(datos.nombre)}</span>`:""}<span>${t("total")}: ${dinero(datos.total,datos.moneda)}</span></div>`;
+  if(datos.estado==="reembolsado"){c.innerHTML=cab+`<div class="estado mal">${t("refunded")}</div>`;return}
+  c.innerHTML=`<div class="estado ok">${t("paid")}</div>${cab}
+  <div class="tickets">${datos.entradas.map(x=>`
+    <article class="ticket${x.usada?" usada":""}">
+      <div class="ticket__cab"><span>${t("ticket")} ${x.n} ${t("of")} ${datos.cantidad}</span><b>KEVIN ALVA</b></div>
+      <div class="ticket__qr">${qrSvg(x.codigo)}</div>
+      <div class="ticket__pie"><b>${esc(e.lugar||e.nombre)}</b>${esc(fecha(e.fecha,e.hora))}</div>
+      ${x.usada?`<div class="sello">${t("used")}</div>`:""}
+    </article>`).join("")}</div>
+  <p class="nota">${t("howto")}</p>
+  <div class="botones"><button class="btn btn--oro" type="button" onclick="print()">${t("print")}</button><a class="btn btn--borde" href="/">${t("back")}</a></div>`;
+}
+
+$$("[data-l]").forEach(b=>b.addEventListener("click",()=>{L=b.dataset.l;try{localStorage.setItem("ka_lang",L)}catch(e){}pintar()}));
+
+async function cargar(intento=0){
+  const sid=q.get("session_id"),ref=q.get("ref");
+  if(!sid&&!ref){estadoMsg="notfound";return pintar()}
+  try{
+    const r=await fetch("/api/ticket?"+(sid?"session_id="+encodeURIComponent(sid)+"&":"")+(ref?"ref="+encodeURIComponent(ref):""),{cache:"no-store"});
+    if(r.status===202){estadoMsg="pending";pintar();if(intento<30)return setTimeout(()=>cargar(intento+1),2000);estadoMsg="slow";return pintar()}
+    if(!r.ok)throw 0;
+    datos=await r.json();pintar();
+  }catch(e){estadoMsg="notfound";pintar()}
+}
+pintar();cargar();
+</script>
+</body>
+</html>

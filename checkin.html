@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="google" content="notranslate">
+<meta name="theme-color" content="#050505">
+<title>Check-in · Kevin Alva</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#050505;--white:#F5F5F5;--gray:#A5A5A5;--gold:#D6A62C;--ok:#1f9d55;--mal:#c62828;--aviso:#e08a00;--titulo:"Anton",Impact,"Arial Narrow",sans-serif;--texto:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--black);color:var(--white);font-family:var(--texto);-webkit-font-smoothing:antialiased}
+body{display:flex;flex-direction:column;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.top b{font-family:var(--titulo);font-weight:400;font-size:1.1rem;letter-spacing:.05em;white-space:nowrap}
+.top b span{color:var(--gold)}
+.langs{display:flex;gap:.25rem}
+.langs button{all:unset;cursor:pointer;font-size:.7rem;font-weight:800;letter-spacing:.14em;padding:.35rem .55rem;border-radius:999px;color:var(--gray)}
+.langs button[aria-pressed="true"]{background:var(--gold);color:var(--black)}
+main{flex:1;display:flex;flex-direction:column;width:min(520px,100%);margin:0 auto;padding:1rem}
+.pin{margin:auto 0;display:grid;gap:1rem;text-align:center}
+.pin h1{font-family:var(--titulo);font-weight:400;font-size:2.4rem;text-transform:uppercase;margin:0}
+.pin p{color:var(--gray);margin:0}
+input{font:inherit;font-size:1.5rem;letter-spacing:.3em;text-align:center;padding:.9rem;border-radius:12px;border:2px solid rgba(255,255,255,.2);background:#111;color:var(--white);width:100%}
+input:focus{outline:none;border-color:var(--gold)}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:1rem 1.3rem;border-radius:999px;font-weight:800;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:var(--black)}
+.btn--borde{background:none;border:2px solid rgba(255,255,255,.35);color:var(--white)}
+.error{color:#ff8a80;font-weight:700;min-height:1.4em}
+.camara{position:relative;border-radius:16px;overflow:hidden;background:#111;aspect-ratio:1;width:100%}
+.camara video{width:100%;height:100%;object-fit:cover;display:block}
+.marco{position:absolute;inset:14%;border:3px solid var(--gold);border-radius:18px;box-shadow:0 0 0 999px rgba(0,0,0,.35)}
+.ayuda{color:var(--gray);text-align:center;font-weight:600;margin:.9rem 0}
+.contador{display:flex;justify-content:center;gap:.5rem;font-weight:800;letter-spacing:.1em;font-size:.8rem;color:var(--gray);text-transform:uppercase}
+.contador b{color:var(--gold)}
+.manual{display:grid;grid-template-columns:1fr auto;gap:.5rem;margin-top:auto;padding-top:1rem}
+.manual input{font-size:.9rem;letter-spacing:0;text-align:left;padding:.8rem}
+.manual .btn{padding:.8rem 1rem}
+.resultado{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;text-align:center;padding:2rem;z-index:10;cursor:pointer}
+.resultado.ver{display:flex}
+.resultado.ok{background:var(--ok)}.resultado.mal{background:var(--mal)}.resultado.aviso{background:var(--aviso)}
+.resultado .icono{font-size:5.5rem;line-height:1}
+.resultado h2{font-family:var(--titulo);font-weight:400;font-size:clamp(2.6rem,12vw,4.4rem);text-transform:uppercase;margin:0;line-height:1}
+.resultado p{margin:0;font-size:1.15rem;font-weight:700}
+.resultado small{opacity:.85;font-weight:600;margin-top:1.2rem}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><b>KEVIN ALVA · <span>CHECK-IN</span></b>
+  <div class="langs"><button data-l="es">ES</button><button data-l="en">EN</button><button data-l="et">ET</button></div></header>
+<main>
+  <section class="pin" data-paso-pin>
+    <h1 data-t="pin_t"></h1>
+    <p data-t="pin_s"></p>
+    <input type="password" inputmode="numeric" autocomplete="off" data-pin-input>
+    <button class="btn" type="button" data-pin-btn data-t="enter"></button>
+    <div class="error" data-pin-err></div>
+  </section>
+
+  <section data-paso-scan hidden>
+    <div class="camara"><video playsinline muted data-video></video><div class="marco"></div></div>
+    <p class="ayuda" data-ayuda></p>
+    <div class="contador"><span data-t="validated"></span> <b data-cuenta>0</b></div>
+    <div class="manual"><input type="text" autocomplete="off" data-manual><button class="btn" type="button" data-manual-btn data-t="check"></button></div>
+  </section>
+</main>
+
+<div class="resultado" data-res role="alert">
+  <div class="icono" data-res-icono></div>
+  <h2 data-res-tit></h2>
+  <p data-res-l1></p>
+  <p data-res-l2></p>
+  <small data-t="tap"></small>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js" defer></script>
+<script>
+const T={
+ es:{pin_t:"Puerta",pin_s:"Escribe el PIN de acceso para validar entradas.",enter:"Entrar",bad_pin:"PIN incorrecto",validated:"Validadas en este móvil:",check:"Validar",manual:"o escribe el código a mano",
+  aim:"Apunta la cámara al QR de la entrada",nocam:"No se pudo abrir la cámara. Da permiso a la cámara en el navegador o escribe el código a mano.",tap:"Toca la pantalla para seguir",
+  ok:"Válida",used:"Ya usada",fake:"No válida",refunded:"Reembolsada",other:"Otro concierto",error:"Error de conexión",retry:"Revisa internet e inténtalo otra vez",
+  ticket:"Entrada {n} de {m}",at:"Validada a las {h}",notpaid:"Esta entrada no existe o no está pagada",refund_l:"Esta compra se devolvió: no puede entrar"},
+ en:{pin_t:"Door",pin_s:"Enter the access PIN to check tickets.",enter:"Enter",bad_pin:"Wrong PIN",validated:"Checked on this phone:",check:"Check",manual:"or type the code",
+  aim:"Point the camera at the ticket QR",nocam:"Couldn't open the camera. Allow camera access in the browser or type the code.",tap:"Tap the screen to continue",
+  ok:"Valid",used:"Already used",fake:"Not valid",refunded:"Refunded",other:"Other show",error:"Connection error",retry:"Check the internet and try again",
+  ticket:"Ticket {n} of {m}",at:"Checked in at {h}",notpaid:"This ticket doesn't exist or isn't paid",refund_l:"This purchase was refunded: no entry"},
+ et:{pin_t:"Uks",pin_s:"Sisesta piletite kontrollimiseks PIN-kood.",enter:"Sisene",bad_pin:"Vale PIN",validated:"Selles telefonis kontrollitud:",check:"Kontrolli",manual:"või sisesta kood käsitsi",
+  aim:"Suuna kaamera pileti QR-koodile",nocam:"Kaamerat ei õnnestunud avada. Luba brauseris kaamera kasutamine või sisesta kood käsitsi.",tap:"Jätkamiseks puuduta ekraani",
+  ok:"Kehtiv",used:"Juba kasutatud",fake:"Ei kehti",refunded:"Tagastatud",other:"Teine kontsert",error:"Ühenduse viga",retry:"Kontrolli internetti ja proovi uuesti",
+  ticket:"Pilet {n} / {m}",at:"Kontrollitud kell {h}",notpaid:"Seda piletit ei ole olemas või see pole makstud",refund_l:"See ost on tagastatud: sisse ei saa"}
+};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let L=(()=>{try{const s=localStorage.getItem("ka_checkin_lang");if(T[s])return s}catch(e){}const n=(navigator.language||"es").slice(0,2);return T[n]?n:"es"})();
+const t=(k,v={})=>{let x=T[L][k]??T.es[k];for(const n in v)x=x.replace("{"+n+"}",v[n]);return x};
+let PIN="";try{PIN=sessionStorage.getItem("ka_pin")||""}catch(e){}
+let cuenta=0,ocupado=false,ultimo="",ultimoT=0,stream=null,detector=null;
+
+function textos(){
+  document.documentElement.lang=L;
+  $$("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
+  $$("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===L));
+  $("[data-manual]").placeholder=t("manual");
+  if(!$("[data-ayuda]").dataset.err)$("[data-ayuda]").textContent=t("aim");
+}
+$$("[data-l]").forEach(b=>b.addEventListener("click",()=>{L=b.dataset.l;try{localStorage.setItem("ka_checkin_lang",L)}catch(e){}textos()}));
+
+async function api(datos){
+  const r=await fetch("/api/checkin",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pin:PIN,...datos})});
+  if(r.status===401)return{resultado:"pin"};
+  return r.json();
+}
+
+// ── PIN ──
+async function entrar(){
+  PIN=$("[data-pin-input]").value.trim();$("[data-pin-err]").textContent="";
+  try{const r=await api({soloPin:true});
+    if(r.resultado!=="pin_ok"){$("[data-pin-err]").textContent=t("bad_pin");return}
+    try{sessionStorage.setItem("ka_pin",PIN)}catch(e){}
+    iniciar();
+  }catch(e){$("[data-pin-err]").textContent=t("error")}
+}
+$("[data-pin-btn]").addEventListener("click",entrar);
+$("[data-pin-input]").addEventListener("keydown",e=>{if(e.key==="Enter")entrar()});
+
+// ── Escáner ──
+async function iniciar(){
+  $("[data-paso-pin]").hidden=true;$("[data-paso-scan]").hidden=false;
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment",width:{ideal:1280},height:{ideal:1280}},audio:false});
+    const v=$("[data-video]");v.srcObject=stream;await v.play();
+    if("BarcodeDetector" in window){try{detector=new BarcodeDetector({formats:["qr_code"]})}catch(e){detector=null}}
+    bucle();
+  }catch(e){const a=$("[data-ayuda]");a.dataset.err="1";a.textContent=t("nocam")}
+}
+const lienzo=document.createElement("canvas"),ctx=lienzo.getContext("2d",{willReadFrequently:true});
+async function leer(v){
+  if(detector){const r=await detector.detect(v);return r[0]&&r[0].rawValue}
+  if(!window.jsQR||!v.videoWidth)return null;
+  const s=Math.min(640,v.videoWidth);lienzo.width=s;lienzo.height=Math.round(s*v.videoHeight/v.videoWidth);
+  ctx.drawImage(v,0,0,lienzo.width,lienzo.height);
+  const img=ctx.getImageData(0,0,lienzo.width,lienzo.height);const c=jsQR(img.data,img.width,img.height,{inversionAttempts:"dontInvert"});
+  return c&&c.data;
+}
+async function bucle(){
+  const v=$("[data-video]");
+  if(!ocupado&&v.readyState>=2){
+    try{const txt=await leer(v);
+      if(txt&&!(txt===ultimo&&Date.now()-ultimoT<4000)){ultimo=txt;ultimoT=Date.now();await validar(txt)}
+    }catch(e){}
+  }
+  setTimeout(()=>requestAnimationFrame(bucle),150);
+}
+
+async function validar(codigo){
+  ocupado=true;
+  let r;try{r=await api({codigo})}catch(e){r={resultado:"error"}}
+  if(r.resultado==="pin"){try{sessionStorage.removeItem("ka_pin")}catch(e){}location.reload();return}
+  const hora=r.usadaEn?new Date(r.usadaEn).toLocaleTimeString({es:"es-ES",en:"en-GB",et:"et-EE"}[L],{hour:"2-digit",minute:"2-digit"}):"";
+  const linea=r.de?t("ticket",{n:r.n,m:r.de})+(r.nombre?" · "+r.nombre:""):"";
+  const V={
+    ok:["ok","✓",t("ok"),linea,r.evento||""],
+    usada:["mal","✕",t("used"),t("at",{h:hora}),linea],
+    falsa:["mal","✕",t("fake"),t("notpaid"),""],
+    reembolsada:["mal","✕",t("refunded"),t("refund_l"),linea],
+    otro_evento:["aviso","!",t("other"),r.evento||"",linea],
+    error:["aviso","!",t("error"),t("retry"),""]
+  }[r.resultado]||["aviso","!",t("error"),t("retry"),""];
+  if(r.resultado==="ok"){cuenta++;$("[data-cuenta]").textContent=cuenta}
+  const box=$("[data-res]");box.className="resultado ver "+V[0];
+  $("[data-res-icono]").textContent=V[1];$("[data-res-tit]").textContent=V[2];$("[data-res-l1]").textContent=V[3];$("[data-res-l2]").textContent=V[4];
+  if(navigator.vibrate)navigator.vibrate(r.resultado==="ok"?120:[200,100,200]);
+  clearTimeout(validar.tm);validar.tm=setTimeout(cerrar,r.resultado==="ok"?2200:4500);
+}
+function cerrar(){$("[data-res]").className="resultado";ocupado=false}
+$("[data-res]").addEventListener("click",cerrar);
+$("[data-manual-btn]").addEventListener("click",()=>{const c=$("[data-manual]").value.trim();if(c){$("[data-manual]").value="";validar(c)}});
+
+textos();
+if(PIN){api({soloPin:true}).then(r=>{if(r.resultado==="pin_ok")iniciar()}).catch(()=>{})}
+</script>
+</body>
+</html>
