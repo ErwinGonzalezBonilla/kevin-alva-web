@@ -20,7 +20,7 @@ module.exports = [
     moneda: "eur",
     aforo: 110,
     maxPorCompra: 10,
-    activo: false,
+    activo: true,
   },
   {
     id: "barcelona-2026-11-21",
@@ -33,6 +33,6 @@ module.exports = [
     moneda: "eur",
     aforo: 100,
     maxPorCompra: 10,
-    activo: false,
+    activo: true,
   },
 ];
