@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/entradas",  "destination": "/?lang=es&ir=spain#shows", "permanent": false },
+    { "source": "/tickets",   "destination": "/?lang=en&ir=spain#shows", "permanent": false },
+    { "source": "/madrid",    "destination": "/?lang=es&ir=spain&comprar=madrid-2026-11-19#shows", "permanent": false },
+    { "source": "/barcelona", "destination": "/?lang=es&ir=spain&comprar=barcelona-2026-11-21#shows", "permanent": false }
+  ]
+}

@@ -158,6 +158,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 @media (max-width:420px){.idiomas button span{display:none}.idiomas button{padding:.4rem .5rem}}
 
 
+.fila--destacada{background:linear-gradient(90deg,rgba(214,166,44,.14),rgba(214,166,44,0) 70%);box-shadow:inset 3px 0 0 var(--gold)}
 .btn--comprar{flex-direction:column;gap:.15rem;line-height:1.2;font-family:inherit;cursor:pointer}
 .btn--comprar small{font-size:.62rem;letter-spacing:.12em;opacity:.75}
 .compra{border:0;padding:0;background:transparent;width:min(440px,100% - 2rem);max-height:calc(100svh - 2rem);color:var(--white)}
@@ -252,6 +253,12 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
 .tracklist dt{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);margin-top:1rem}
 .tracklist dt:first-child{margin-top:.6rem}
 .tracklist dd{margin:.2rem 0 0;font-weight:600}
+.tracklist+.tracklist{margin-top:0;border-top:0}
+.tracklist dd span{display:block;margin-top:.3rem;line-height:1.45}
+.tracklist dd small{color:rgba(5,5,5,.6);font-weight:500;font-size:.85rem}
+.tracklist__gracias{grid-column:1/-1;margin:0;padding-top:1.25rem;border-top:1px solid var(--linea-clara)}
+.tracklist__gtit{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark)}
+.tracklist__gracias p{margin:.5rem 0 0;max-width:70ch;line-height:1.65;color:rgba(5,5,5,.75);font-style:italic}
 @media (max-width:760px){.tracklist__grid{grid-template-columns:1fr}}
 
 /* ---------- Videos ---------- */
@@ -571,30 +578,7 @@ section{position:relative;padding:clamp(5rem,10vw,8rem) 0}
       <div class="disco" data-disco></div>
       <button class="disco-btn disco-next" type="button" aria-label="Next album" data-i18n-attr="aria-label:a_next_album" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
-    <details class="tracklist" data-rev>
-      <summary><span>Rebirth · 2026</span> <span class="tl-t" data-i18n="tracklist">Tracklist &amp; credits</span></summary>
-      <div class="tracklist__grid">
-        <ol>
-          <li><b>Mano Man</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
-          <li><b>Burn It</b><small data-i18n="cr_lm_k">Lyrics &amp; music: Kevin</small></li>
-          <li><b>Classic All</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
-          <li><b>Me Pasa el Tiempo</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
-          <li><b>Steplin</b><small>Kevin</small></li>
-          <li><b>Is Not Your Business</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
-          <li><b>With Rub a Dub</b><small data-i18n="cr_lm_kp">Lyrics: Kevin, Pepito · Music: Kevin</small></li>
-          <li><b>Sunny Mood</b><small>Kevin</small></li>
-        </ol>
-        <dl>
-          <dt data-i18n="c_rec">Recording</dt><dd data-i18n="c_rec_d">Between August 2021 and February 2025</dd>
-          <dt data-i18n="c_prod">Artistic &amp; musical production</dt><dd>Kevin Alva, Iván “Pepito” Rodríguez</dd>
-          <dt data-i18n="c_sax">Saxophones (baritone &amp; tenor) and vocals</dt><dd>Kevin Alva</dd>
-          <dt data-i18n="c_drums">Drums</dt><dd>Eduardo Guerrero</dd>
-          <dt data-i18n="c_mix">Mixing &amp; mastering</dt><dd>Guillermo Silverstein</dd>
-          <dt data-i18n="c_art">Art &amp; design</dt><dd>Adriana Roquero</dd>
-          <dt data-i18n="c_photo">Photography</dt><dd>Natalia Katjuzanskaja</dd>
-        </dl>
-      </div>
-    </details>
+    <div data-fichas></div>
   </div>
 </section>
 
@@ -764,6 +748,12 @@ en:{
  featured:"Featured", more_from:"More from Kevin Alva", follow_sp:"Follow on Spotify",
  disco:"Discography", disco_hint:"Tap a cover to listen on Spotify", album:"Album", listen_sp:"Listen on Spotify →", listen:"Listen",
  tracklist:"Tracklist & credits",
+ r_perc:"Percussion", r_bass:"Bass", r_gtr:"Guitars", r_rgtr:"Rhythm guitars", r_lgtr:"Lead guitar", r_keys:"Keyboards", r_keysh:"Keyboards & Hammond",
+ r_tbn:"Trombones", r_tptflg:"Trumpet & flugelhorn", r_sax:"Saxophones", r_harm:"Harmonica", r_bvox:"Backing vocals", r_vox:"Vocals & backing vocals",
+ r_vgs:"Vocals, guitar & saxophones", r_guests:"Guest musicians", r_design:"Design", r_studio:"Production", r_comp:"Songwriting", r_thanks:"Thanks",
+ n_bari_ten:"baritone & tenor", n_gtr_bv:"guitars & backing vocals", n_tpt:"trumpet",
+
+ comp_all:"All songs by Kevin Alva",
  cr_lm_kp:"Lyrics: Kevin, Pepito · Music: Kevin", cr_lm_k:"Lyrics & music: Kevin",
  c_rec:"Recording", c_rec_d:"Between August 2021 and February 2025", c_prod:"Artistic & musical production",
  c_sax:"Saxophones (baritone & tenor) and vocals", c_drums:"Drums", c_mix:"Mixing & mastering", c_art:"Art & design", c_photo:"Photography",
@@ -814,6 +804,12 @@ es:{
  featured:"Destacado", more_from:"Más de Kevin Alva", follow_sp:"Seguir en Spotify",
  disco:"Discografía", disco_hint:"Toca una portada para escuchar en Spotify", album:"Álbum", listen_sp:"Escuchar en Spotify →", listen:"Escuchar",
  tracklist:"Tracklist y créditos",
+ r_perc:"Percusión", r_bass:"Bajo", r_gtr:"Guitarras", r_rgtr:"Guitarras rítmicas", r_lgtr:"Guitarra líder", r_keys:"Teclados", r_keysh:"Teclados y Hammond",
+ r_tbn:"Trombones", r_tptflg:"Trompeta y fliscorno", r_sax:"Saxos", r_harm:"Armónica", r_bvox:"Coros", r_vox:"Voces y coros",
+ r_vgs:"Voz, guitarra y saxos", r_guests:"Músicos invitados", r_design:"Diseño", r_studio:"Producción", r_comp:"Composición", r_thanks:"Agradecimientos",
+ n_bari_ten:"barítono y tenor", n_gtr_bv:"guitarras y coros", n_tpt:"trompeta",
+
+ comp_all:"Todos los temas son de Kevin Alva",
  cr_lm_kp:"Letra: Kevin, Pepito · Música: Kevin", cr_lm_k:"Letra y música: Kevin",
  c_rec:"Grabación", c_rec_d:"Entre agosto de 2021 y febrero de 2025", c_prod:"Producción artística y musical",
  c_sax:"Saxos (barítono y tenor) y voces", c_drums:"Baterías", c_mix:"Mezcla y máster", c_art:"Arte y diseño", c_photo:"Fotografía",
@@ -864,6 +860,12 @@ et:{
  featured:"Esiletõstetud", more_from:"Veel Kevin Alvalt", follow_sp:"Jälgi Spotifys",
  disco:"Diskograafia", disco_hint:"Puuduta kaant, et kuulata Spotifys", album:"Album", listen_sp:"Kuula Spotifys →", listen:"Kuula",
  tracklist:"Lood ja tegijad",
+ r_perc:"Löökpillid", r_bass:"Bass", r_gtr:"Kitarrid", r_rgtr:"Rütmikitarrid", r_lgtr:"Soolokitarr", r_keys:"Klahvpillid", r_keysh:"Klahvpillid ja Hammond",
+ r_tbn:"Tromboonid", r_tptflg:"Trompet ja flygelhorn", r_sax:"Saksofonid", r_harm:"Suupill", r_bvox:"Taustavokaal", r_vox:"Vokaal ja taustavokaal",
+ r_vgs:"Vokaal, kitarr ja saksofonid", r_guests:"Külalismuusikud", r_design:"Kujundus", r_studio:"Produktsioon", r_comp:"Autorid", r_thanks:"Tänusõnad",
+ n_bari_ten:"bariton ja tenor", n_gtr_bv:"kitarrid ja taustavokaal", n_tpt:"trompet",
+
+ comp_all:"Kõik lood: Kevin Alva",
  cr_lm_kp:"Sõnad: Kevin, Pepito · Muusika: Kevin", cr_lm_k:"Sõnad ja muusika: Kevin",
  c_rec:"Salvestus", c_rec_d:"August 2021 – veebruar 2025", c_prod:"Kunstiline ja muusikaline produktsioon",
  c_sax:"Saksofonid (bariton ja tenor) ning vokaal", c_drums:"Trummid", c_mix:"Miksimine ja masterdamine", c_art:"Kujundus", c_photo:"Fotod",
@@ -912,9 +914,75 @@ const CONFIG = {
   // Pega el enlace del álbum en Spotify en "enlace"
   // (en Spotify: ··· → Compartir → Copiar enlace del álbum)
   discografia: [
-    { nombre:"Rebirth",  anio:"2026", tipo:"Álbum", portada:"img/album-rebirth.jpg",  enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb" },
-    { nombre:"Movement", anio:"2021", tipo:"Álbum", portada:"img/album-movement.jpg", enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb" },
-    { nombre:"Agradecer y Volar", anio:"2022", tipo:"Álbum", portada:"https://i.scdn.co/image/ab67616d0000b273afa9727f15d701751a94b19f", enlace:"https://open.spotify.com/album/1nMEhkmVysflQuRtUIG62P" },
+    { nombre:"Rebirth",  anio:"2026", tipo:"Álbum", portada:"img/album-rebirth.jpg",  enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb",
+      ficha:{
+        // Lista de temas: [título, crédito]. Un crédito que empieza por "@" es un texto traducido (clave de I18N).
+        temas:[["Mano Man",""],["Burn It",""],["Classic All",""],["Me Pasa el Tiempo",""],["Steplin",""],["Is Not Your Business",""],["With Rub a Dub",""],["Sunny Mood",""]],
+        // Créditos: [rol, [nombre, nota], [nombre, nota]...]. Las notas pueden ser texto o {en,es,et}; "@clave" se traduce.
+        creditos:[
+          ["r_comp",["@comp_all",""]],
+          ["c_rec",["@c_rec_d",""]],
+          ["c_prod",["Kevin Alva, Iván “Pepito” Rodríguez",""]],
+          ["c_drums",["Eduardo Guerrero",""]],
+          ["r_perc",["Iván “Pepito” Rodríguez","Me Pasa el Tiempo, Is Not Your Business, Sunny Mood"],["Kevin Alva","Burn It"]],
+          ["r_bass",["Raúl Mota","Mano Man, Classic All, Sunny Mood"],["Kevin Alva","Burn It, Me Pasa el Tiempo, Steplin, Is Not Your Business, With Rub a Dub"]],
+          ["r_gtr",["Iván “Pepito” Rodríguez","Mano Man, Me Pasa el Tiempo, Steplin, Is Not Your Business, With Rub a Dub, Sunny Mood"],["Marcos Viloria",{en:"Burn It, Classic All · Steplin (solo)",es:"Burn It, Classic All · Steplin (solo)",et:"Burn It, Classic All · Steplin (soolo)"}]],
+          ["r_keys",["Iván “Pepito” Rodríguez","Mano Man, Is Not Your Business, Sunny Mood"],["Kevin Alva","Burn It, Me Pasa el Tiempo, Steplin, Is Not Your Business, With Rub a Dub"],["Marcos Viloria","Classic All"]],
+          ["r_sax",["Kevin Alva","@n_bari_ten"],["Sebastián Tarazona",{en:"Steplin (solo)",es:"Steplin (solo)",et:"Steplin (soolo)"}]],
+          ["r_vox",["Kevin Alva",""]],
+          ["c_mix",["Guillermo Silverstein",""]],
+          ["c_art",["Adriana Roquero",""]],
+          ["c_photo",["Natalia Katjuzanskaja",""]],
+        ],
+        gracias:{
+          es:"A mi hermano Pepe, motor inagotable de musicalidad y cercanía familiar. Al Gualdo, por meterle ganas con las batas mortales; a la Adri, por ser un rayito de luz; y a todos aquellos que siguen dándome ánimos y energías para que la música siga sonando. ¡Nonstop!",
+          en:"To my brother Pepe, a tireless engine of musicality and family closeness! To Gualdo, for going all in on those killer drums; to Adri, for being a little ray of light; and to everyone who keeps giving me the encouragement and energy to keep the music playing. Nonstop!",
+          et:"Mu vennale Pepele – ammendamatule musikaalsuse ja perekondliku läheduse mootorile! Gualdole, kes lõi oma tapvaid trumme täie hooga; Adrile, kes on väike valguskiir; ja kõigile, kes annavad mulle jätkuvalt julgust ja energiat, et muusika edasi kõlaks. Nonstop!"
+        }
+      } },
+    { nombre:"Movement", anio:"2021", tipo:"Álbum", portada:"img/album-movement.jpg", enlace:"https://open.spotify.com/artist/0C0t2BM8mSLRy6VfZ7Vqpb",
+      ficha:{
+        temas:[["Movement","Kevin Alva"],["El viaje","Kevin Alva"],["Ska revival","Kevin Alva"],["Lobreguez","Kevin Alva"],["Inna Gotinga","Kevin Alva, Iván “Pepito” Rodríguez"],["Compartir","Kevin Alva"],["For Ranglin","Kevin Alva"],["Passion to move","Kevin Alva"],["Walking in the heat","Kevin Alva"],["Baralt 2 am","Kevin Alva"],["Ska swing","Kevin Alva"]],
+        creditos:[
+          ["c_drums",["Eduardo Guerrero",""]],
+          ["r_perc",["Iván “Pepito” Rodríguez","Movement, El viaje, Inna Gotinga"]],
+          ["r_bass",["Raúl Mota","Walking in the heat, For Ranglin, Ska swing, Baralt 2 am, Compartir, Passion to move"],["Victor Quero","Ska revival"],["Kevin Alva","Movement, Inna Gotinga, El viaje, Lobreguez"]],
+          ["r_rgtr",["Iván “Pepito” Rodríguez","Movement, Inna Gotinga, El viaje, Walking in the heat, Ska revival, Baralt 2 am, Compartir, Passion to move, Lobreguez, Ska swing"],["Kevin Alva","Ska swing"],["Marcos Viloria","For Ranglin"]],
+          ["r_lgtr",["Iván “Pepito” Rodríguez","Movement, Inna Gotinga, El viaje, Walking in the heat, Ska revival, Baralt 2 am, Compartir, Passion to move, Lobreguez, Ska swing"],["Marcos Viloria",{en:"For Ranglin (solo)",es:"For Ranglin (solo)",et:"For Ranglin (soolo)"}]],
+          ["r_keysh",["Marcos Viloria","Ska swing, For Ranglin"],["Ken Stewart",{en:"Ska revival · Baralt 2 am (Hammond solo)",es:"Ska revival · Baralt 2 am (solo de Hammond)",et:"Ska revival · Baralt 2 am (Hammondi soolo)"}],["Kevin Alva","Movement, Inna Gotinga, El viaje, Walking in the heat, Baralt 2 am, Compartir, Passion to move, Lobreguez"]],
+          ["r_tbn",["Leonardo Alfonso",{en:"El viaje, For Ranglin, Ska swing · Ska revival (solo)",es:"El viaje, For Ranglin, Ska swing · Ska revival (solo)",et:"El viaje, For Ranglin, Ska swing · Ska revival (soolo)"}],["Carlos Fajardo","Baralt 2 am, Lobreguez, Compartir"]],
+          ["r_tptflg",["Alejandro Berti","For Ranglin"]],
+          ["r_sax",["Kevin Alva",""],["Artur Leppik",{en:"Walking in the heat (alto sax solo) · Ska swing (alto sax; alto & tenor sax solos)",es:"Walking in the heat (solo de saxo alto) · Ska swing (saxo alto; solos de saxo alto y tenor)",et:"Walking in the heat (altsaksofoni soolo) · Ska swing (altsaksofon; alt- ja tenorsaksofoni soolod)"}]],
+          ["r_harm",["Martin “Tincho” Seguel","Walking in the heat"]],
+          ["r_bvox",["Alfredo Oviedo","Compartir, Passion to move, Lobreguez"],["Kristin Kalnapenk","El viaje, Passion to move, Lobreguez"]],
+          ["r_design",["Adriana Roquero",""]],
+          ["c_photo",["Andrei Gorynych",""]],
+        ],
+        gracias:{
+          es:"A la música, ese ronroneo que mantiene a nuestros corazones encendidos y latiendo indeteniblemente. A Hilda y a mi pa, que aunque no estén en este plano nos siguen cuidando como dos lucecitas incesantes de alumbrar. A mis hermanos Pepito y Eduardo, por ser un apoyo incondicional en estos momentos tan complejos. A Adriana, por siempre estar, y a toda la familia musical extendida que, desde todos los lugares del planeta, tuvo el ánimo de formar parte de este proceso tan bonito.",
+          en:"To music, that purr that keeps our hearts lit and beating unstoppably! To Hilda and my dad, who, though no longer on this plane, still watch over us like two little lights that never stop shining. To my brothers Pepito and Eduardo, for being unconditional support in such difficult times. To Adriana, for always being there, and to the whole extended musical family who, from every corner of the planet, found the spirit to be part of this beautiful process.",
+          et:"Muusikale – sellele nurrumisele, mis hoiab meie südamed põlemas ja peatumatult tuksumas! Hildale ja mu isale, kes, ehkki nad pole enam siin ilmas, hoiavad meid ikka nagu kaks väsimatult helendavat tulukest. Mu vendadele Pepitole ja Eduardole, kes on olnud tingimusteta toeks neil keerulistel aegadel. Adrianale, kes on alati olemas, ning kogu laiemale muusikaperele, kes üle kogu maailma leidis tahtmist olla osa sellest ilusast protsessist."
+        }
+      } },
+    { nombre:"Agradecer y Volar", anio:"2017", tipo:"Álbum", portada:"https://i.scdn.co/image/ab67616d0000b273afa9727f15d701751a94b19f", enlace:"https://open.spotify.com/album/1nMEhkmVysflQuRtUIG62P",
+      ficha:{
+        temas:[["Hay un lugar",""],["Agradecer y volar",""],["You’ve made me so very happy",""],["Dulce engaño",""],["Since you",""],["It must be true love",""],["Me quiere la soledad",""],["Dancing mood",""],["Ya no lo ves",""],["Why baby why",""],["Como no enamorarme",""],["The tide is high",""]],
+        creditos:[
+          ["c_drums",["Alberto Mathison",""]],
+          ["r_bass",["Raúl Mota",""]],
+          ["r_vgs",["Kevin Alva",""]],
+          ["r_guests",["Jesús Vetencourt (Dr Norrys)","@n_gtr_bv"],["Mario Perez","@n_tpt"]],
+          ["c_prod",["Kevin Alva",""]],
+          ["c_mix",["Leonardo Dominguez, Kevin Alva",""]],
+          ["c_art",["Alberto Mathison",""]],
+          ["r_studio",["Mango Bemol Estudios","Caracas, Venezuela · 2017"]],
+        ],
+        gracias:{
+          es:"Primero que todo, al amor: ese sentimiento a veces esquivo que increíblemente nos permite lograr cosas bonitas y esperanzadoras, y que definitivamente debe formar parte de todo lo que hacemos. A mi familia, que aguanta tanta pela musical a diario; a mis hermanos musicales, que confiaron y siguen al pie del cañón apoyando toda mi música; y a los panas invitados, que forman parte de este viaje musical que nunca debe parar.",
+          en:"First of all, to love — that sometimes elusive feeling that, incredibly, lets us achieve beautiful, hopeful things, and that must be part of everything we do. To my family, who put up with so much music every single day; to my musical brothers, who believed and are still standing strong, supporting all my music; and to the friends who joined as guests and are part of this musical journey that must never stop!",
+          et:"Esmalt armastusele – sellele vahel tabamatule tundele, mis lubab meil uskumatul kombel saavutada ilusaid ja lootustandvaid asju ning mis peab olema osa kõigest, mida teeme. Minu perele, kes talub iga päev nii palju muusikat; mu muusikavendadele, kes uskusid ja on endiselt kindlalt kohal, toetades kogu mu muusikat; ning külalistest sõpradele, kes on osa sellest muusikalisest teekonnast, mis ei tohi kunagi peatuda!"
+        }
+      } },
   ],
 
   // Shows. pais: "spain" | "estonia" (se traduce solo). acceso: "" (entradas pronto) | "puerta" | "gratis" | "privado"
@@ -990,7 +1058,7 @@ function pintarShows(){
         :`<button class="btn btn--oro btn--comprar" type="button" data-comprar="${esc(s.venta)}">${t("buy")} · ${dinero(v.precio,v.moneda)}${v.ultimas?`<small>${t("last_n",{n:v.ultimas})}</small>`:""}</button>`)
       :s.entradas?`<a class="btn btn--oro" href="${s.entradas}" target="_blank" rel="noopener">${t("tickets")}</a>`
       :`<span class="btn btn--borde${s.acceso?" btn--info":""}" aria-disabled="true">${t(ACC[s.acceso]||"tickets_soon")}</span>`;
-    return `<li class="fila visto" data-rev>
+    return `<li class="fila visto${DESTACAR&&s.pais===DESTACAR?" fila--destacada":""}" data-rev${s.venta?` data-show="${esc(s.venta)}"`:""}>
     <div class="fila__fecha">${String(s.d.getDate()).padStart(2,"0")} ${MES[s.d.getMonth()]}<small>${DIA[s.d.getDay()]} · ${s.d.getFullYear()}${s.hora?" · "+s.hora:""}</small></div>
     <div class="fila__ciudad">${esc(s.ciudad||t("private_city"))}<small>${s.pais?esc(t(s.pais)):"&nbsp;"}</small></div>
     <div class="fila__evento">${esc(tx(s.evento))}${lugar?`<small>${s.mapa?`<a href="${s.mapa}" target="_blank" rel="noopener">${esc(lugar)}</a>`:esc(lugar)}</small>`:""}</div>
@@ -1008,6 +1076,20 @@ if(CONFIG.spotifyPrincipal)$("[data-sp-principal]").innerHTML=spIframe(CONFIG.sp
 if(CONFIG.spotifyArtista)$("[data-sp-artista]").innerHTML=spIframe(CONFIG.spotifyArtista,t("sp_artist_title"));
 
 // Discografía
+// Fichas técnicas (tracklist, créditos y agradecimientos de cada disco)
+function pintarFichas(){
+  const v=x=>typeof x==="string"&&x[0]==="@"?t(x.slice(1)):tx(x);
+  const abiertos=new Set($$("[data-fichas] details[open]").map(d=>d.dataset.album));
+  $("[data-fichas]").innerHTML=CONFIG.discografia.filter(a=>a.ficha).map(a=>{const f=a.ficha;return `
+    <details class="tracklist visto" data-rev data-album="${esc(a.nombre)}"${abiertos.has(a.nombre)?" open":""}>
+      <summary><span>${esc(a.nombre)} · ${esc(a.anio)}</span> <span class="tl-t">${t("tracklist")}</span></summary>
+      <div class="tracklist__grid">
+        <ol>${f.temas.map(([n,c])=>`<li><b>${esc(n)}</b>${c?`<small>${esc(v(c))}</small>`:""}</li>`).join("")}</ol>
+        <dl>${f.creditos.map(([rol,...g])=>`<dt>${esc(t(rol))}</dt><dd>${g.map(([n,nota])=>`<span>${esc(v(n))}${nota?` <small>· ${esc(v(nota))}</small>`:""}</span>`).join("")}</dd>`).join("")}</dl>
+        ${f.gracias?`<div class="tracklist__gracias"><span class="tracklist__gtit">${t("r_thanks")}</span><p>${esc(tx(f.gracias))}</p></div>`:""}
+      </div>
+    </details>`}).join("");
+}
 function pintarDisco(){
   $("[data-disco]").innerHTML=CONFIG.discografia.map(a=>`
   <a class="album" ${a.enlace?`href="${a.enlace}" target="_blank" rel="noopener"`:""}>
@@ -1133,11 +1215,18 @@ function aplicarIdioma(l){
   $$("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
   hamb.setAttribute("aria-label",menu.classList.contains("abierto")?t("menu_close"):t("menu_open"));
   if(nota.textContent)nota.textContent=t("f_note");
-  pintarShows();pintarDisco();pintarInfo();
+  pintarShows();pintarDisco();pintarFichas();pintarInfo();
   try{localStorage.setItem("ka_lang",LANG)}catch(e){}
 }
 $$("[data-lang]").forEach(b=>b.addEventListener("click",()=>aplicarIdioma(b.dataset.lang)));
 let guardado="en";try{guardado=localStorage.getItem("ka_lang")||"en"}catch(e){}
+// Enlaces directos para redes (ver vercel.json): /entradas, /tickets, /madrid, /barcelona
+const QS=new URLSearchParams(location.search);
+if(I18N[QS.get("lang")])guardado=QS.get("lang");
+var DESTACAR=QS.get("ir")||"";
+const ABRIR=QS.get("comprar")||"";
+if(QS.has("ir")||QS.has("comprar")||QS.has("lang"))history.replaceState(null,"",location.pathname+"#shows");
+function irAShows(){const el=ABRIR&&$(`[data-show="${ABRIR}"]`)||$(".fila--destacada");if(el)el.scrollIntoView({behavior:"smooth",block:"center"});else $("#shows").scrollIntoView({behavior:"smooth"})}
 aplicarIdioma(guardado);
 
 // ── Venta de entradas ──
@@ -1178,7 +1267,8 @@ fetch("/api/eventos",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
   if(!d||!d.activo)return;
   VENTA.prueba=!!d.prueba;d.eventos.forEach(e=>VENTA.eventos[e.id]=e);
   pintarShows();
-}).catch(()=>{});
+  if(ABRIR&&VENTA.eventos[ABRIR]&&!VENTA.eventos[ABRIR].agotado){const b=$(`[data-comprar="${ABRIR}"]`);if(b)setTimeout(()=>b.click(),500)}
+}).catch(()=>{}).finally(()=>{if(DESTACAR||ABRIR)setTimeout(irAShows,250)});
 </script>
 </body>
 </html>
