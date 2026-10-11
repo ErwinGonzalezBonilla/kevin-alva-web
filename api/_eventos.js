@@ -16,7 +16,7 @@ module.exports = [
     hora: "",
     lugar: "Barracuda Rock Bar",
     direccion: "Calle de Brescia 19, 28028 Madrid",
-    precio: 1700,      // 17,00 €
+    precio: 1860,      // 18,60 € (precio final)
     moneda: "eur",
     aforo: 110,
     maxPorCompra: 10,
@@ -29,7 +29,7 @@ module.exports = [
     hora: "",
     lugar: "Soda Acústic",
     direccion: "Carrer de les Guilleries 6, Gràcia, Barcelona",
-    precio: 1700,      // 17,00 €
+    precio: 1860,      // 18,60 € (precio final)
     moneda: "eur",
     aforo: 100,
     maxPorCompra: 10,
