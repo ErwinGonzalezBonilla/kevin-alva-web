@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="google" content="notranslate">
+<meta name="theme-color" content="#050505">
+<title>Reenviar entradas · Kevin Alva</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#050505;--dark:#111;--white:#F5F5F5;--gray:#A5A5A5;--gold:#D6A62C;--ok:#3BB273;--mal:#E5534B;--titulo:"Anton",Impact,"Arial Narrow",sans-serif;--texto:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--black);color:var(--white);font-family:var(--texto);-webkit-font-smoothing:antialiased}
+body{min-height:100svh;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+[hidden]{display:none!important}
+.top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.top b{font-family:var(--titulo);font-weight:400;font-size:1.1rem;letter-spacing:.05em;white-space:nowrap}
+.top b span{color:var(--gold)}
+.top a{color:var(--gray);font-size:.8rem}
+main{width:min(640px,100% - 2rem);margin:0 auto;padding:1.5rem 0 3rem;display:grid;gap:1.25rem}
+h1{font-family:var(--titulo);font-weight:400;font-size:2.4rem;text-transform:uppercase;margin:0;line-height:1}
+p{margin:0;color:var(--gray);line-height:1.55}
+form{display:grid;gap:.6rem}
+label span{display:block;font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:.35rem}
+input{font:inherit;width:100%;padding:.85rem 1rem;border-radius:10px;border:2px solid rgba(255,255,255,.18);background:#111;color:var(--white)}
+input:focus{outline:none;border-color:var(--gold)}
+.fila{display:grid;grid-template-columns:1fr auto;gap:.5rem}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:.85rem 1.2rem;border-radius:999px;font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:var(--black)}
+.btn--borde{background:none;border:2px solid rgba(255,255,255,.35);color:var(--white)}
+.btn[disabled]{opacity:.5;cursor:default}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.msg{font-weight:700;min-height:1.3em}
+.msg.ok{color:var(--ok)}.msg.mal{color:var(--mal)}
+.compra{background:#111;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1rem 1.1rem;display:grid;gap:.6rem}
+.compra h2{font-size:1rem;margin:0}
+.datos{display:grid;grid-template-columns:auto 1fr;gap:.25rem .9rem;font-size:.88rem}
+.datos dt{color:var(--gray)}.datos dd{margin:0;font-weight:700;overflow-wrap:anywhere}
+.chip{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:.2rem .55rem;border-radius:999px}
+.chip.ok{background:rgba(59,178,115,.15);color:var(--ok)}.chip.no{background:rgba(229,83,75,.15);color:var(--mal)}
+.acciones{display:grid;gap:.5rem}
+.acciones .fila input{padding:.65rem .8rem;font-size:.9rem}
+.acciones a{color:var(--gold);font-size:.82rem;font-weight:700}
+</style>
+</head>
+<body>
+<header class="top"><b>KEVIN ALVA · <span>ENTRADAS</span></b><a href="checkin.html">Ir al escáner</a></header>
+<main>
+  <section data-paso-pin>
+    <form data-form-pin>
+      <h1>Reenviar entradas</h1>
+      <p>Para cuando alguien no recibe el correo o escribió mal su dirección. Usa el mismo PIN que el escáner de la puerta.</p>
+      <label><span>PIN</span><input id="pin" type="password" inputmode="numeric" autocomplete="off"></label>
+      <button class="btn" type="submit">Entrar</button>
+      <p class="msg mal" data-msg-pin role="status"></p>
+    </form>
+  </section>
+
+  <section data-paso-buscar hidden>
+    <form data-form-buscar>
+      <h1>Buscar compra</h1>
+      <p>Escribe el correo con el que compró o la referencia de 8 caracteres que aparece en su correo de entradas.</p>
+      <div class="fila"><label class="sr"><span>Correo o referencia</span><input id="q" type="text" autocomplete="off" placeholder="ana@gmail.com o 4F9A1C2B"></label><button class="btn" type="submit" style="align-self:end">Buscar</button></div>
+      <p class="msg" data-msg role="status"></p>
+    </form>
+    <div data-resultados style="display:grid;gap:1rem;margin-top:1rem"></div>
+  </section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const eur=(c,m)=>new Intl.NumberFormat("es-ES",{style:"currency",currency:(m||"eur").toUpperCase()}).format(c/100);
+const fecha=iso=>iso?new Date(iso).toLocaleString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):"";
+let PIN="";try{PIN=sessionStorage.getItem("ka_pin")||""}catch(e){}
+let compras=[];
+
+async function api(datos){
+  const r=await fetch("/api/reenviar",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pin:PIN,...datos})});
+  const d=await r.json().catch(()=>({}));
+  if(r.status===401){try{sessionStorage.removeItem("ka_pin")}catch(e){}throw new Error("pin")}
+  if(!r.ok)throw new Error(d.error||"servidor");
+  return d;
+}
+function entrar(){$("[data-paso-pin]").hidden=true;$("[data-paso-buscar]").hidden=false;$("#q").focus()}
+$("[data-form-pin]").addEventListener("submit",async e=>{
+  e.preventDefault();PIN=$("#pin").value.trim();$("[data-msg-pin]").textContent="";
+  try{await api({accion:"buscar",q:"pi_comprobacion"});try{sessionStorage.setItem("ka_pin",PIN)}catch(e){}entrar()}
+  catch(err){$("[data-msg-pin]").textContent=err.message==="pin"?"PIN incorrecto.":"No se pudo conectar. Revisa internet e inténtalo otra vez."}
+});
+
+function pintar(){
+  $("[data-resultados]").innerHTML=compras.map((c,i)=>`
+  <article class="compra">
+    <h2>${esc(c.evento)}</h2>
+    <dl class="datos">
+      <dt>Nombre</dt><dd>${esc(c.nombre||"—")}</dd>
+      <dt>Correo</dt><dd>${esc(c.email||"—")}</dd>
+      <dt>Entradas</dt><dd>${c.cantidad} · ${eur(c.total,c.moneda)}</dd>
+      <dt>Referencia</dt><dd>${esc(c.ref)}</dd>
+      <dt>Correo enviado</dt><dd>${c.estado==="reembolsado"?'<span class="chip no">Reembolsada</span>':c.enviado?`<span class="chip ok">Sí</span> ${esc(fecha(c.enviado))} a ${esc(c.enviadoA)}`:'<span class="chip no">No</span>'}</dd>
+    </dl>
+    ${c.estado==="reembolsado"?"":`<div class="acciones">
+      <button class="btn" type="button" data-enviar="${i}">Reenviar a ${esc(c.email||"su correo")}</button>
+      <div class="fila"><label class="sr"><span class="sr">Otro correo</span><input id="otro-${i}" type="email" placeholder="Enviar a otro correo"></label><button class="btn btn--borde" type="button" data-enviar-otro="${i}">Enviar</button></div>
+      <a href="${esc(c.enlace)}" target="_blank" rel="noopener">Abrir sus entradas</a>
+      <p class="msg" data-msg-c="${i}" role="status"></p>
+    </div>`}
+  </article>`).join("");
+}
+$("[data-form-buscar]").addEventListener("submit",async e=>{
+  e.preventDefault();const q=$("#q").value.trim(),m=$("[data-msg]");if(!q)return;
+  m.className="msg";m.textContent="Buscando…";$("[data-resultados]").innerHTML="";
+  try{const d=await api({accion:"buscar",q});compras=d.compras;m.textContent=compras.length?`${compras.length} ${compras.length===1?"compra encontrada":"compras encontradas"}.`:"No hay compras con ese correo o referencia.";pintar()}
+  catch(err){m.className="msg mal";m.textContent=err.message==="busqueda"?"Escribe un correo completo o la referencia de 8 caracteres.":err.message==="pin"?"La sesión ha caducado. Recarga la página.":"No se pudo buscar. Inténtalo otra vez."}
+});
+$("[data-resultados]").addEventListener("click",async e=>{
+  const b=e.target.closest("[data-enviar],[data-enviar-otro]");if(!b)return;
+  const i=+(b.dataset.enviar??b.dataset.enviarOtro),otro=b.dataset.enviarOtro!==undefined?$("#otro-"+i).value.trim():"";
+  const m=$(`[data-msg-c="${i}"]`);
+  if(b.dataset.enviarOtro!==undefined&&!otro){m.className="msg mal";m.textContent="Escribe el correo nuevo.";return}
+  b.disabled=true;m.className="msg";m.textContent="Enviando…";
+  try{const r=await api({accion:"enviar",pi:compras[i].pi,email:otro});
+    if(r.estado==="enviado"){m.className="msg ok";m.textContent=`Enviado a ${r.a}.`;compras[i].enviado=new Date().toISOString();compras[i].enviadoA=r.a;compras[i].email=r.a;setTimeout(pintar,1800)}
+    else{m.className="msg mal";m.textContent=r.estado==="sin_email"?"Esta compra no tiene correo. Escribe uno en «Enviar a otro correo».":r.estado==="reembolsado"?"Esta compra está reembolsada.":"No se pudo enviar."}
+  }catch(err){m.className="msg mal";m.textContent=err.message==="email"?"Ese correo no es válido.":"No se pudo enviar. Revisa la configuración del correo e inténtalo otra vez."}
+  b.disabled=false;
+});
+if(PIN)api({accion:"buscar",q:"pi_comprobacion"}).then(entrar).catch(()=>{});
+</script>
+<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}label.sr{position:static;width:auto;height:auto;overflow:visible;clip:auto}</style>
+</body>
+</html>

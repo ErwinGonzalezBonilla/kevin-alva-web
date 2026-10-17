@@ -44,6 +44,7 @@ module.exports = async (req, res) => {
       ref: pi.metadata.ref,
       evento: { nombre: e.nombre, fecha: e.fecha, hora: e.hora, lugar: e.lugar, direccion: e.direccion },
       nombre: pi.metadata.nombre || "",
+      email: pi.metadata.email || "",
       cantidad: qty,
       total: pi.amount_received,
       moneda: pi.currency,

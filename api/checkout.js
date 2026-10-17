@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
     const origen = `https://${req.headers["x-forwarded-host"] || req.headers.host}`;
     const ref = crypto.randomBytes(16).toString("hex"); // enlace privado de la entrada
     const enlace = `${origen}/entrada.html?ref=${ref}&lang=${lang}`;
-    const meta = { evento: e.id, qty: String(cantidad), ref };
+    const meta = { evento: e.id, qty: String(cantidad), ref, rc: ref.slice(0, 8).toUpperCase(), lang };
 
     const sesion = await stripe().checkout.sessions.create({
       mode: "payment",

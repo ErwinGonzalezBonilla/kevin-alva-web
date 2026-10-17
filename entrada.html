@@ -71,13 +71,16 @@ h1{font-family:var(--titulo);font-weight:400;text-transform:uppercase;font-size:
 <script>
 const T={
  en:{eyebrow:"Kevin Alva · Live",title:"Your tickets",loading:"Loading your tickets…",pending:"We're confirming your payment… This page will update by itself in a few seconds.",paid:"Payment confirmed. See you at the show!",ticket:"Ticket",of:"of",holder:"Name",total:"Total",used:"Used",
-  howto:"Show the QR code at the door (on your phone or printed). Each code is valid once. Save this page: bookmark it or take a screenshot of each QR. You'll also find this link in your payment receipt email.",
+  howto:"Show the QR code at the door (on your phone or printed). Each code is valid once. Save this page: bookmark it or take a screenshot of each QR. We've also emailed you your tickets with the QR codes attached.",
+  sent:"We've emailed your tickets to <b>{e}</b>. If they don't arrive within a few minutes, check your spam folder. If that's not your address, save this page or take a screenshot of each QR.",
   print:"Print / save PDF",back:"Back to the website",refunded:"This purchase was refunded, so these tickets are no longer valid.",notfound:"We couldn't find this purchase. Please check the link or contact us through the website.",test:"Test mode · these tickets are not real",slow:"Your payment is taking longer than usual to confirm. Reload this page in a minute."},
  es:{eyebrow:"Kevin Alva · En directo",title:"Tus entradas",loading:"Cargando tus entradas…",pending:"Estamos confirmando tu pago… Esta página se actualizará sola en unos segundos.",paid:"Pago confirmado. ¡Nos vemos en el concierto!",ticket:"Entrada",of:"de",holder:"Nombre",total:"Total",used:"Usada",
-  howto:"Enseña el código QR en la puerta (en el móvil o impreso). Cada código vale una sola vez. Guarda esta página: añádela a favoritos o haz una captura de cada QR. También encontrarás este enlace en el correo del recibo de pago.",
+  howto:"Enseña el código QR en la puerta (en el móvil o impreso). Cada código vale una sola vez. Guarda esta página: añádela a favoritos o haz una captura de cada QR. También te las hemos enviado por correo, con los QR adjuntos.",
+  sent:"Te hemos enviado las entradas a <b>{e}</b>. Si no te llegan en unos minutos, mira en la carpeta de spam. Si ese no es tu correo, guarda esta página o haz una captura de cada QR.",
   print:"Imprimir / guardar PDF",back:"Volver a la web",refunded:"Esta compra fue reembolsada, así que estas entradas ya no son válidas.",notfound:"No encontramos esta compra. Revisa el enlace o escríbenos desde la web.",test:"Modo de prueba · estas entradas no son reales",slow:"Tu pago está tardando más de lo normal en confirmarse. Recarga esta página en un minuto."},
  et:{eyebrow:"Kevin Alva · Live",title:"Sinu piletid",loading:"Laadime sinu pileteid…",pending:"Kinnitame sinu makset… See leht uueneb mõne sekundi pärast ise.",paid:"Makse on kinnitatud. Kohtume kontserdil!",ticket:"Pilet",of:"/",holder:"Nimi",total:"Kokku",used:"Kasutatud",
-  howto:"Näita QR-koodi uksel (telefonis või väljaprinditult). Iga kood kehtib ühe korra. Salvesta see leht: lisa see järjehoidjatesse või tee igast QR-koodist ekraanipilt. Selle lingi leiad ka makse kviitungi e-kirjast.",
+  howto:"Näita QR-koodi uksel (telefonis või väljaprinditult). Iga kood kehtib ühe korra. Salvesta see leht: lisa see järjehoidjatesse või tee igast QR-koodist ekraanipilt. Saatsime piletid koos QR-koodidega ka sinu e-postile.",
+  sent:"Saatsime piletid aadressile <b>{e}</b>. Kui need mõne minuti jooksul ei saabu, vaata rämpsposti kausta. Kui see pole sinu aadress, salvesta see leht või tee igast QR-koodist ekraanipilt.",
   print:"Prindi / salvesta PDF",back:"Tagasi kodulehele",refunded:"See ost on tagastatud, seega need piletid enam ei kehti.",notfound:"Me ei leidnud seda ostu. Kontrolli linki või võta meiega kodulehe kaudu ühendust.",test:"Testrežiim · need piletid ei ole päris",slow:"Makse kinnitamine võtab tavalisest kauem. Laadi leht minuti pärast uuesti."}
 };
 const q=new URLSearchParams(location.search);
@@ -107,7 +110,7 @@ function pintar(){
   const e=datos.evento;
   const cab=`<div class="evento"><b>${esc(e.nombre)}</b><span>${esc(fecha(e.fecha,e.hora))}</span><span>${esc([e.lugar,e.direccion].filter(Boolean).join(" · "))}</span>${datos.nombre?`<span>${t("holder")}: ${esc(datos.nombre)}</span>`:""}<span>${t("total")}: ${dinero(datos.total,datos.moneda)}</span></div>`;
   if(datos.estado==="reembolsado"){c.innerHTML=cab+`<div class="estado mal">${t("refunded")}</div>`;return}
-  c.innerHTML=`<div class="estado ok">${t("paid")}</div>${cab}
+  c.innerHTML=`<div class="estado ok">${t("paid")}</div>${datos.email?`<div class="estado info">${t("sent").replace("{e}",esc(datos.email))}</div>`:""}${cab}
   <div class="tickets">${datos.entradas.map(x=>`
     <article class="ticket${x.usada?" usada":""}">
       <div class="ticket__cab"><span>${t("ticket")} ${x.n} ${t("of")} ${datos.cantidad}</span><b>KEVIN ALVA</b></div>
